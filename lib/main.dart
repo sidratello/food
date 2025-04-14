@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-   initialRoute: "/home3",
+   initialRoute: "/home",
         getPages: [
         
         GetPage(name: "/onbording", page: () => onbording(),),
