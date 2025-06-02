@@ -14,14 +14,23 @@ final Color color;
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-           style: ElevatedButton.styleFrom(
-        backgroundColor: color, // تحديد لون الزر
+    return SizedBox(
+      height: 50,
+      width: 150,
+      child: ElevatedButton(
+        onPressed: onPressed,
+             style: ElevatedButton.styleFrom(
+          backgroundColor: color,
+             shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30), // 👈 Circular shape
+            ),
+           // تحديد لون الزر
+        ),
+        
+        child: Text(title,style:TextStyle(color:Colors.white),)
+        
+        
       ),
-      child: Text(title,style:TextStyle(color:Colors.white),)
-      
-      
     );
   }
 }

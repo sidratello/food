@@ -6,22 +6,27 @@ class CustomTextField extends StatelessWidget {
   final String hintText;
   final Color hintTextColor; 
   final TextEditingController? controller;
+    final String? Function(String?)? validator;
   // final TextInputType? keyboardType;
 
 final Icon icon;
+
+
   const CustomTextField({
     super.key,
     required this.hintText,
     required this.icon,
     this.controller,
     required this.hintTextColor,
+       this.validator,
     //  this.keyboardType,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       controller: controller,
+      validator: validator,
       // keyboardType: keyboardType,
       decoration: InputDecoration(
           prefixIcon: Padding(
@@ -37,6 +42,10 @@ final Icon icon;
         
         hintText: hintText,
           contentPadding: const EdgeInsets.all(15),
+             enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(30), // 👈 Circular border
+       
+      ),
       ),
     );
   }

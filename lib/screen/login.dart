@@ -1,128 +1,161 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_7/controller/lognin_controller.dart';
 import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:flutter_application_7/core/constant/imageassets.dart';
+import 'package:flutter_application_7/helper/validation.dart';
+import 'package:flutter_application_7/screen/forgit_password_screen.dart';
 import 'package:flutter_application_7/screen/home.dart';
 import 'package:flutter_application_7/screen/login.dart';
 import 'package:flutter_application_7/screen/sinup.dart';
 import 'package:flutter_application_7/wedjet/login.dart';
+import 'package:flutter_application_7/wedjet/sinup/CustomSignUpText.dart';
 import 'package:flutter_application_7/wedjet/sinup/custombutomforsininandsinup.dart';
 import 'package:flutter_application_7/wedjet/text.dart';
 import 'package:get/get.dart';
 
 class login extends StatelessWidget {
-  const login({super.key});
-
+  login({super.key});
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+LoginControllerImp controller=Get.put(LoginControllerImp());
+
     return Scaffold(
-           appBar: AppBar(
-   // عنوان التطبيق
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_sharp), // الأيقونة التي تريد إضافتها
-          onPressed: () {
-            // هنا يمكنك إضافة الكود الذي تريد تنفيذه عند الضغط على الأيقونة
-            print('Menu icon pressed');
-          },
-        ),
+  
+body:  
+     SingleChildScrollView(
+      child: Column(
+    
+        children: [
+        
+              Container(
+                  decoration: BoxDecoration(
+    boxShadow: [
+      BoxShadow(
+        color: Colors.black.withOpacity(0.3),
+        spreadRadius: 5,
+        blurRadius: 15,
+        offset: Offset(0, 5), // اتجاه الظل للأسفل
       ),
-body:  SingleChildScrollView(
-  child: Column(
-    mainAxisAlignment: MainAxisAlignment.start,
-    children: [
-       
-  Padding(
-    padding: EdgeInsets.all(30), // Adjust the padding value as needed
-    child: Container(
-      child: Text(
-        "Sign in",
-        style: TextStyle(
-          color: AppColor.pink,
-          fontSize: 30,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
+    ],
+    borderRadius: const BorderRadius.only(
+      bottomRight: Radius.circular(90),
+      bottomLeft: Radius.circular(90),
     ),
   ),
-  
-  
-       Container(
-        margin: EdgeInsets.all(10),
-        height: 200,
-        width: 200,
-          decoration: BoxDecoration(
-      shape: BoxShape.circle,
-          boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.5), // لون الظل رمادي شفاف
-          blurRadius: 10, // زيادة التمويه ليكون الظل ناعماً
-          spreadRadius: 2, // توزيع الظل ليكون أكبر قليلاً
-          offset: Offset(0, 4), // تحديد اتجاه الظل للأسفل قليلاً
-        ),
-      ], // ✅ يجعل الحاوية دائرية
-      image: DecorationImage(
-        image: AssetImage(AppImageAsset.onBoardingImagefoor),
-        fit: BoxFit.cover, // ✅ لجعل الصورة تغطي الدائرة بالكامل
-      ),
-    ),
-        ),
-    
-    Container(
-       margin: EdgeInsets.all(20),
-      width: 700,
-     
-      child:CustomTextField(hintText: 'phone number',hintTextColor: Colors.black, icon: Icon(Icons.mobile_screen_share_outlined,color: AppColor.pink,),),
-      ),
-    
-    
-  
+                child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                            
+                  bottomRight: Radius.circular(90),
+                      bottomLeft: Radius.circular(90),
+                ),
+                child: Image.asset(
+                  AppImageAsset.onBoardingImagefoor2,
+                  width: double.infinity,
+                  height: 300,
+                  fit: BoxFit.cover,
+                
+                ),
+                            ),
+              ),
+                    const SizedBox(height: 30),
+                     Align(
+                      alignment: Alignment.centerLeft,
+                      
+                       child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                         child: CustomText(text:"Sign in",
+                         textAlign: TextAlign.left,
+                                     color:AppColor.pink,
+                                     fontSize: 40,
+                                     fontWeight: FontWeight.bold,
+                                     fontFamily: 'Changa ExtraLight',
+                                     ),
+                       ),
+                     ),
+        Form(
+          key: formKey,
+          child: Column(
+            children: [
+               Container(
+                  margin: EdgeInsets.all(20),
+           
+               
+                child: CustomTextField(
+                  controller: controller.phone_Number,
+                  hintText: 'phone number',hintTextColor: Colors.black, icon: Icon(Icons.phone_android,color: AppColor.pink, ),
+                validator:validatePhoneNumber ,),
+                 ),
+            
+        
+        
+      
+          Container(
+           margin: EdgeInsets.only(left: 20,right: 20,),
+        
+         
+          child:CustomTextField(
+            controller:controller.password,
+            hintText: 'password', icon: Icon(Icons.password,color: AppColor.pink), hintTextColor: const Color.fromARGB(221, 6, 4, 4),
+          validator: validatePassword,),
+          ),
       Container(
-       margin: EdgeInsets.only(left: 20,right: 20,bottom: 20),
-      width: 700,
-     
-      child:CustomTextField(hintText: 'password', icon: Icon(Icons.password,color: AppColor.pink), hintTextColor: const Color.fromARGB(221, 6, 4, 4),),
-      ),
-    
-  
-  
-  
-    Container(
-        margin: EdgeInsets.only(left: 20,right: 20,top: 20),
-        width: 700,
-        height: 30,
-        decoration: BoxDecoration(color:AppColor.pink, ),
-        
-      child: Button(
-        
-      onPressed: () {
+  margin: EdgeInsets.only(left: 20, top: 0),
+  alignment: Alignment.centerLeft,
+         child:  TextButton(onPressed: () { 
+            Get.to(forgetpassword());
+          },
+          child: CustomSignUpText(message: 'forget your password ?', color: Colors.blueGrey,),
+          ),
       
+        ),
+    
+Padding(
+  padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+
+          child: Button(
+            
+       onPressed: () {
+                      // ✅ هنا يتم فحص النموذج
+                      if (formKey.currentState!.validate()) {
+                         controller.login();
+                        Get.to(HomePage()); // إذا كل شيء صحيح ينتقل للصفحة التالية
+                      } else {
+                        Get.snackbar("Error", "Please fix the errors above");
+                      }
+                    },
+          title: "LOG IN", color: AppColor.pink,
+          ),
+        ),
+            ],
+          ),
+        ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,  
+        children: [
       
-         Get.to(HomePage());
-      
-    
-      },
-      title: "LOG IN", color: AppColor.pink,
-      ),
-    ),
-  
-  Row(
-    mainAxisAlignment: MainAxisAlignment.center,  
-    children: [
-  
-      CustomSignUpText(message: 'you dont have acount ?', color: Colors.black,),
-      TextButton(onPressed: () { 
-        Get.to(Sinup());
-      },
-      child: CustomSignUpText(message: ' sign up ', color: Colors.blueGrey,)),
-    ],
-  ),
-    ],
-    
-    
-    
-  ),
-),
+          CustomSignUpText(message: 'you dont have acount ?', color: Colors.black,),
 
 
-    );
+          TextButton(
+            onPressed: () { 
+           controller.gotoSignUp();
+          },
+          child: CustomSignUpText(message: ' sign up ', color: Colors.blueGrey,),
+          ),
+        ],
+      ),
+        ],
+        
+        
+        
+      
+       ),
+  
+   ),
+);
+
+
+   
   }
 }
