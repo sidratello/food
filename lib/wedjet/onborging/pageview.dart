@@ -23,10 +23,10 @@ controller: controller.pageController,
                     
                     Container(
                       
-                      child: Text(onBoardingList[i].title!,style: Theme.of(context).textTheme.headline1),
+                      child: Text(onBoardingList[i].title!,style: Theme.of(context).textTheme.displayLarge),
                       margin:EdgeInsets.all(20) ,),
                                  Image.asset(onBoardingList[i].image!),
-                                 Text(onBoardingList[i].body!,textAlign: TextAlign.center,style: Theme.of(context).textTheme.bodyText1,),
+                                 Text(onBoardingList[i].body!,textAlign: TextAlign.center,style: Theme.of(context).textTheme.bodyLarge,),
                                  
                   ],
                   ),

@@ -44,9 +44,9 @@ class MyApp extends StatelessWidget {
    theme: ThemeData(
     fontFamily: "fonts",
     textTheme: const TextTheme(
-      headline1: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: AppColor.black,
+      displayLarge: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: AppColor.black,
                     ),
-  bodyText1:const TextStyle(height: 2,
+  bodyLarge:const TextStyle(height: 2,
   color: AppColor.grey,
 
   ),
