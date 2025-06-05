@@ -6,7 +6,7 @@ import 'package:flutter_application_7/screen/home.dart';
 import 'package:flutter_application_7/screen/sinup.dart';
 import 'package:flutter_application_7/screen/varyfayscreen.dart';
 import 'package:flutter_application_7/services/fofgetPassword.dart';
-import 'package:flutter_application_7/services/login.dart';
+
 import 'package:flutter_application_7/wedjet/sinup/CustomOtpDialog.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';

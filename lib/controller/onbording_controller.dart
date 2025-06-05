@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/data/datasource/static/static.dart';
-import 'package:flutter_application_7/screen/login.dart';
+
 import 'package:get/get.dart';
 
 abstract class OnBoringgController extends GetxController {

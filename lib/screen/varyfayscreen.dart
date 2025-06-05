@@ -1,10 +1,11 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/views/login_screen.dart';
 import 'package:flutter_application_7/controller/VaryFicatin_Controller.dart';
 import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:flutter_application_7/screen/New_passwor_Screen.dart';
-import 'package:flutter_application_7/screen/login.dart';
+
 import 'package:flutter_application_7/wedjet/sinup/CustomOtpDialog.dart';
 
 import 'package:flutter_application_7/wedjet/varyfieycode/custombuttomvaryfay.dart';

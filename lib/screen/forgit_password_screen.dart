@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/views/login_screen.dart';
 import 'package:flutter_application_7/controller/forgetpassword_controller.dart';
 import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:flutter_application_7/helper/validation.dart';
-import 'package:flutter_application_7/screen/login.dart';
+
 import 'package:flutter_application_7/screen/varyfayscreen.dart';
 import 'package:flutter_application_7/wedjet/login.dart';
 import 'package:flutter_application_7/wedjet/sinup/CustomOtpDialog.dart';

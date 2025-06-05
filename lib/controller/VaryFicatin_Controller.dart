@@ -7,7 +7,7 @@ import 'package:flutter_application_7/screen/home.dart';
 import 'package:flutter_application_7/screen/sinup.dart';
 import 'package:flutter_application_7/services/VaryFication.dart';
 import 'package:flutter_application_7/services/fofgetPassword.dart';
-import 'package:flutter_application_7/services/login.dart';
+
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

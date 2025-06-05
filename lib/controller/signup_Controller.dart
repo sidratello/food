@@ -2,8 +2,9 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/views/login_screen.dart';
 import 'package:flutter_application_7/screen/home.dart';
-import 'package:flutter_application_7/screen/login.dart';
+
 import 'package:flutter_application_7/screen/sinup.dart';
 import 'package:flutter_application_7/screen/varyfayscreen.dart';
 import 'package:flutter_application_7/services/Signup.dart';
