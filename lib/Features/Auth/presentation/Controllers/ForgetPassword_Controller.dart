@@ -2,12 +2,15 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_7/Features/Auth/data/ForgetPassword_servese.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomOtpDialog.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/views/VeryFayScreen.dart';
 import 'package:flutter_application_7/screen/home.dart';
-import 'package:flutter_application_7/screen/sinup.dart';
-import 'package:flutter_application_7/screen/varyfayscreen.dart';
-import 'package:flutter_application_7/services/fofgetPassword.dart';
 
-import 'package:flutter_application_7/wedjet/sinup/CustomOtpDialog.dart';
+
+
+
+
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -45,9 +48,8 @@ void send() async {
 }
 
   void showOtpSentDialog(int userId) {
-  String phone = phone_Number.text.trim().replaceAll('+', '').replaceAll(' ', '');
+  String phone = phone_Number.text.trim();
 
-  final String waUrl = "intent://send?phone=$phone#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end";
 
   showDialog(
     context: Get.context!,
@@ -56,7 +58,7 @@ void send() async {
       message: "An OTP has been sent to your WhatsApp....",
       buttonText: "Enter the OTP",
       imagePath: "assets/images/icons8-whatsapp-48.png",
-      urlToLaunch: waUrl,
+      urlToLaunch: phone,
       nextScreen: VerifyCodeScreen(
         fromSignup: false,
         userId: userId,

@@ -16,8 +16,8 @@ import 'package:flutter_application_7/screen/home.dart';
 
 import 'package:get/get.dart';
 
-class login extends StatelessWidget {
-  login({super.key});
+class loginDriver extends StatelessWidget {
+  loginDriver({super.key});
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -67,7 +67,7 @@ body:
                       
                        child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 30),
-                         child: CustomText(text:"Sign in",
+                         child: CustomText(text:"Sign in Delevery" ,
                          textAlign: TextAlign.left,
                                      color:AppColor.pink,
                                      fontSize: 40,

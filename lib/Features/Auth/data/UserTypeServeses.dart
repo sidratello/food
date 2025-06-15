@@ -2,20 +2,19 @@
 import 'package:flutter_application_7/helper/AppLink.dart';
 import 'package:flutter_application_7/helper/api.dart';
 
-class DataSignup {
+
+class DataUserType {
 
 
 
 
-   Future<dynamic> getData(String username,String phoneNumber, String password,String location) async {
+   Future<dynamic> getData(String role) async {
     try {
       var response = await Api().post(
-        url: Applink.Signup,
+       url: Applink.choose,
         body: <String, String>{
-          'username':username,
-         'mobile':phoneNumber,
-         'password':password,
-         'location':location,
+       'role': role
+       
         },
         token:'',
       );

@@ -2,13 +2,12 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_7/Features/Auth/data/SignUp_Serveses.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomOtpDialog.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/views/VeryFayScreen.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/login_screen.dart';
 import 'package:flutter_application_7/screen/home.dart';
 
-import 'package:flutter_application_7/screen/sinup.dart';
-import 'package:flutter_application_7/screen/varyfayscreen.dart';
-import 'package:flutter_application_7/services/Signup.dart';
-import 'package:flutter_application_7/wedjet/sinup/CustomOtpDialog.dart';
 
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -56,7 +55,7 @@ void signup() async {
     Get.snackbar("Error", "Phone and password cannot be empty");
     return;
   }
-
+try{
   var response = await _dataSignup.getData(name, phone, pass, loc);
  print("📡 RESPONSE RECEIVED: $response"); 
   if (response is Map && response.containsKey('userId')) {
@@ -69,10 +68,20 @@ void signup() async {
     }
 
      showOtpSentDialog(userId);
-  } else {
-    Get.snackbar("Signup Failed", "Check your credentials");
-    print("Signup failed. Response: $response");
+  } 
   }
+catch (e) {
+  print("❌ Error in signup API call: $e");
+  if (e.toString().contains("The mobile has already been taken")) {
+    Get.snackbar("تنبيه", "لقد سجلت من قبل باستخدام هذا الرقم");
+  } else {
+    Get.snackbar("فشل التسجيل", e.toString());
+  }
+}
+
+
+
+
 }
 
 

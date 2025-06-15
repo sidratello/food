@@ -2,22 +2,24 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/Controllers/SignUpController.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomBUttom.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomSignUPText2.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomSignUpText.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomTextFormFieldSignUp.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/login_screen.dart';
 
-import 'package:flutter_application_7/controller/VeryFicationFirst.dart';
-import 'package:flutter_application_7/controller/signup_Controller.dart';
+
 import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:flutter_application_7/core/constant/imageassets.dart';
 
 import 'package:flutter_application_7/helper/validation.dart';
 
-import 'package:flutter_application_7/screen/varyfayscreen.dart';
-import 'package:flutter_application_7/wedjet/login.dart';
-import 'package:flutter_application_7/wedjet/sinup/CustomOtpDialog.dart';
-import 'package:flutter_application_7/wedjet/sinup/CustomSignUpText.dart';
-import 'package:flutter_application_7/wedjet/sinup/custombutomforsininandsinup.dart';
 
-import 'package:flutter_application_7/wedjet/text.dart';
+
+
+
+
 
 import 'package:http/http.dart'as http;
 
@@ -138,7 +140,7 @@ body:  SingleChildScrollView(
         
        
         child:CustomTextField(hintText: 'Location', icon: Icon(Icons.password,color: AppColor.pink,), hintTextColor: const Color.fromARGB(221, 6, 4, 4),   controller:controller.location,
-        validator: validatePassword,),
+        validator: validateLocation,),
         ),
         
     

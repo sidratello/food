@@ -20,15 +20,26 @@ class CustomOtpDialog extends StatelessWidget {
     required this.nextScreen,
   }) : super(key: key);
 
-  Future<void> _openUrl(BuildContext context) async {
-    if (await canLaunchUrl(Uri.parse(urlToLaunch))) {
-      await launchUrl(Uri.parse(urlToLaunch), mode: LaunchMode.externalApplication);
+  /// 🔹 دالة فتح واتساب
+  Future<void> _launchWhatsapp(BuildContext context) async {
+    // نحذف + والفراغات من الرقم
+    final phone = urlToLaunch.replaceAll('+', '').replaceAll(' ', '');
+
+    // نجهز الرابط باستخدام schema الخاص بـ WhatsApp
+    final Uri whatsappUri = Uri.parse("whatsapp://send?phone=$phone&text=رمز التحقق");
+
+    // نحاول نفتح الرابط
+    if (await canLaunchUrl(whatsappUri)) {
+      await launchUrl(whatsappUri);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('لا يمكن فتح الرابط')),
+        const SnackBar(
+          content: Text("تأكد من أن تطبيق WhatsApp مثبت على الجهاز"),
+        ),
       );
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +68,7 @@ class CustomOtpDialog extends StatelessWidget {
               width: 50,
               height: 50,
             ),
-            onPressed: () => _openUrl(context),
+            onPressed: () => _launchWhatsapp(context), 
           ),
      
       ],

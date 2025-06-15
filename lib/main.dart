@@ -1,15 +1,18 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/views/Signup_screen.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/views/UserTypeChoiceScreen.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/views/loginDriver.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/login_screen.dart';
 import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:flutter_application_7/firebase_options.dart';
 import 'package:flutter_application_7/screen/acount.dart';
 
 import 'package:flutter_application_7/screen/home.dart';
-import 'package:flutter_application_7/screen/home_screen.dart';
+
 
 import 'package:flutter_application_7/screen/onbording.dart';
-import 'package:flutter_application_7/screen/sinup.dart';
+
 
 import 'package:flutter_application_7/wedjet/googlemap/customgooglemap.dart';
 
@@ -39,7 +42,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-   initialRoute:"/login",
+   initialRoute:"/UserType",
    theme: ThemeData(
     fontFamily: "fonts",
     textTheme: const TextTheme(
@@ -57,8 +60,9 @@ class MyApp extends StatelessWidget {
    ),
         getPages: [
         
-        GetPage(name: "/onbording", page: () => onbording(),),
+        GetPage(name: "/UserType", page: () => UserTypeChoiceScreen(),),
         GetPage(name: "/login", page: () => login()),
+         GetPage(name: "/loginDriver", page: () => loginDriver()),
         GetPage(name: "/sinup", page: () => Sinup()),
         GetPage(name: "/home", page: () => HomePage()),
           GetPage(name: "/home2", page: () => AccountScreen()),

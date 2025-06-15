@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_7/controller/RePassword_Controller.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/Controllers/NewPassword_Controller.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomBUttom.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomSignUPText2.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomTextFormFieldSignUp.dart';
+
 import 'package:flutter_application_7/core/constant/color.dart';
-import 'package:flutter_application_7/wedjet/login.dart';
-import 'package:flutter_application_7/wedjet/sinup/CustomSignUpText.dart';
-import 'package:flutter_application_7/wedjet/sinup/custombutomforsininandsinup.dart';
+
+
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 

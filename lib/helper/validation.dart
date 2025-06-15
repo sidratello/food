@@ -7,9 +7,7 @@ String? validatePhoneNumber(String? phone) {
     return 'you have to enter PhoneNumber';
   }
 
-  // if (!phone.startsWith('09') || phone.length != 10 ) {
-  //   return 'the phone number is incorrect. It should start with 09 \n and contain 10 digits';
-  // }
+
 
   return null; // صحيح
 }
@@ -19,11 +17,14 @@ String? validatePassword(String? password) {
     return 'you have to write password';
   }
 
+  if (password.length < 8) {
+    // ✅ عرض Snackbar عند إدخال كلمة مرور أقل من 8
 
+    return 'password must be at least 8 characters';
+  }
 
-  return null; // صحيح
+  return null;
 }
-
 String? validateUsername(String? username) {
   if (username == null || username.isEmpty) {
     return 'you have to write your name';
@@ -32,3 +33,10 @@ String? validateUsername(String? username) {
   return null; // صالح
 }
 
+String? validateLocation(String? location) {
+  if (location == null || location.isEmpty) {
+    return 'you have to write your location';
+  }
+
+  return null; // صالح
+}
