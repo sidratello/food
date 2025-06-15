@@ -7,15 +7,8 @@ import 'package:flutter_application_7/Features/Auth/presentation/views/login_scr
 import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:flutter_application_7/firebase_options.dart';
 import 'package:flutter_application_7/screen/acount.dart';
-
 import 'package:flutter_application_7/screen/home.dart';
-
-
-import 'package:flutter_application_7/screen/onbording.dart';
-
-
 import 'package:flutter_application_7/wedjet/googlemap/customgooglemap.dart';
-
 import 'package:get/get.dart';
 
 
@@ -46,10 +39,10 @@ class MyApp extends StatelessWidget {
    theme: ThemeData(
     fontFamily: "fonts",
     textTheme: const TextTheme(
-      headline1: TextStyle(
+      displayLarge: TextStyle(
         fontWeight: FontWeight.bold,fontSize: 20,color: AppColor.black,
                     ),
-  bodyText1:const TextStyle(height: 2,
+  bodyLarge:const TextStyle(height: 2,
   color: AppColor.grey,
 
   ),
