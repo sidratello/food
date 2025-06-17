@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../Cart/presentation/views/cart_screen.dart';
 
+import '../../../favorite/presentation/views/favorite_screen.dart';
 import '../widgets/custom_product_grid.dart';
 
 class ProductsScreen extends StatelessWidget {
@@ -19,6 +20,10 @@ class ProductsScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Products'),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.favorite),
+            onPressed: () => Get.to(() => FavoritesScreen()),
+          ),
           IconButton(
             icon: const Icon(Icons.shopping_cart),
             onPressed: () => Get.to(() => CartScreen()),
