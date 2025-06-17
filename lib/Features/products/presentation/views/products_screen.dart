@@ -1,165 +1,78 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_7/Features/categories/presentation/views/categories_screen.dart';
+
+import '../widgets/appbar_products.dart';
+import '../widgets/custom_product_grid.dart';
+import '../widgets/custom_textfieldSearch_products.dart';
 
 class ProductsScreen extends StatefulWidget {
- const ProductsScreen({super.key});
+  const ProductsScreen({super.key});
+
   @override
-   State<ProductsScreen> createState() => _MenuScreenState();
- }
+  State<ProductsScreen> createState() => _ProductsScreenState();
+}
 
-class _MenuScreenState extends State<ProductsScreen> {
-
-
-
+class _ProductsScreenState extends State<ProductsScreen> {
   final TextEditingController _searchController = TextEditingController();
 
-   @override
-   void initState() {
-    super.initState();
-    filteredFoodItems = List.from(foodItems); // عرض الكل في البداية
-   }
+  // بيانات المنتجات (اسم، صورة، سعر) بشكل منفصل
+  final List<String> names = ["Cake", "Pizza", "Burger"];
+  final List<String> images = [
+    "assets/images/save2.png",
+    "assets/images/save2.png",
+    "assets/images/save2.png"
+  ];
+  final List<double> prices = [15.0, 25.0, 20.0];
 
-   void _filterFoodItems(String query) {
-    final results = foodItems.where((item) {
-       return item.name.toLowerCase().contains(query.toLowerCase());
-     }).toList();
-
-    setState(() {
-       filteredFoodItems = results;
-     });
-  }
-
-  void addToCart(FoodItem item) {
-     setState(() {
-      cart.add(item);
-    });
-    ScaffoldMessenger.of(context).showSnackBar(
-       SnackBar(content: Text('${item.name} added to cart')),
-    );
-   }
+  // نتابع حالة المفضلة لكل عنصر
+  late List<bool> favorites;
 
   @override
-   Widget build(BuildContext context) {
-     return Scaffold(
-       appBar: AppBar(
-        leading: IconButton(
-           onPressed: () {
-             Navigator.push(
-              context,
-               MaterialPageRoute(builder: (context) =>  CategoryScreen()),
-           );
-           },
-           icon: const Icon(Icons.arrow_back),
-           color: Colors.black,
-        ),
-         title: const Text("Menu Items"),
-         centerTitle: true,
-         backgroundColor: Colors.white,
-         foregroundColor: Colors.black,
-         elevation: 0,
-        actions: [
-           IconButton(
-             icon: const Icon(Icons.shopping_cart),
-             onPressed: () {
-              showModalBottomSheet(
-                 context: context,
-                builder: (context) => ListView(
-                   padding: const EdgeInsets.all(16),
-                 children: cart.map((item) => Text(item.name)).toList(),
-                ),
-               );
-             },
-           )
-         ],
-       ),
-       body: SingleChildScrollView(
+  void initState() {
+    super.initState();
+    favorites = List.generate(names.length, (_) => false); // كلهم مو مفضلة بالبداية
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: CustomAppBarProducts(title: "Products"),
+      body: SingleChildScrollView(
         child: Column(
-           children: [
-            Padding(
-               padding: const EdgeInsets.all(12),
-              child: TextField(
-                controller: _searchController,
-                 onChanged: _filterFoodItems,
-                 decoration: InputDecoration(
-                  hintText: "Search",
-                   prefixIcon: const Icon(Icons.search),
-                  suffixIcon: IconButton(
-                     icon: const Icon(Icons.clear),
-                    onPressed: () {
-                      _searchController.clear();
-                       _filterFoodItems('');
-                     },
-                  ),
-                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                  filled: true,
-                  fillColor: Colors.grey[200],
-                 ),
-               ),
-           ),
-             Padding(
-               padding: const EdgeInsets.all(12),
-               child: GridView.builder(
-                 shrinkWrap: true,
-                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: filteredFoodItems.length,
-                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                   mainAxisSpacing: 12,
-                   crossAxisSpacing: 12,
-                  childAspectRatio: 3 / 4,
-                ),
-                 itemBuilder: (context, index) {
-                   final item = filteredFoodItems[index];
-                   return Card(
-                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                    elevation: 3,
-                     child: Column(
-                       crossAxisAlignment: CrossAxisAlignment.stretch,
-                       children: [
-                         Expanded(
-                           child: ClipRRect(
-                            borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
-                             child: Image.asset(
-                              item.image,
-                              fit: BoxFit.cover,
-                             ),
-                           ),
-                         ),
-                         Padding(
-                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                          child: Text(item.name, style: const TextStyle(fontWeight: FontWeight.bold)),
-                         ),
-                         Padding(
-                           padding: const EdgeInsets.symmetric(horizontal: 8),
-                           child: Text(' ${item.price} p.c', style: const TextStyle(color: Colors.green)),
-                        ),
-                         ButtonBar(
-                           alignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                             IconButton(
-                               icon: Icon(
-                                 item.isFavorite ? Icons.favorite : Icons.favorite_border,
-                                color: item.isFavorite ? Colors.red : Colors.grey,
-                              ),
-                               onPressed: () {
-                                setState(() {
-                                   item.isFavorite = !item.isFavorite;
-                                });
-                              },
-                            ),
-                            IconButton(
-                               icon: const Icon(Icons.shopping_cart_outlined),
-                               onPressed: () => addToCart(item),
-                             ),
-                          ],
-                         )
-                       ],
-                     ),
-                   );
-                },
+          children: [
+            CustomTextfieldsearchProducts(controller: _searchController),
+            GridView.builder(
+              itemCount: names.length,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 12,
+                crossAxisSpacing: 12,
+                childAspectRatio: 3 / 4,
               ),
+              padding: const EdgeInsets.all(12),
+              itemBuilder: (context, index) {
+                return CustomProductCard(
+                  name: names[index],
+                  image: images[index],
+                  price: prices[index],
+                  isFavorite: favorites[index],
+                  onFavoriteToggle: () {
+                    setState(() {
+                      favorites[index] = !favorites[index];
+                    });
+                  },
+                  onAddToCart: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('${names[index]} added to cart')),
+                    );
+                  },
+                );
+              },
             ),
-         ],
-         ),
-       ),
-     );}}
+          ],
+        ),
+      ),
+    );
+  }
+}

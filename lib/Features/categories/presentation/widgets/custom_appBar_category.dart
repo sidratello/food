@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 class AppBarCategory extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarCategory({super.key});
+  final String title; // العنوان المتغير
+
+  const AppBarCategory({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back), color: Colors.black),
-      title: const Text('Categories'),
+      title: Text(title), // استخدم المتغير
       centerTitle: true,
       backgroundColor: Colors.white,
       foregroundColor: Colors.black,
@@ -16,5 +17,5 @@ class AppBarCategory extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight); // ضروري
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

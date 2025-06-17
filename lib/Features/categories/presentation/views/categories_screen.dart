@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-
-import '../../../../data/model/category_model.dart';
-import '../../data/categories_service.dart';
+import '../../../products/presentation/widgets/appbar_products.dart';
 import '../widgets/custom_appBar_category.dart';
+import '../widgets/custom_category_card.dart';
 import '../widgets/custom_textfieldSearch_category.dart';
 import '../widgets/expanded_category.dart';
+import '../../../../data/model/category_model.dart';
 
 class CategoryScreen extends StatefulWidget {
-
+  const CategoryScreen({super.key});
 
   @override
   State<CategoryScreen> createState() => _CategoryScreenState();
@@ -16,40 +16,60 @@ class CategoryScreen extends StatefulWidget {
 class _CategoryScreenState extends State<CategoryScreen> {
   final TextEditingController _searchController = TextEditingController();
 
-  List<CategoryModel> allCategoriesFromApi = []; // ✅ التصنيفات القادمة من السيرفر
-  List<CategoryModel> filteredCategories = [];
+  // List<CategoryModel> filteredCategories = [];
+  //
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   filteredCategories = List.from(allCategories);
+  //   _searchController.addListener(() {
+  //     _filterCategories(_searchController.text);
+  //   });
+  // }
+  //
+  // void _filterCategories(String query) {
+  //   setState(() {
+  //     if (query.isEmpty) {
+  //       filteredCategories = List.from(allCategories);
+  //     } else {
+  //       filteredCategories = allCategories.where((item) {
+  //         return item.title.toLowerCase().contains(query.toLowerCase());
+  //       }).toList();
+  //     }
+  //   });
+  // }
 
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarCategory(),
-    body: FutureBuilder(
-        future: getCategories(),
-
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError || !snapshot.hasData) {
-            return Center(child: Text('Error fetching data.'));
-          } else {
-            // ✅ تحويل البيانات إلى قائمة من CategoryModel
-            allCategoriesFromApi = List.generate(snapshot.data.length, (index) {
-              return CategoryModel.fromMap(snapshot.data[index]);
-            });
-
-            // ✅ إذا ما تم عمل تصفية سابقًا، عرض كل العناصر
-            if (filteredCategories.isEmpty && _searchController.text.isEmpty) {
-              filteredCategories = List.from(allCategoriesFromApi);
-            }
-
-            return Column(
+      appBar: AppBarCategory(title: "Categories"),
+      body: Column(
+        children: [
+          CustomTextfieldsearchCategory(controller: _searchController),
+          const SizedBox(height: 12),
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.symmetric(horizontal: 16),
               children: [
-                CustomTextfieldsearchCategory(),
-                ExpandedCategory(),
+                CustomCategoryCard(
+                  title: "Category 1",
+                  image: "assets/images/save.png",
+                ),
+                SizedBox(height: 16),
+                CustomCategoryCard(
+                  title: "Category 2",
+                  image: "assets/images/save.png",
+                ),
+                SizedBox(height: 16),
+                CustomCategoryCard(
+                  title: "Category 3",
+                  image: "assets/images/save.png",
+                ),
               ],
-            );
-          }
-        },
+            ),
+          ),
+        ],
       ),
     );
   }

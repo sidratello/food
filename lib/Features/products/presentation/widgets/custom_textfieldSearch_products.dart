@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class CustomTextfieldsearchCategory extends StatelessWidget {
+class CustomTextfieldsearchProducts extends StatelessWidget {
   final TextEditingController controller;
 
-  const CustomTextfieldsearchCategory({super.key, required this.controller});
+  const CustomTextfieldsearchProducts({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
