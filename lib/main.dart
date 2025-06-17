@@ -11,6 +11,8 @@ import 'package:flutter_application_7/screen/home.dart';
 import 'package:flutter_application_7/wedjet/googlemap/customgooglemap.dart';
 import 'package:get/get.dart';
 
+import 'Features/categories/presentation/views/categories_screen.dart';
+
 
 
   void main() async {
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-   initialRoute:"/UserType",
+   initialRoute:"/category",
    theme: ThemeData(
     fontFamily: "fonts",
     textTheme: const TextTheme(
@@ -52,7 +54,7 @@ class MyApp extends StatelessWidget {
 
    ),
         getPages: [
-        
+          GetPage(name: "/category", page: () => CategoryScreen(),),
         GetPage(name: "/UserType", page: () => UserTypeChoiceScreen(),),
         GetPage(name: "/login", page: () => login()),
          GetPage(name: "/loginDriver", page: () => loginDriver()),
