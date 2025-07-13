@@ -187,7 +187,32 @@ class _ReservationScreenState extends State<ReservationScreen> {
                                       ),
                                     ),
                                     onPressed: () {
-                                      Navigator.pop(context); // إغلاق النافذة
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) => AlertDialog(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(16),
+                                          ),
+                                          content: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              const SizedBox(height: 10),
+                                              Text("تم الحجز بنجاح",
+                                                textAlign: TextAlign.center,
+                                                style: const TextStyle(fontSize: 16),
+                                              ),
+                                              const SizedBox(height: 20),
+                                              SizedBox(
+                                                width: double.infinity,
+                                                child: TextButton(onPressed: (){
+                                                  Navigator.pop(context);
+                                                }, child: Text("موافق"))
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ); // إغلاق النافذة
                                     },
                                     child: const Text(
                                       "تأكيد الحجز",
