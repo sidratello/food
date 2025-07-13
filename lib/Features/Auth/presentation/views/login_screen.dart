@@ -5,6 +5,7 @@ import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomSi
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomSignUpText.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomTextFormFieldSignUp.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/ForgetPassword_Screen.dart';
+import 'package:flutter_application_7/Features/Category/presentation/views/category_screen.dart';
 
 import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:flutter_application_7/core/constant/imageassets.dart';
@@ -122,7 +123,7 @@ Padding(
                       // ✅ هنا يتم فحص النموذج
                       if (formKey.currentState!.validate()) {
                          controller.login();
-                        Get.to(HomePage()); // إذا كل شيء صحيح ينتقل للصفحة التالية
+                        Get.to(CategoryScreen()); // إذا كل شيء صحيح ينتقل للصفحة التالية
                       } else {
                         Get.snackbar("Error", "Please fix the errors above");
                       }

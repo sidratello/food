@@ -4,6 +4,7 @@ import 'package:flutter_application_7/Features/Auth/presentation/views/Signup_sc
 import 'package:flutter_application_7/Features/Auth/presentation/views/UserTypeChoiceScreen.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/loginDriver.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/login_screen.dart';
+import 'package:flutter_application_7/Features/Category/presentation/views/category_screen.dart';
 import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:flutter_application_7/firebase_options.dart';
 import 'package:flutter_application_7/screen/acount.dart';
@@ -69,6 +70,8 @@ class MyApp extends StatelessWidget {
 //  GetPage(name: "/home3", page: () => HomeScreen()),
 //  GetPage(name: "/varyfay", page: () => VerifyCodeScreen()),
            GetPage(name: "/Map", page: () =>  CustomGoogleMap(), ),
+                  GetPage(name: "/category", page: () =>  CategoryScreen(), ),
+                   GetPage(name: "/google", page: () =>  CustomGoogleMap(), ),
             //  GetPage(name: "/sham", page: () =>  HomeScreen(), ),
     
       ],// This trailing comma makes auto-formatting nicer for build methods.

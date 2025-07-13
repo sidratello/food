@@ -20,7 +20,7 @@ class UserTypeChoiceScreen extends StatelessWidget {
         child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CustomText(text:"Choce the type \n     of user",
+            CustomText(text:"Choce the type of user",
                        
                                      color:AppColor.pink,
                                      fontSize: 40,
@@ -37,7 +37,7 @@ height: 30,
               onPressed: (){controller.selectRole('user');}
               , color:Colors.pink,
             ),
-            const SizedBox(width: 10),
+            const SizedBox(width: 5),
               Button(
               title: 'delevery',
               onPressed: () {
