@@ -17,16 +17,7 @@ class ProductModel {
     required this.details,
   });
 
-  // factory ProductModel.fromJson(Map<String, dynamic> json) {
-  //   return ProductModel(
-  //     id: json['id'],
-  //     categoryId: json['category_id'],
-  //     image: json['image'],
-  //     name: json['name'],
-  //     price: json['price'],
-  //     details: json['details'],
-  //   );
-  // }
+
 
   
 

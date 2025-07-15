@@ -1,10 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Category/presentation/Controller/category_controller.dart';
-import 'package:flutter_application_7/Features/Category/presentation/views/Product_Screen.dart';
+
 import 'package:flutter_application_7/Features/Category/presentation/wedjets/CustomSearchTextField.dart';
 import 'package:flutter_application_7/Features/Category/presentation/wedjets/appbarCategory.dart';
 import 'package:flutter_application_7/Features/Category/presentation/wedjets/customCategoryCard.dart';
+import 'package:flutter_application_7/Features/Product/presentation/view/product_Screen.dart';
 
 import 'package:get/get.dart';
 

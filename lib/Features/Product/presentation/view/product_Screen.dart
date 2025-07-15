@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_7/Features/Product/presentation/controller/product_controller.dart';
+import 'package:flutter_application_7/Features/Product/presentation/view/product_detals.dart';
+import 'package:flutter_application_7/Features/Product/presentation/wedjet/productCard_wedjet.dart';
 
-import 'package:flutter_application_7/Features/Category/presentation/Controller/Product_controller.dart';
+
 import 'package:get/get.dart';
 
 
@@ -83,36 +86,13 @@ class ProductsScreen extends StatelessWidget {
                 ),
                 itemBuilder: (context, index) {
                   final product = productController.products[index];
-                  return Card(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                    clipBehavior: Clip.hardEdge,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Image.network(
-                            "http://192.168.1.10:8000/${product.image.split('/').last}",
-                            fit: BoxFit.cover,
-                            width: double.infinity,
-                            errorBuilder: (context, error, stackTrace) {
-                              return Center(child: Icon(Icons.broken_image));
-                            },
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(8),
-                          child: Text(
-                            product.name,
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8),
-                          child: Text("${product.price} ل.س"),
-                        ),
-                      ],
-                    ),
-                  );
+                  return ProductCard(
+    product: product,
+    onTap: () {
+      // فتح صفحة التفاصيل
+      Get.to(() => ProductDetailsScreen(product: product));
+    },
+  );
                 },
               );
             }),

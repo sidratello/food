@@ -30,10 +30,11 @@
 
 
 import 'dart:convert';
+import 'package:flutter_application_7/Features/Product/data/model/product_model.dart';
 import 'package:flutter_application_7/helper/AppLink.dart';
 import 'package:flutter_application_7/helper/api.dart';
 import 'package:http/http.dart' as http;
-import '../models/product_model.dart';
+
 
 class ProductService {
 

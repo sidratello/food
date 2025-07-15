@@ -1,5 +1,6 @@
-import 'package:flutter_application_7/Features/Category/data/Serveses/product_service.dart';
-import 'package:flutter_application_7/Features/Category/data/models/product_model.dart';
+
+import 'package:flutter_application_7/Features/Product/data/model/product_model.dart';
+import 'package:flutter_application_7/Features/Product/data/serveses/product_services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

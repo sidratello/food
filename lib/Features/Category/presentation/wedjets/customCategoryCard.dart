@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Category/data/models/category_model.dart';
-import 'package:flutter_application_7/Features/Category/presentation/views/Product_Screen.dart';
+
+import 'package:flutter_application_7/Features/Product/presentation/view/product_Screen.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
