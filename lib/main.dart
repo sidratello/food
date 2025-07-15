@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/categories/presentation/views/categories_screen.dart';
 import 'package:flutter_application_7/Features/reservation/presentation/views/reservation_screen.dart';
+import 'package:flutter_application_7/Features/show_reservation/presentation/views/show_reservation_screen.dart';
 import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:flutter_application_7/firebase_options.dart';
 import 'package:flutter_application_7/screen/acount.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-   initialRoute:"/reservation",
+   initialRoute:"/showreservation",
    theme: ThemeData(
     fontFamily: "fonts",
     textTheme: const TextTheme(
@@ -61,6 +62,7 @@ class MyApp extends StatelessWidget {
           GetPage(name: "/home2", page: () => AccountScreen()),
  GetPage(name: "/home3", page: () => CategoryScreen()),
           GetPage(name: "/reservation", page: () => ReservationScreen()),
+          GetPage(name: "/showreservation", page: () => ShowReservationScreen()),
 
 //  GetPage(name: "/varyfay", page: () => VerifyCodeScreen()),
            GetPage(name: "/Map", page: () =>  CustomGoogleMap(), ),

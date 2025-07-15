@@ -9,6 +9,8 @@ static const  String VaryFayScreen='$Server/verify2/6';
 static String verifyCodeUrl(int userId) => '$Server/verify2/$userId';
 static String RePaswordUrl(int userId) => '$Server/reserpa/$userId';
 static String verifyCodeUrlFirst(int userId) => '$Server/verify/$userId';
+static String reservation(int userId) => '$Server/reserve';
+static String showreservation(int userId) => '$Server/showreserve';
 
 
 }

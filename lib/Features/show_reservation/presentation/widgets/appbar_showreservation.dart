@@ -5,10 +5,10 @@ import 'package:get/get.dart';
 
 import '../../../categories/presentation/views/categories_screen.dart';
 
-class CustomAppBarReservation extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppBarShowReservation extends StatelessWidget implements PreferredSizeWidget {
   final String title;
 
-  const CustomAppBarReservation({super.key, required this.title});
+  const CustomAppBarShowReservation({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +18,6 @@ class CustomAppBarReservation extends StatelessWidget implements PreferredSizeWi
       backgroundColor: Colors.white,
       foregroundColor: Colors.black,
       elevation: 0,
-      actions: [
-        IconButton(onPressed: (){
-          Get.to(ShowReservationScreen());
-        },
-
-            icon: Icon(Icons.home_repair_service_rounded))
-
-      ],
     );
   }
 

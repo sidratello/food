@@ -1,5 +1,3 @@
-
-
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -64,11 +62,6 @@ if (response.statusCode == 200 || response.statusCode == 201) {
      throw Exception("حدث خطأ أثناء الاتصال بالخادم: $e");
   }
 }
-
-
-
-
-
 }
 
 
