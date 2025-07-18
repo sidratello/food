@@ -1,10 +1,6 @@
 import 'dart:convert';
 
-Welcome welcomeFromJson(String str) => Welcome.fromJson(json.decode(str));
-
-String welcomeToJson(Welcome data) => json.encode(data.toJson());
-
-class Welcome {
+class ReservationModel {
   int id;
   int userId;
   int diningTableId;
@@ -17,7 +13,7 @@ class Welcome {
   DateTime createdAt;
   DateTime updatedAt;
 
-  Welcome({
+  ReservationModel({
     required this.id,
     required this.userId,
     required this.diningTableId,
@@ -31,7 +27,7 @@ class Welcome {
     required this.updatedAt,
   });
 
-  factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
+  factory ReservationModel.fromJson(Map<String, dynamic> json) => ReservationModel(
     id: json["id"],
     userId: json["user_id"],
     diningTableId: json["dining_table_id"],
@@ -58,4 +54,8 @@ class Welcome {
     "created_at": createdAt.toIso8601String(),
     "updated_at": updatedAt.toIso8601String(),
   };
+
+  ReservationModel reservationModelFromJson(String str) => ReservationModel.fromJson(json.decode(str));
+
+  String reservationModelToJson(ReservationModel data) => json.encode(data.toJson());
 }

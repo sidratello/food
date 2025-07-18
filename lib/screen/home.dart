@@ -1,9 +1,10 @@
-
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_7/Features/categories/presentation/views/categories_screen.dart';
 import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:flutter_application_7/screen/acount.dart';
- // تأكد من مسار ملف AccountScreen
+
+// تأكد من مسار ملف AccountScreen
 import 'package:flutter_application_7/wedjet/home/customdrawer.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    Center(child: Text("Home")), // المؤقتة
+    Center(child: CategoryScreen()), // المؤقتة
     Center(child: Text("Favorites")),
     Center(child: Text("Cart")),
     AccountScreen(), // شاشة الحساب
@@ -26,7 +27,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    
       bottomNavigationBar: CurvedNavigationBar(
         index: _currentIndex,
         backgroundColor: Colors.pink,

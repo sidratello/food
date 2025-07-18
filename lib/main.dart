@@ -15,21 +15,17 @@ import 'package:get/get.dart';
 import 'Features/Auth/presentation/views/Signup_screen.dart';
 import 'Features/Auth/presentation/views/login_screen.dart';
 
-
-  void main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
   runApp(const MyApp());
-getFCMToken();
-
-
+  // getFCMToken();
 }
 
-void getFCMToken() async {
+void getFCMToken() async {}
 
-}
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -38,41 +34,40 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-   initialRoute:"/showreservation",
-   theme: ThemeData(
-    fontFamily: "fonts",
-    textTheme: const TextTheme(
-      displayLarge: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: AppColor.black,
-                    ),
-  bodyLarge:const TextStyle(height: 2,
-  color: AppColor.grey,
-
-  ),
-    ),
-
-  
-
-   ),
-        getPages: [
-        
-        GetPage(name: "/onbording", page: () => onbording(),),
+      initialRoute: "/login",
+      theme: ThemeData(
+        fontFamily: "fonts",
+        textTheme: const TextTheme(
+          displayLarge: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+            color: AppColor.black,
+          ),
+          bodyLarge: const TextStyle(
+            height: 2,
+            color: AppColor.grey,
+          ),
+        ),
+      ),
+      getPages: [
+        GetPage(
+          name: "/onbording",
+          page: () => onbording(),
+        ),
         GetPage(name: "/login", page: () => login()),
         GetPage(name: "/sinup", page: () => Sinup()),
         GetPage(name: "/home", page: () => HomePage()),
-          GetPage(name: "/home2", page: () => AccountScreen()),
- GetPage(name: "/home3", page: () => CategoryScreen()),
-          GetPage(name: "/reservation", page: () => ReservationScreen()),
-          GetPage(name: "/showreservation", page: () => ShowReservationScreen()),
+        GetPage(name: "/home2", page: () => AccountScreen()),
+        GetPage(name: "/home3", page: () => CategoryScreen()),
+        GetPage(name: "/reservation", page: () => ReservationScreen()),
+        GetPage(name: "/showreservation", page: () => ShowReservationScreen()),
 
 //  GetPage(name: "/varyfay", page: () => VerifyCodeScreen()),
-           GetPage(name: "/Map", page: () =>  CustomGoogleMap(), ),
-    
-      ],// This trailing comma makes auto-formatting nicer for build methods.
+        GetPage(
+          name: "/Map",
+          page: () => CustomGoogleMap(),
+        ),
+      ], // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
-
-
-
-
-
