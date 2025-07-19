@@ -7,4 +7,5 @@ class AppImageAsset {
   static const String onBoardingImageThree  = "$rootImages/save3.png" ;  
    static const String onBoardingImagefoor  = "$rootImages/save4.jpg" ;
  static const String onBoardingImagefoor2  = "$rootImages/save5.jpg" ;
+  static const String Favouriteimage  = "$rootImages/Favouriteimage.png" ;
 }

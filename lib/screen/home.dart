@@ -2,6 +2,8 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Category/presentation/views/category_screen.dart';
+import 'package:flutter_application_7/Features/Product/presentation/view/EmptyFavoritesScreen.dart';
+import 'package:flutter_application_7/Features/Product/presentation/view/Favourite_Screen.dart';
 import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:flutter_application_7/screen/acount.dart';
  // تأكد من مسار ملف AccountScreen
@@ -19,10 +21,13 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _screens = [
       CategoryScreen(),
-    Center(child: Text("Home")), // المؤقتة
-    Center(child: Text("Favorites")),
+FavouriteScreen(),    // المؤقتة
+
     Center(child: Text("Cart")),
-    AccountScreen(), // شاشة الحساب
+    AccountScreen(), 
+    
+
+// شاشة الحساب
   ];
 
   @override

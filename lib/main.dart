@@ -5,6 +5,8 @@ import 'package:flutter_application_7/Features/Auth/presentation/views/UserTypeC
 import 'package:flutter_application_7/Features/Auth/presentation/views/loginDriver.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/login_screen.dart';
 import 'package:flutter_application_7/Features/Category/presentation/views/category_screen.dart';
+import 'package:flutter_application_7/Features/Product/presentation/controller/Add_To_Favourite_controller.dart';
+import 'package:flutter_application_7/Features/Product/presentation/controller/Show_Favourite_Controller.dart';
 import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:flutter_application_7/firebase_options.dart';
 import 'package:flutter_application_7/screen/acount.dart';
@@ -26,6 +28,8 @@ import 'package:get/get.dart';
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+   Get.put(Add_TO_Favourite_Controller(), permanent: true);
+  Get.put(ShowFavouriteController(), permanent: true);
   runApp(const MyApp());
 getFCMToken();
 
@@ -37,6 +41,7 @@ void getFCMToken() async {
 }
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
 
   // This widget is the root of your application.
   @override

@@ -69,25 +69,26 @@ body:Container(
                    ),
          
 
-    Container(
-          margin: EdgeInsets.only(left: 20,right: 20,top: 10),
-          width: 700,
-          height: 30,
-          decoration: BoxDecoration(color:AppColor.pink, ),
+
+
+  Padding(
+  padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 40),
                                      
   child:  Button(
             
        onPressed: () {
-        controller.submit();
+
+      
+      controller.submit();
        },
                       // ✅ هنا يتم فحص النموذج
-                
-          title: "Sibmit", color: AppColor.pink,
+                     title: "Sibmit", color: AppColor.pink,
           ),
   ),
-],
+
+    ],
 ),
-),
+    ),
     );
   }
 }

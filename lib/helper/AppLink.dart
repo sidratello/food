@@ -17,6 +17,7 @@ return '$Server/product/$categoryId';
  static const String searchforproductandcategory='$Server/Search1';
 static const  String AddtoCart='$Server/addtocart';
 static const  String AddtoFavourite='$Server/addtoFavourite';
+static const  String ShowFavourit='$Server/showFav';
 
 
 
