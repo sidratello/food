@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Auth/data/login_service.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/Signup_screen.dart';
+import 'package:flutter_application_7/Features/Category/presentation/views/category_screen.dart';
 import 'package:flutter_application_7/screen/home.dart';
 
 
@@ -35,7 +36,7 @@ void login() async {
     if (response is Map && response.containsKey('access_token')) {
       String token = response['access_token'];
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setString('token', token);
+      await prefs.setString('token', response['access_token']);
 
       Get.to(HomePage());
     } else if (response is Map && response.containsKey('message')) {

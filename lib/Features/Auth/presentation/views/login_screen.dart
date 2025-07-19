@@ -5,12 +5,12 @@ import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomSi
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomSignUpText.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomTextFormFieldSignUp.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/ForgetPassword_Screen.dart';
+import 'package:flutter_application_7/Features/Category/presentation/views/category_screen.dart';
 
 import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:flutter_application_7/core/constant/imageassets.dart';
 import 'package:flutter_application_7/helper/validation.dart';
 
-import 'package:flutter_application_7/screen/home.dart';
 
 import 'package:get/get.dart';
 
@@ -113,45 +113,41 @@ class login extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0, vertical: 10),
-                    child: Button(
-                      onPressed: () {
-                        // ✅ هنا يتم فحص النموذج
-                        if (formKey.currentState!.validate()) {
-                          controller.login();
-                          Get.to(
-                              HomePage()); // إذا كل شيء صحيح ينتقل للصفحة التالية
-                        } else {
-                          Get.snackbar("Error", "Please fix the errors above");
-                        }
-                      },
-                      title: "LOG IN",
-                      color: AppColor.pink,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CustomSignUpText(
-                  message: 'you dont have acount ?',
-                  color: Colors.black,
-                ),
-                TextButton(
-                  onPressed: () {
-                    controller.gotoSignUp();
-                  },
-                  child: CustomSignUpText(
-                    message: ' sign up ',
-                    color: Colors.blueGrey,
-                  ),
-                ),
-              ],
-            ),
+    Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+
+    child: Button(
+
+    onPressed: () {
+    // ✅ هنا يتم فحص النموذج
+    if (formKey.currentState!.validate()) {
+    controller.login();
+    Get.to(CategoryScreen()); // إذا كل شيء صحيح ينتقل للصفحة التالية
+    } else {
+    Get.snackbar("Error", "Please fix the errors above");
+    }
+    },
+    title: "LOG IN", color: AppColor.pink,
+    ),
+    ),
+    ],
+    ),
+    ),
+    Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+
+    CustomSignUpText(message: 'you dont have acount ?', color: Colors.black,),
+
+
+    TextButton(
+    onPressed: () {
+    controller.gotoSignUp();
+    },
+    child: CustomSignUpText(message: ' sign up ', color: Colors.blueGrey,),
+    ),
+    ],
+    ),
           ],
         ),
       ),

@@ -1,11 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_7/Features/categories/presentation/views/categories_screen.dart';
-import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:flutter_application_7/screen/acount.dart';
-
-// تأكد من مسار ملف AccountScreen
-import 'package:flutter_application_7/wedjet/home/customdrawer.dart';
+import '../Features/Category/presentation/views/category_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,6 +15,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _screens = [
     Center(child: CategoryScreen()), // المؤقتة
+    Center(child: Text("Home")), // المؤقتة
     Center(child: Text("Favorites")),
     Center(child: Text("Cart")),
     AccountScreen(), // شاشة الحساب
@@ -41,6 +38,7 @@ class _HomePageState extends State<HomePage> {
           Icon(Icons.favorite),
           Icon(Icons.shopping_cart),
           Icon(Icons.person),
+        
         ],
       ),
       body: _screens[_currentIndex],

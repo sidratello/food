@@ -1,19 +1,18 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_7/Features/categories/presentation/views/categories_screen.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/views/Signup_screen.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/views/login_screen.dart';
 import 'package:flutter_application_7/Features/reservation/presentation/views/reservation_screen.dart';
 import 'package:flutter_application_7/Features/show_reservation/presentation/views/show_reservation_screen.dart';
-import 'package:flutter_application_7/core/constant/color.dart';
-import 'package:flutter_application_7/firebase_options.dart';
 import 'package:flutter_application_7/screen/acount.dart';
-
 import 'package:flutter_application_7/screen/home.dart';
-import 'package:flutter_application_7/screen/onbording.dart';
 import 'package:flutter_application_7/wedjet/googlemap/customgooglemap.dart';
 import 'package:get/get.dart';
 
-import 'Features/Auth/presentation/views/Signup_screen.dart';
-import 'Features/Auth/presentation/views/login_screen.dart';
+import 'Features/Category/presentation/views/category_screen.dart';
+import 'core/constant/color.dart';
+import 'screen/onbording.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,16 +57,13 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/sinup", page: () => Sinup()),
         GetPage(name: "/home", page: () => HomePage()),
         GetPage(name: "/home2", page: () => AccountScreen()),
-        GetPage(name: "/home3", page: () => CategoryScreen()),
+    GetPage(name: "/Map", page: () =>  CustomGoogleMap(), ),
+    GetPage(name: "/category", page: () =>  CategoryScreen(), ),
+    GetPage(name: "/google", page: () =>  CustomGoogleMap(), ),
         GetPage(name: "/reservation", page: () => ReservationScreen()),
         GetPage(name: "/showreservation", page: () => ShowReservationScreen()),
 
-//  GetPage(name: "/varyfay", page: () => VerifyCodeScreen()),
-        GetPage(
-          name: "/Map",
-          page: () => CustomGoogleMap(),
-        ),
-      ], // This trailing comma makes auto-formatting nicer for build methods.
+      ],// This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

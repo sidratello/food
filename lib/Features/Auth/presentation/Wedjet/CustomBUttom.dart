@@ -16,7 +16,7 @@ final Color color;
   Widget build(BuildContext context) {
     return SizedBox(
       height: 50,
-      width: 150,
+      width: 130,
       child: ElevatedButton(
         onPressed: onPressed,
              style: ElevatedButton.styleFrom(
