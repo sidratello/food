@@ -19,19 +19,17 @@ class ProductModel {
 
 
 
-  
-
-factory ProductModel.fromJson(Map<String,dynamic> json){
-
-return ProductModel(
- id: json['id'],
-      categoryId: json['category_id'],
-      image: json['image'],
-      name: json['name'],
-      price: json['price'],
-      details: json['details'],);
 
 
-}
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
+      id: json['id'] ?? 0,
+      categoryId: json['category_id'] ?? 0,
+      image: json['image'] ?? '',
+      name: json['name'] ?? '',
+      price: json['price']?.toString() ?? '',
+      details: json['details']?.toString() ?? '',
+    );
+  }
 
 }

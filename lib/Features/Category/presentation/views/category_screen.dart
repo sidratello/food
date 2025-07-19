@@ -9,6 +9,8 @@ import 'package:flutter_application_7/Features/Product/presentation/view/product
 
 import 'package:get/get.dart';
 
+import '../../../../wedjet/drawer/drawer.dart';
+
 
 
 class CategoryScreen extends StatefulWidget {
@@ -31,6 +33,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: CustomDrawer(),
       appBar: const CustomAppBar(title: 'Menu'),
       body: Column(
         children: [
