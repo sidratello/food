@@ -2,6 +2,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Category/presentation/views/category_screen.dart';
+import 'package:flutter_application_7/Features/Product/presentation/view/CartScreen.dart';
 import 'package:flutter_application_7/Features/Product/presentation/view/EmptyFavoritesScreen.dart';
 import 'package:flutter_application_7/Features/Product/presentation/view/Favourite_Screen.dart';
 import 'package:flutter_application_7/core/constant/color.dart';
@@ -23,7 +24,7 @@ class _HomePageState extends State<HomePage> {
       CategoryScreen(),
 FavouriteScreen(),    // المؤقتة
 
-    Center(child: Text("Cart")),
+CartScreen(),
     AccountScreen(), 
     
 

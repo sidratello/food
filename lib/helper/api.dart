@@ -16,7 +16,7 @@ Map<String, String> headers = {
 };
  http.Response response=await http.get(Uri.parse(url), headers: headers,);
 if(response.statusCode==200){
-  return jsonDecode(response.body);
+  return jsonDecode(response.body); //jsondecode to translate the body from json that is string to object that is map or list 
 
 }
 else{

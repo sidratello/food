@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Product/data/model/product_model.dart';
+import 'package:flutter_application_7/Features/Product/presentation/controller/Add_To_Cart_Controller.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/Add_To_Favourite_controller.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/CUstomSarch.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/CustomText_For_DetalsProduct.dart';
@@ -23,9 +24,10 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
-
+ final Add_TO_Cart_Controller cartController = Get.put(Add_TO_Cart_Controller());
   final TextEditingController _noteController = TextEditingController();
 Add_TO_Favourite_Controller favController=Get.put(Add_TO_Favourite_Controller());
+int _quantity = 1;
   @override
   void dispose() {
     _noteController.dispose();
@@ -112,7 +114,7 @@ Add_TO_Favourite_Controller favController=Get.put(Add_TO_Favourite_Controller())
                   ),
                    SizedBox(height: 8),
       CustomTextField(
-
+  controller: _noteController,
   hintText: '.. . أخبرنا بملاحظاتك',
   maxLines: 2,
 ),
@@ -133,18 +135,20 @@ Add_TO_Favourite_Controller favController=Get.put(Add_TO_Favourite_Controller())
                         icon: const Icon(Icons.add_circle_outline),
                         onPressed: () {
                           setState(() {
-                      
+                            _quantity++;
                           });
                         },
                       ),
                       Text(
-                    'kjij',
+                     '$_quantity',
                         style: const TextStyle(fontSize: 18),
                       ),
                       IconButton(
                         icon: const Icon(Icons.remove_circle_outline),
                         onPressed: () {
-              
+                    setState(() {
+          if (_quantity > 1) _quantity--;
+        });
                         },
                       ),
                     ],
@@ -156,7 +160,16 @@ Add_TO_Favourite_Controller favController=Get.put(Add_TO_Favourite_Controller())
                   SizedBox(
                     width: double.infinity,
                     height: 50,
-                    child:CustomButtonForDetals(text: 'Add product to card', onPressed: () {  },), 
+                    child:CustomButtonForDetals(text: 'Add product to card', onPressed: () { 
+
+
+    cartController.toggleCart(
+      product.id,
+      _quantity,
+      _noteController.text.trim(),
+    );
+
+                     },), 
                   ),
                 ],
               ),
