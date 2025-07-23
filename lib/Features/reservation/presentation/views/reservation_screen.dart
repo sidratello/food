@@ -7,28 +7,37 @@ import 'package:flutter_application_7/Features/reservation/presentation/widgets/
 import 'package:flutter_application_7/Features/reservation/presentation/widgets/time_reservation.dart';
 import 'package:flutter_application_7/wedjet/drawer/drawer.dart';
 import 'package:get/get.dart';
+import '../../data/resrevation_model.dart';
 import '../widgets/appbar_reservation.dart';
 
 class ReservationScreen extends StatefulWidget {
-   ReservationScreen({super.key});
+  ReservationScreen({super.key, this.reservationModel});
+
   final ReservationController controller = Get.put(ReservationController());
+  ReservationModelForm? reservationModel;
 
-
-   @override
+  @override
   State<ReservationScreen> createState() => _ReservationScreenState();
 }
 
 class _ReservationScreenState extends State<ReservationScreen> {
-
   @override
   Widget build(BuildContext context) {
+    bool isEdit = (widget.reservationModel != null);
+
     final TextEditingController dateController = TextEditingController();
     final TextEditingController guestsController = TextEditingController();
     final TextEditingController occasionsController = TextEditingController();
-    final TextEditingController timeController = TextEditingController();
+    final TextEditingController startTimeController = TextEditingController();
+    final TextEditingController endTimeController = TextEditingController();
 
-
-
+    if (widget.reservationModel != null) {
+      dateController.text = widget.reservationModel!.date ?? '';
+      guestsController.text = widget.reservationModel!.guestsCount ?? '';
+      occasionsController.text = widget.reservationModel!.notes ?? '';
+      startTimeController.text = widget.reservationModel!.startTime ?? '';
+      endTimeController.text = widget.reservationModel!.endTime ?? '';
+    }
 
     return Scaffold(
       drawer: CustomDrawer(),
@@ -55,12 +64,14 @@ class _ReservationScreenState extends State<ReservationScreen> {
               const SizedBox(height: 20),
 
               // اختيار التاريخ
-              DateReservation(controller:dateController),
+              DateReservation(controller: dateController),
               const SizedBox(height: 20),
 
-
               // اختيار الوقت
-           TimeReservation(controller: timeController),
+              TimeReservation(
+                startController: startTimeController,
+                endController: endTimeController,
+              ),
               const SizedBox(height: 30),
 
               // زر إرسال الحجز
@@ -68,7 +79,9 @@ class _ReservationScreenState extends State<ReservationScreen> {
                 dateController: dateController,
                 guestsController: guestsController,
                 occasionsController: occasionsController,
-                timeController: timeController,
+                startTimeController: startTimeController,
+                endTimeController: endTimeController,
+                isEdit: isEdit,
               ),
             ],
           ),

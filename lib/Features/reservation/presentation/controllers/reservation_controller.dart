@@ -7,48 +7,47 @@ import 'package:get/get.dart';
 class ReservationController extends GetxController {
   final Api api = Api();
 
-  Future postReservations(String date, int guestsCount, String notes,
-      String startTime) async {
+  Future postReservations(
+    String date,
+    int guestsCount,
+    String notes,
+    String startTime,
+    String endTime,
+    bool isEdit,
+      [int? reservationId]
+      ) async {
+    String requestLink = (isEdit && reservationId != null)
+        ? Applink.updateReservation(reservationId)
+        : Applink.reservation();
     Map<String, dynamic> reservations = {
       'date': date,
       'guests_count': guestsCount,
       'notes': notes,
       'starttime': startTime,
+      'endtime': endTime,
     };
 
     try {
-      Response response = await api.post(
-        url: Applink.reservation(),
+      Map<String, dynamic> response = await api.post(
+        url: requestLink,
         body: reservations,
         sendToken: true,
       );
+// نجاح الطلب
+      Get.snackbar(
+        "نجاح",
+        "تم إرسال الحجز بنجاح، في انتظار إشعار الموافقة",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+      );
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        // نجاح الطلب
-        Get.snackbar(
-          "نجاح",
-          "تم إرسال الحجز بنجاح، في انتظار إشعار الموافقة",
-          snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.green,
-          colorText: Colors.white,
-        );
-      } else {
-        // خطأ من السيرفر
-        Get.snackbar(
-          "خطأ",
-          "حدث خطأ أثناء إرسال الحجز. الرجاء المحاولة لاحقًا.",
-          snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.red,
-          colorText: Colors.white,
-        );
-      }
-
-      print("API Response: ${response.body}");
+      print("API Response: ${response}");
       return response;
     } catch (e) {
       Get.snackbar(
         "فشل الارسال",
-        "تعذر الاتصال بالسيرفر. تحقق من الإنترنت وحاول مرة أخرى.",
+        e.toString(),
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.red,
         colorText: Colors.white,
@@ -57,25 +56,3 @@ class ReservationController extends GetxController {
     }
   }
 }
-// class ReservationController extends GetxController {
-//   final Api api = Api();
-//
-//   Future postReservations(String date, int guestsCount, String notes, String startTime ) async {
-//
-//     Map<String, dynamic> reservations = {
-//       'date':date,
-//       'guests_count':guestsCount,
-//       'notes' : notes,
-//       'starttime' :startTime,
-//     // the rest
-//     };
-//     try {
-//       Response response = await api.post(url: Applink.reservation(), body: reservations, sendToken: true, token: '');
-//       print("API Response: ${response.body}");
-//       return response;}
-//     catch (e) {
-//       Get.snackbar("فشل الارسال ",'');
-//       return e;
-//     }
-//   }
-//   }

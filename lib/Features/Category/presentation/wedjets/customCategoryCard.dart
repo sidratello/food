@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Category/data/models/category_model.dart';
 
 import 'package:flutter_application_7/Features/Product/presentation/view/product_Screen.dart';
+import 'package:flutter_application_7/helper/AppLink.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
@@ -30,7 +31,7 @@ class CategoryCard extends StatelessWidget {
           image: DecorationImage(
             // نفترض أن رابط الصورة يحتوي فقط على اسم الملف
             image: NetworkImage(
-              "http://192.168.1.10:8000/${category.image.split('/').last}",
+              "${Applink.imageBaseUrl}${category.image.split('/').last}",
             ),
             fit: BoxFit.cover,  // تغطي كامل الـ Container
           ),

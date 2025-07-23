@@ -3,7 +3,6 @@ import 'package:flutter_application_7/Features/reservation/presentation/views/re
 import 'package:flutter_application_7/Features/show_reservation/presentation/views/show_reservation_screen.dart';
 import 'package:get/get.dart';
 
-import '../../../categories/presentation/views/categories_screen.dart';
 
 class CustomAppBarShowReservation extends StatelessWidget implements PreferredSizeWidget {
   final String title;

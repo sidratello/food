@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_7/Features/categories/presentation/views/categories_screen.dart';
+import 'package:flutter_application_7/Features/contact_us/presentation/view/contact_us_screen.dart';
 import 'package:flutter_application_7/Features/reservation/presentation/views/reservation_screen.dart';
+import 'package:flutter_application_7/Features/settings/presentation/view/settings_screen.dart';
 import 'package:flutter_application_7/Features/show_reservation/presentation/views/show_reservation_screen.dart';
 import 'package:get/get.dart';
 
@@ -17,39 +18,61 @@ class CustomDrawer extends StatelessWidget {
         children: [
           DrawerHeader(
             decoration: BoxDecoration(color: AppColor.pink),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Icon(Icons.account_circle, size: 60, color: Colors.white),
-                SizedBox(height: 10),
-                Text("مرحباً بك 👋", style: TextStyle(color: Colors.white, fontSize: 18)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 40, right: 35),
+                child: Column(
+                  children: [ Text("Sham Hpopaty", style: TextStyle(color: Colors.white, fontSize: 18)),
+                    Text("0982486726", style: TextStyle(color: Colors.white, fontSize: 18),)
+                  ],),
+              ),
+
+               CircleAvatar( radius: 40 ,backgroundImage: AssetImage("assets/images/save4.jpg"),),
+
+
+
               ],
             ),
           ),
           ListTile(
-            leading: Icon(Icons.home),
-            title: Text('الرئيسية'),
+            leading: Icon(Icons.alarm_on_sharp,color:AppColor.pink),
+            title: Text('My Orders'),
             onTap: () {
-              Get.to(() => CategoryScreen());
+              //Get.to(() => MyProfileScreen());
             },
           ),
           ListTile(
-            leading: Icon(Icons.book),
-            title: Text('حجوزاتي'),
+            leading: Icon(Icons.location_on, color:AppColor.pink),
+            title: Text('My Locations'),
+            onTap: () {
+              //Get.to(() => MyProfileScreen());
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.book, color:AppColor.pink),
+            title: Text('My Reservations'),
             onTap: () {
               Get.to(() => ShowReservationScreen());
-            },
-          ),
+            },),
           ListTile(
-            leading: Icon(Icons.add),
-            title: Text('إضافة حجز'),
+            leading: Icon(Icons.settings, color:AppColor.pink),
+            title: Text('Settings'),
             onTap: () {
-              Get.to(() => ReservationScreen());
+              Get.to(() => SettingScreen());
             },
           ),
           ListTile(
-            leading: Icon(Icons.logout),
-            title: Text('تسجيل الخروج'),
+            leading: Icon(Icons.contact_support_rounded, color:AppColor.pink),
+            title: Text('Contac US'),
+            onTap: () {
+              Get.to(() => ContactUsScreen());
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.logout, color:AppColor.pink),
+            title: Text('Log out'),
             onTap: () {
               Navigator.pop(context);
               showDialog(

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Category/presentation/Controller/category_controller.dart';
 
@@ -6,12 +5,11 @@ import 'package:flutter_application_7/Features/Category/presentation/wedjets/Cus
 import 'package:flutter_application_7/Features/Category/presentation/wedjets/appbarCategory.dart';
 import 'package:flutter_application_7/Features/Category/presentation/wedjets/customCategoryCard.dart';
 import 'package:flutter_application_7/Features/Product/presentation/view/product_Screen.dart';
+import 'package:flutter_application_7/helper/AppLink.dart';
 
 import 'package:get/get.dart';
 
 import '../../../../wedjet/drawer/drawer.dart';
-
-
 
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key});
@@ -50,7 +48,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 if (controller.searchResults.isEmpty) {
                   return const Center(child: Text('لا توجد نتائج'));
                 }
-//search result have the data we search about 
+//search result have the data we search about
                 return ListView.builder(
                   padding: const EdgeInsets.all(16),
                   itemCount: controller.searchResults.length,
@@ -60,7 +58,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
                     final imagePath = item['image']?.toString() ?? '';
                     final imageUrl =
-                        'http://192.168.1.10:8000/${imagePath.split('/').last}';
+                        '${Applink.imageBaseUrl}/${imagePath.split('/').last}';
 
                     return GestureDetector(
                       onTap: () {
@@ -77,10 +75,12 @@ class _CategoryScreenState extends State<CategoryScreen> {
                       child: Card(
                         child: ListTile(
                           title: Text(item['name']),
-                          subtitle: isProduct                         //the defernt btween the product and category is the price 
+                          subtitle:
+                              isProduct //the defernt btween the product and category is the price
 
-                              ? Text('السعر: ${item['price']}')       // this ? mean do and : mean else 
-                              : const Text('تصنيف'),
+                                  ? Text(
+                                      'السعر: ${item['price']}') // this ? mean do and : mean else
+                                  : const Text('تصنيف'),
                           leading: Image.network(
                             imageUrl,
                             width: 50,
@@ -92,9 +92,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     );
                   },
                 );
-              } 
-              
-              else {                                  //else if he doesnt search the category apear 
+              } else {
+                //else if he doesnt search the category apear
                 if (controller.isLoading.value) {
                   return const Center(child: CircularProgressIndicator());
                 }
@@ -108,8 +107,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   },
                 );
               }
-            }
-            ),
+            }),
           ),
         ],
       ),
