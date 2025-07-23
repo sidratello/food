@@ -5,7 +5,7 @@ import 'package:flutter_application_7/helper/api.dart';
 
 class show_Cart_serveses{
 
-     show_cart(String token)async{
+      Future<CartResponseModel?> show_cart(String token)async{
 
 
 var response = await Api().get(url:Applink.ShowCart,token: token); //response is map or list 
@@ -14,19 +14,28 @@ var response = await Api().get(url:Applink.ShowCart,token: token); //response is
 if (response is Map ){
 
     
-        List<dynamic> CartJson = response['cart'];//response['cart']; is a list "cart": [] in map {"cart": [], "total": 1723000}
-                                                  //i want to translate each item in cart that is list and have map to object of CartItemModel so i can use it 
+//         List<dynamic> CartJson = response['cart'];//response['cart']; is a list "cart": [] in map {"cart": [], "total": 1723000}
+//                                                   //i want to translate each item in cart that is list and have map to object of CartItemModel so i can use it 
 
-List<CartItemModel> CartList = [];
-for (int i = 0; i < CartJson.length; i++) {
-  CartList.add(CartItemModel.fromJson(CartJson[i]));
+// List<CartItemModel> CartList = [];
+// for (int i = 0; i < CartJson.length; i++) {
+//   CartList.add(CartItemModel.fromJson(CartJson[i]));
+// }
+// return CartList;
+
+
+
+return CartResponseModel.fromJson(Map<String, dynamic>.from(response));
+
+
 }
-return CartList;
-
-}
-
+  return null;
 }
 
 
 
 }
+
+
+
+

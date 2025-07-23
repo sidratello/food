@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/CustomText_for_Emptyfavourite%20Screen.dart';
+import 'package:flutter_application_7/Features/Product/presentation/wedjet/custom_scafould.dart';
 import 'package:flutter_application_7/core/constant/imageassets.dart';
 
 class EmptyFavoritesScreen extends StatefulWidget {
@@ -48,9 +49,17 @@ class _EmptyFavoritesScreenState extends State<EmptyFavoritesScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: FadeTransition(
+    return 
+    // Scaffold(
+    //   backgroundColor: Colors.white,
+    //   body:
+    CustomScaffold(
+      showAppBar: false,
+  
+      showNavBar:false,
+      
+      body:  
+      FadeTransition(
         opacity: _fadeAnimation,
         child: SlideTransition(
           position: _slideAnimation,

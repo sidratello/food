@@ -1,6 +1,6 @@
 class Applink {
 
-static const  String Server='http://192.168.1.10:8000/api';
+static const  String Server='http://192.168.43.222:8000/api';
 static const  String choose='$Server/chooseRole';
 static const  String login='$Server/login';
 static const  String Signup='$Server/register';

@@ -59,9 +59,11 @@ RxSet<int> CartProductIds = <int>{}.obs; //like the set that doesnt  لا تسم
       );
 
   // ✅ تحديث شاشة السلة بعد الإضافة
-  final ShowCartController showCartController = Get.find();
+if (Get.isRegistered<ShowCartController>()) {
+  final showCartController = Get.find<ShowCartController>();
   showCartController.fetchCart();
-  
+}
+
     Get.snackbar(
       "تمت الإضافة",
       "تم إضافة المنتج إلى السلة بنجاح",

@@ -12,7 +12,7 @@ class ShowCartController extends GetxController {
 
   final show_Cart_serveses _showCart = show_Cart_serveses();
 var CartList = <CartItemModel>[].obs;
-var total = ''.obs;
+ var total = 0.obs; 
 
 
      var isLoading = false.obs;
@@ -27,9 +27,10 @@ var total = ''.obs;
        SharedPreferences prefs = await SharedPreferences.getInstance();
      String  token = prefs.getString('token') ?? '';
 
-     var result = await _showCart.show_cart(token); //  إرسال طلب إلى الباك and this return _showCart.show_cart(token); it return  CartList
+       CartResponseModel? result = await _showCart.show_cart(token); //  إرسال طلب إلى الباك and this return _showCart.show_cart(token); it return  CartList
            if (result != null) {
-        CartList.assignAll(result); //result  بالمحتوى الموجود داخل  CartList استبدال كل محتوى القائمة 
+      CartList.assignAll(result.cartItems);     //this in model   final List<CartItemModel> cartItems;
+        total.value = result.total; //result  بالمحتوى الموجود داخل  CartList استبدال كل محتوى القائمة 
       
 
   // total.value = result['total'].toString();
