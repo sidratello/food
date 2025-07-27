@@ -12,6 +12,7 @@ class CustomScaffold extends StatelessWidget {
   final Widget? floatingActionButton;
   final bool showBackButton; // زر الرجوع المخصص
   final VoidCallback? onBackPressed; // ما الذي يحدث عند الضغط عليه
+  final Widget? drawer;
 
   const CustomScaffold({
     super.key,
@@ -24,11 +25,13 @@ class CustomScaffold extends StatelessWidget {
     this.floatingActionButton,
     this.showBackButton = false,
     this.onBackPressed,
+    this.drawer
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: drawer,
      appBar: showAppBar
     ? AppBar(
         automaticallyImplyLeading: false, 
