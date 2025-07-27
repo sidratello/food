@@ -21,6 +21,9 @@ class Applink {
   static const String searchforproductandcategory = '$Server/Search1';
   static const String AddtoCart = '$Server/addtocart';
   static const String AddtoFavourite = '$Server/addtoFavourite';
+  static const  String ShowFavourit='$Server/showFav';
+  static const  String AddToCart='$Server/addtocart';
+  static const  String ShowCart='$Server/showcart';
 
   static String reservation() => '$Server/reserve';
 

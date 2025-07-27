@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Category/presentation/Controller/category_controller.dart';
 
 import 'package:flutter_application_7/Features/Category/presentation/wedjets/CustomSearchTextField.dart';
-import 'package:flutter_application_7/Features/Category/presentation/wedjets/appbarCategory.dart';
 import 'package:flutter_application_7/Features/Category/presentation/wedjets/customCategoryCard.dart';
 import 'package:flutter_application_7/Features/Product/presentation/view/product_Screen.dart';
 import 'package:flutter_application_7/helper/AppLink.dart';
+import 'package:flutter_application_7/Features/Product/presentation/wedjet/custom_scafould.dart';
+
 
 import 'package:get/get.dart';
 
@@ -30,9 +31,14 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    // return Scaffold(
+    //   appBar: const CustomAppBar(title: 'Menu'),
+    return CustomScaffold(
+      showAppBar: true,
+      appBarTitle: 'Menu',
+      showNavBar: false,
+      showBackButton: true, // ✅ عرض زر الرجوع
       drawer: CustomDrawer(),
-      appBar: const CustomAppBar(title: 'Menu'),
       body: Column(
         children: [
           // ✅ حقل البحث

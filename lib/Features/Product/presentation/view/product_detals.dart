@@ -4,10 +4,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Product/data/model/product_model.dart';
+import 'package:flutter_application_7/Features/Product/presentation/controller/Add_To_Cart_Controller.dart';
+import 'package:flutter_application_7/Features/Product/presentation/controller/Add_To_Favourite_controller.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/CUstomSarch.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/CustomText_For_DetalsProduct.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/productCard_wedjet.dart';
 import 'package:flutter_application_7/core/constant/color.dart';
+import 'package:get/get.dart';
 
 import '../wedjet/Custom_Buttom_for_Detals.dart';
 
@@ -21,9 +24,10 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
-
+ final Add_TO_Cart_Controller cartController = Get.put(Add_TO_Cart_Controller());
   final TextEditingController _noteController = TextEditingController();
-
+Add_TO_Favourite_Controller favController=Get.put(Add_TO_Favourite_Controller());
+int _quantity = 1;
   @override
   void dispose() {
     _noteController.dispose();
@@ -61,17 +65,22 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     },
                   ),
                 ),
-                Positioned(
-                  top: 40,
-                  right: 16,
-                  child: IconButton(
-                    icon: const Icon(Icons.favorite_border, color: Colors.white),
-                    onPressed: () {
-                      // TODO: اتصال بـ API لإضافة المنتج للمفضلة
-                      print('💖 تم الضغط على زر المفضلة');
-                    },
-                  ),
-                ),
+       Positioned(
+  top: 40,
+  right: 16,
+  child: Obx(() => IconButton(
+    icon: Icon(
+     favController.isFavourite(product.id)
+          ? Icons.favorite
+          : Icons.favorite_border,
+      color: Colors.red,
+    ),
+    onPressed: () {
+      favController.toggleFavourite(product.id); //when the user click on the love icon it change the sate of it 
+    },
+  )),
+),
+
               ],
             ),
             Padding(
@@ -105,7 +114,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   ),
                    SizedBox(height: 8),
       CustomTextField(
-
+  controller: _noteController,
   hintText: '.. . أخبرنا بملاحظاتك',
   maxLines: 2,
 ),
@@ -126,18 +135,20 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                         icon: const Icon(Icons.add_circle_outline),
                         onPressed: () {
                           setState(() {
-                      
+                            _quantity++;
                           });
                         },
                       ),
                       Text(
-                    'kjij',
+                     '$_quantity',
                         style: const TextStyle(fontSize: 18),
                       ),
                       IconButton(
                         icon: const Icon(Icons.remove_circle_outline),
                         onPressed: () {
-              
+                    setState(() {
+          if (_quantity > 1) _quantity--;
+        });
                         },
                       ),
                     ],
@@ -149,7 +160,16 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   SizedBox(
                     width: double.infinity,
                     height: 50,
-                    child:CustomButtonForDetals(text: 'Add product to card', onPressed: () {  },), 
+                    child:CustomButtonForDetals(text: 'Add product to card', onPressed: () { 
+
+
+    cartController.toggleCart(
+      product.id,
+      _quantity,
+      _noteController.text.trim(),
+    );
+
+                     },), 
                   ),
                 ],
               ),
@@ -160,3 +180,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
