@@ -34,7 +34,7 @@ class CustomScaffold extends StatelessWidget {
       drawer: drawer,
      appBar: showAppBar
     ? AppBar(
-        automaticallyImplyLeading: false, 
+        // automaticallyImplyLeading: !showBackButton,
            toolbarHeight: 40,// هذا هو المهم لمنع الزر التلقائي
         leading: showBackButton
             ? IconButton(
@@ -42,7 +42,6 @@ class CustomScaffold extends StatelessWidget {
                 onPressed: onBackPressed ?? () => Navigator.pop(context),
               )
             : null,
-                  
               title: Text(
                 appBarTitle ?? '',
                 style: const TextStyle(fontWeight: FontWeight.bold),

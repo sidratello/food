@@ -37,7 +37,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
       showAppBar: true,
       appBarTitle: 'Menu',
       showNavBar: false,
-      showBackButton: true, // ✅ عرض زر الرجوع
+      showBackButton: false, // ✅ عرض زر الرجوع
       drawer: CustomDrawer(),
       body: Column(
         children: [
