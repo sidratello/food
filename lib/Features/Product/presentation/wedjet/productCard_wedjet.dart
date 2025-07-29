@@ -20,6 +20,7 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final imageUrl = "${Applink.imageBaseUrl}${product.image.split('/').last}";
+
     return GestureDetector(
       onTap: onTap,
       child: Card(

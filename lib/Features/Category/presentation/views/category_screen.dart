@@ -66,6 +66,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     final imageUrl =
                         '${Applink.imageBaseUrl}/${imagePath.split('/').last}';
 
+
                     return GestureDetector(
                       onTap: () {
                         if (!isProduct) {

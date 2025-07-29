@@ -45,6 +45,7 @@ class ProductsScreen extends StatelessWidget {
                 image: NetworkImage(
                   "${Applink.imageBaseUrl}${categoryImage.split('/').last}",
                 ),
+
                 fit: BoxFit.cover,
               ),
             ),

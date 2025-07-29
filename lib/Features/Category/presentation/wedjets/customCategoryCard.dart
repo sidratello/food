@@ -32,6 +32,7 @@ class CategoryCard extends StatelessWidget {
             // نفترض أن رابط الصورة يحتوي فقط على اسم الملف
             image: NetworkImage(
               "${Applink.imageBaseUrl}${category.image.split('/').last}",
+
             ),
             fit: BoxFit.cover,  // تغطي كامل الـ Container
           ),

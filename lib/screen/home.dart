@@ -24,7 +24,8 @@ class _HomePageState extends State<HomePage> {
     Center(child: Text("Home")), // المؤقتة
     FavouriteScreen(),
     CartScreen(),
-    // AccountScreen(), // شاشة الحساب
+   AccountScreen(),
+
   ];
 
   @override
