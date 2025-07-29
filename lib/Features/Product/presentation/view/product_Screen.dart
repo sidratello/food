@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/product_controller.dart';
 import 'package:flutter_application_7/Features/Product/presentation/view/product_detals.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/productCard_wedjet.dart';
-
+import 'package:flutter_application_7/helper/AppLink.dart';
 
 import 'package:get/get.dart';
-
-
 
 class ProductsScreen extends StatelessWidget {
   final int categoryId;
@@ -23,24 +21,20 @@ class ProductsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
-   productController.fetchProducts(categoryId, "");
+    productController.fetchProducts(categoryId, "");
     return Scaffold(
-    appBar: AppBar(
-    backgroundColor: Colors.transparent, // لو تحب يكون شفاف فوق الصورة
-    elevation: 0, // إزالة الظل
-    leading: IconButton(
-      icon: Icon(Icons.arrow_back, color: Colors.white),
-      onPressed: () {
-        Get.back(); // ترجع للشاشة السابقة باستخدام GetX
-      },
-    ),
-
-  ),
-  extendBodyBehindAppBar: true,
-    
-    
-     body: Column(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent, // لو تحب يكون شفاف فوق الصورة
+        elevation: 0, // إزالة الظل
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Get.back(); // ترجع للشاشة السابقة باستخدام GetX
+          },
+        ),
+      ),
+      extendBodyBehindAppBar: true,
+      body: Column(
         children: [
           // صورة التصنيف في الأعلى
           Container(
@@ -48,7 +42,10 @@ class ProductsScreen extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage("http://192.168.1.6:8000/${categoryImage.split('/').last}"),
+
+                image: NetworkImage("http://10.177.14.225:8000/${categoryImage.split('/').last}"),
+
+
                 fit: BoxFit.cover,
               ),
             ),
@@ -64,7 +61,6 @@ class ProductsScreen extends StatelessWidget {
             ),
           ),
 
-      
           Expanded(
             child: Obx(() {
               if (productController.isLoading.value) {
@@ -87,21 +83,20 @@ class ProductsScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final product = productController.products[index];
                   return ProductCard(
-    product: product,
-    onTap: () {
-      // فتح صفحة التفاصيل
-      Get.to(() => ProductDetailsScreen(product: product));
-    },
-  );
+                    product: product,
+                    onTap: () {
+                      // فتح صفحة التفاصيل
+                      Get.to(() => ProductDetailsScreen(product: product));
+                    },
+                  );
                 },
               );
             }),
           ),
-         ],
-       ),
-   );
- }
-  
+        ],
+      ),
+    );
+  }
 }
 
 

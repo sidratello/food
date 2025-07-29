@@ -216,7 +216,7 @@ class CartScreen extends StatelessWidget {
                       ),
                       leading: 
                            Image.network(
-                             "http://192.168.1.6:8000/${product.image.split('/').last}",
+                             "http://10.177.14.225:8000/${product.image.split('/').last}",
                               width: 50,
                               errorBuilder: (context, error, stackTrace) =>
                                   const Icon(Icons.broken_image),

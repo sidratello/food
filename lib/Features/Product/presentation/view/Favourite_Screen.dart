@@ -94,7 +94,7 @@ class FavouriteScreen extends StatelessWidget {
                 Get.to(() => ProductDetailsScreen(product: product));
               },
               leading: Image.network(
-                  "http://192.168.1.6:8000/${product.image.split('/').last}",
+                  "http://10.177.14.225:8000/${product.image.split('/').last}",
                   width: 60,
                   fit: BoxFit.cover),
               title: Text(product.name),
