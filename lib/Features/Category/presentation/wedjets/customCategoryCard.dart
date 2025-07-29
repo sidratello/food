@@ -30,7 +30,7 @@ class CategoryCard extends StatelessWidget {
           image: DecorationImage(
             // نفترض أن رابط الصورة يحتوي فقط على اسم الملف
             image: NetworkImage(
-              "http://192.168.43.222:8000/${category.image.split('/').last}",
+              "http://192.168.1.6:8000/${category.image.split('/').last}",
             ),
             fit: BoxFit.cover,  // تغطي كامل الـ Container
           ),

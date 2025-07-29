@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
     const CategoryScreen(),
     FavouriteScreen(),
     CartScreen(),
-  //  AccountScreen(),
+   AccountScreen(),
   ];
 
   // final List<String> _titles = [

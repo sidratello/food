@@ -181,7 +181,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
                     final imagePath = item['image']?.toString() ?? '';
                     final imageUrl =
-                        'http://192.168.43.222:8000/${imagePath.split('/').last}';
+                        'http://192.168.1.6:8000/${imagePath.split('/').last}';
 
                     return GestureDetector(
                       onTap: () {
