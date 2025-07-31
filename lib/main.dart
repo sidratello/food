@@ -100,6 +100,7 @@ import 'package:flutter_application_7/Features/Product/presentation/controller/A
 import 'package:flutter_application_7/Features/Product/presentation/controller/ShowCart_Controller.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/Show_Favourite_Controller.dart';
 import 'package:flutter_application_7/core/constant/color.dart';
+import 'package:flutter_application_7/delivery_app/show_orders/presentation/views/show_orders_screen.dart';
 import 'package:flutter_application_7/firebase_options.dart';
 import 'package:flutter_application_7/screen/acount.dart';
 import 'package:flutter_application_7/screen/home.dart';
@@ -135,7 +136,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/choose-role",
+      initialRoute: "/showorders",
       theme: ThemeData(
         fontFamily: "fonts",
         textTheme: const TextTheme(
@@ -166,6 +167,8 @@ class MyApp extends StatelessWidget {
     GetPage(name: "/google", page: () =>  CustomGoogleMap(), ),
         GetPage(name: "/reservation", page: () => ReservationScreen()),
         GetPage(name: "/showreservation", page: () => ShowReservationScreen()),
+// for delivery
+        GetPage(name: "/showorders", page: () => ShowOrdersScreen()),
 
       ],// This trailing comma makes auto-formatting nicer for build methods.
     );

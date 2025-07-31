@@ -10,4 +10,8 @@ class AppImageAsset {
 static const String Favouriteimage  = "$rootImages/Favouriteimage.png" ;
   static const String emtycartimage  = "$rootImages/emtycartImage.png" ;
 
+  // for delivery
+  static const String deliveryImage  = "$rootImages/delivery.jpg" ;
+
+
 }
