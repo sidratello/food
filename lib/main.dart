@@ -106,6 +106,7 @@ import 'package:flutter_application_7/screen/home.dart';
 import 'package:flutter_application_7/wedjet/googlemap/customgooglemap.dart';
 import 'package:get/get.dart';
 
+import 'Features/Auth/presentation/views/UserTypeChoiceScreen.dart';
 import 'Features/Category/presentation/views/category_screen.dart';
 import 'core/constant/color.dart';
 import 'screen/onbording.dart';
@@ -134,7 +135,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/sinup",
+      initialRoute: "/choose-role",
       theme: ThemeData(
         fontFamily: "fonts",
         textTheme: const TextTheme(
@@ -150,6 +151,8 @@ class MyApp extends StatelessWidget {
         ),
       ),
       getPages: [
+        // GetPage(name: '/splash', page: () => )
+        GetPage(name: '/choose-role', page: () => UserTypeChoiceScreen()),
         GetPage(
           name: "/onbording",
           page: () => onbording(),
