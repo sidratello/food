@@ -14,32 +14,33 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Order details"),
+        title: const Text("Order Details"),
         backgroundColor: Colors.yellow,
         centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: const Color(0xFFFFF8E1),
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Colors.yellow, width: 2),
-            ),
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: const Color(0xFFFFF8E1),
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: Colors.yellow, width: 2),
+          ),
+          child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min, // حتى ما يتمدد زيادة
               children: [
-                const Text("order number: 1", style: TextStyle(fontSize: 18)),
+                const Text("Order ID: 1", style: TextStyle(fontSize: 18)),
                 const SizedBox(height: 8),
-                const Text("Name: Sham ", style: TextStyle(fontSize: 18)),
+                const Text("Name: Sham", style: TextStyle(fontSize: 18)),
                 const SizedBox(height: 8),
-                const Text("phone number: 0933221122", style: TextStyle(fontSize: 18)),
+                const Text("Phone: 0933221122", style: TextStyle(fontSize: 18)),
                 const SizedBox(height: 8),
-                const Text("Total price: 7000 ل.س", style: TextStyle(fontSize: 18)),
+                const Text("Total Price: 7000 SYP", style: TextStyle(fontSize: 18)),
                 const SizedBox(height: 20),
-                const Text("Order status:", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+
+                const Text("Order Status:", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
                 const SizedBox(height: 10),
                 Row(
                   children: [
@@ -49,14 +50,30 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                   ],
                 ),
                 const SizedBox(height: 20),
-                Text(
-                  "Order status: $selectedStatus",
-                  style: const TextStyle(fontSize: 16, color: Colors.black87),
-                ),
+                Text("Current Status: $selectedStatus", style: const TextStyle(fontSize: 16)),
+
+                const SizedBox(height: 30),
+                const Divider(thickness: 1),
+                const Text("Products:", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                const SizedBox(height: 10),
+
+                _buildProductItem("Chocolate Cake", 2),
+                _buildProductItem("Mini Pizza", 3),
+                _buildProductItem("Date Maamoul", 1),
+
+                const SizedBox(height: 30),
+                const Divider(thickness: 1),
+                const Text("Address:", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                const SizedBox(height: 10),
+                const Text("City: City 4", style: TextStyle(fontSize: 16)),
+                const Text("Street: Street 4", style: TextStyle(fontSize: 16)),
+                const Text("Building: 11", style: TextStyle(fontSize: 16)),
+                const Text("Floor: 2", style: TextStyle(fontSize: 16)),
+                const Text("Notes: Test address note", style: TextStyle(fontSize: 16)),
               ],
             ),
           ),
-
+        ),
       ),
     );
   }
@@ -74,6 +91,19 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
         });
       },
       child: Text(status),
+    );
+  }
+
+  Widget _buildProductItem(String name, int quantity) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(name, style: const TextStyle(fontSize: 16)),
+          Text("Quantity: $quantity", style: const TextStyle(fontSize: 16)),
+        ],
+      ),
     );
   }
 }
