@@ -17,35 +17,33 @@ veryfay();
 
 }
 class VaryFicationControllerImp extends VaryFicationController {
- late int userId;
-  late bool fromSignup;
+  final DataVarification _dataVarification = DataVarification();
 
-
- final DataVarification _dataVarification = DataVarification();
-
-
-
+  @override
 void veryfay() async {
-
-
-
-void verifyOtp(int userId, String code) async {
-  var response = await _dataVarification.getData(userId: userId, otpValue: code);
-
-  if (response is Map && response['message'] == 'Verified successfully.') {
-    Get.snackbar("تم التحقق", "تم التحقق من الرمز بنجاح");
-    Get.to(New_Password_Screen(userId:userId,));// Navigate to next screen
-  } else {
-    Get.snackbar("فشل التحقق", "الرمز غير صحيح أو منتهي الصلاحية");
-  }
-}
-
-
-}
-
-
+    // لا داعي لها الآن، أو يمكن حذفها تمامًا
   
 
+  void verifyOtp(int userId, String code) async {
+    var response = await _dataVarification.getData(userId: userId, otpValue: code);
 
+    if (response is Map && response['message'] == 'Verified successfully.') {
+      Get.snackbar("تم التحقق", "تم التحقق من الرمز بنجاح");
 
+      String? token = response['access_token'];
+
+      if (token != null) {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('token', token);
+        print("✅ Token saved after OTP: $token");
+      } else {
+        print("⚠️ Token was null in OTP response");
+      }
+
+      Get.to(New_Password_Screen(userId: userId));
+    } else {
+      Get.snackbar("فشل التحقق", "الرمز غير صحيح أو منتهي الصلاحية");
+    }
+  }
+  }
 }

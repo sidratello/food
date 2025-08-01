@@ -121,7 +121,6 @@ abstract class SignupController extends GetxController {
   signup();
   gotoSignin();
 }
-
 class SignupControllerImp extends SignupController {
   TextEditingController username = TextEditingController();
   TextEditingController phone_Number = TextEditingController();
@@ -129,9 +128,13 @@ class SignupControllerImp extends SignupController {
   TextEditingController location = TextEditingController();
   final DataSignup _dataSignup = DataSignup();
 
-  void showOtpSentDialog(int userId) {
+  void showOtpSentDialog(int userId, String token) {
     String phone = phone_Number.text.trim();
+print("📞 phone text: ${phone_Number.text}");
+print("📲 cleaned phone: ${phone_Number.text.trim()}");
+
     showDialog(
+      
       context: Get.context!,
       builder: (context) => CustomOtpDialog(
         title: "OTP Sent",
@@ -142,6 +145,7 @@ class SignupControllerImp extends SignupController {
         nextScreen: VerifyCodeScreen(
           fromSignup: true,
           userId: userId,
+   
         ),
       ),
     );
@@ -154,37 +158,45 @@ class SignupControllerImp extends SignupController {
     String name = username.text.trim();
     String loc = location.text.trim();
 
-    // ✅ Get session_token from SharedPreferences or any other source
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? sessionToken = prefs.getString('session_token');
 
     if (sessionToken == null || sessionToken.isEmpty) {
-      Get.snackbar("Error", "Session token is missing");
+      Get.snackbar("خطأ", "Session token مفقود");
       return;
     }
 
     if (phone.isEmpty || pass.isEmpty) {
-      Get.snackbar("Error", "Phone and password cannot be empty");
+      Get.snackbar("خطأ", "رقم الهاتف وكلمة المرور مطلوبة");
       return;
     }
 
     try {
       var response = await _dataSignup.getData(name, phone, pass, loc, sessionToken);
-      print("📡 RESPONSE RECEIVED: $response");
+
+
+
+
+
+
+
 
       if (response is Map && response.containsKey('userId')) {
+
         int userId = response['userId'];
         String? token = response['access_token'];
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+        print("🧾 userId: ${response['userId']}");
+  print("🔑 access_token: ${response['access_token']}");
 
-        await prefs.setString('userId', userId.toString());
+
         if (token != null) {
-          await prefs.setString('token', token);
+          await prefs.setString('token', token); // نحفظ التوكن مباشرة هنا
         }
 
-        showOtpSentDialog(userId);
+        showOtpSentDialog(userId, token ?? "");
       }
     } catch (e) {
-      print("❌ Error in signup API call: $e");
       if (e.toString().contains("The mobile has already been taken")) {
         Get.snackbar("تنبيه", "لقد سجلت من قبل باستخدام هذا الرقم");
       } else {

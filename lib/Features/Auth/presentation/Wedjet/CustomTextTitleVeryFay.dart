@@ -33,6 +33,6 @@ class CustomTitle extends StatelessWidget {
       ),
     );
 
-    return center ? Center(child: textWidget) : textWidget;
+    return center ? Center(child: textWidget) : textWidget; //if center is true the text will be in the midle eather it be in therir space 
   }
 }

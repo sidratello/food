@@ -41,7 +41,7 @@ class Api {
   }) async {
     Map<String, String> headers = {
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
+      'Accept': 'application/json',    //i tell him to give me the data as json 
     };
 
     if (sendToken) {
@@ -50,7 +50,9 @@ class Api {
       if (storedToken != null) {
         headers['Authorization'] = 'Bearer $storedToken';
       }
-    } else if (token != null && token.isNotEmpty) {
+    } 
+    
+    else if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
     }
 
@@ -59,11 +61,12 @@ class Api {
     try {
       http.Response response = await http.post(
         Uri.parse(url),
-        body: jsonEncode(body),
+        body: jsonEncode(body), //when we send the data it should be as json so we put it in json so the server can red it 
         headers: headers,
       );
+ 
 
-      print("✅ تم استلام الرد، الكود: ${response.statusCode}");
+      print("✅ تم استلام الرد، الكود: ${response.statusCode}");   
 
       final responseBody = jsonDecode(response.body);
 
@@ -75,8 +78,18 @@ class Api {
         throw Exception(errorMessage);
       }
     } catch (e) {
-      print("❌ حدث خطأ أثناء الاتصال: $e");
-      throw Exception("حدث خطأ أثناء الاتصال بالخادم: $e");
+    //  هذا ما يحصل عند 401 أو 404
+    String errorMessage = e.toString().replaceFirst("Exception: ", "").trim();//remove exception word from message
+
+    if (errorMessage.contains("Incorrect password.")) {
+      Get.snackbar("كلمة المرور خاطئة", "يرجى التحقق من كلمة المرور");
+    } else if (errorMessage.contains("User not found")) {
+      Get.snackbar("المستخدم غير موجود", " يرجى  انشاء حساب");
+    } else {
+      Get.snackbar("فشل", "حدث خطأ: $errorMessage");
     }
+
+    print("❌ Login error: $errorMessage");
+  }
   }
 }

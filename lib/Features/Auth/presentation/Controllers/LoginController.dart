@@ -22,13 +22,10 @@ class LoginControllerImp extends LoginController {
     final Datalogin _datalogin = Datalogin();
 
 void login() async {
-  String phone = phone_Number.text.trim();
+  String phone = phone_Number.text.trim(); //delet the space in the text 
   String pass = password.text.trim();
 
-  if (phone.isEmpty || pass.isEmpty) {
-    Get.snackbar("خطأ", "يرجى إدخال رقم الهاتف وكلمة المرور");
-    return;
-  }
+
 
   try {
     var response = await _datalogin.getData(phone, pass);
@@ -39,14 +36,15 @@ void login() async {
       await prefs.setString('token', response['access_token']);
 
       Get.to(HomePage());
-    } else if (response is Map && response.containsKey('message')) {
-      // ✅ هذا هو المهم
+    } 
+    else if (response is Map && response.containsKey('message')) {
+
       String message = response['message'];
       Get.snackbar("فشل تسجيل الدخول", message);
     } 
   } catch (e) {
-    // ✅ هذا ما يحصل عند 401 أو 404
-    String errorMessage = e.toString().replaceFirst("Exception: ", "").trim();
+    //  هذا ما يحصل عند 401 أو 404
+    String errorMessage = e.toString().replaceFirst("Exception: ", "").trim();//remove exception word from message
 
     if (errorMessage.contains("Incorrect password.")) {
       Get.snackbar("كلمة المرور خاطئة", "يرجى التحقق من كلمة المرور");

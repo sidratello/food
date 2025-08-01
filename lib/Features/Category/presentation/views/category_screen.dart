@@ -37,23 +37,23 @@ class _CategoryScreenState extends State<CategoryScreen> {
       showAppBar: true,
       appBarTitle: 'Menu',
       showNavBar: false,
-      showBackButton: false, // ✅ عرض زر الرجوع
+      showBackButton: false, 
     
       body: Column(
         children: [
-          // ✅ حقل البحث
+    
           CustomSearchField(
             controller: _searchController,
             onChanged: controller.onSearch,
           ),
 
-          // ✅ النتائج أو التصنيفات
+   
           Expanded(
             child: Obx(() {
               if (controller.isSearching.value) {
                 if (controller.searchResults.isEmpty) {
                   return const Center(child: Text('لا توجد نتائج'));
-                }
+                        }
 //search result have the data we search about
                 return ListView.builder(
                   padding: const EdgeInsets.all(16),
@@ -75,7 +75,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                 categoryImage: item['image'],
                               ));
                         } else {
-                          print("✅ منتج: ${item['name']}");
+                          print("منتج: ${item['name']}");
                         }
                       },
                       child: Card(
@@ -90,7 +90,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                           leading: Image.network(
                             imageUrl,
                             width: 50,
-                            errorBuilder: (context, error, stackTrace) =>
+                            errorBuilder: (context, error, stackTrace) =>  //th errorbuilder is a function that is in image network
                                 const Icon(Icons.broken_image),
                           ),
                         ),
@@ -98,7 +98,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     );
                   },
                 );
-              } else {
+              } 
+              
+              else {                                              //if the user doesnt search we display the catrgory
                 //else if he doesnt search the category apear
                 if (controller.isLoading.value) {
                   return const Center(child: CircularProgressIndicator());

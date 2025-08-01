@@ -10,9 +10,9 @@ class CategoryServices {
     var response = await Api().get(url: Applink.Category, token: token);
 print('Response from API: $response');
 
-    // نتأكد أن response يحتوي على statusCode = 200
+  
     if (response is Map && response['stutuse'] == "success") {
-       List<dynamic> data = response['categories'] ?? [];// أو حسب هيكلة البيانات من API
+       List<dynamic> data = response['categories'] ?? [];
 
       List<CategoryModel> categoryList = [];
       for (int i = 0; i < data.length; i++) {
@@ -21,7 +21,7 @@ print('Response from API: $response');
 
       return categoryList;
     } else {
-      // يمكنك رفع استثناء أو إعادة قائمة فارغة أو أي معالجة أخرى
+    
       throw Exception('Failed to load categories or invalid response');
     }
   }

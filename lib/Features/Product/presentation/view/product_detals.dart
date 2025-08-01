@@ -42,7 +42,7 @@ int _quantity = 1;
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // ✅ Stack لصورة المنتج + أيقونات الرجوع والمفضلة
+       
             Stack(
               children: [
                 SizedBox(
@@ -61,7 +61,7 @@ int _quantity = 1;
                   child: IconButton(
                     icon: const Icon(Icons.arrow_back, color: Colors.white),
                     onPressed: () {
-                      Navigator.pop(context); // للعودة للخلف
+                      Navigator.pop(context); 
                     },
                   ),
                 ),
@@ -107,7 +107,6 @@ int _quantity = 1;
         
                   const SizedBox(height: 20),
         
-                  // ✅ ملاحظات إضافية
                    Text(
                     "ملاحظات إضافية",
                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -127,7 +126,7 @@ int _quantity = 1;
         
                   const SizedBox(height: 24),
         
-                  // ✅ التحكم بالعدد
+             
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -156,7 +155,7 @@ int _quantity = 1;
         
                   const SizedBox(height: 16),
         
-                  // ✅ زر الإضافة للسلة
+                  //  زر الإضافة للسلة
                   SizedBox(
                     width: double.infinity,
                     height: 50,

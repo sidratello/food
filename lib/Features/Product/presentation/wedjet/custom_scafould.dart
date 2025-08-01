@@ -11,7 +11,7 @@ class CustomScaffold extends StatelessWidget {
   final Function(int)? onTap;
   final Widget? floatingActionButton;
   final bool showBackButton; // زر الرجوع المخصص
-  final VoidCallback? onBackPressed; // ما الذي يحدث عند الضغط عليه
+  final VoidCallback? onBackPressed; 
 
   const CustomScaffold({
     super.key,
@@ -31,12 +31,12 @@ class CustomScaffold extends StatelessWidget {
     return Scaffold(
      appBar: showAppBar
     ? AppBar(
-        automaticallyImplyLeading: false, 
-           toolbarHeight: 40,// هذا هو المهم لمنع الزر التلقائي
+        automaticallyImplyLeading: false, //هذا يمنع Flutter من إظهار زر الرجوع تلقائيًا.
+           toolbarHeight: 40, //مفيد لتقليل المساحة المستخدمة في أعلى الشاشة.
         leading: showBackButton
             ? IconButton(
                 icon: const Icon(Icons.arrow_back),
-                onPressed: onBackPressed ?? () => Navigator.pop(context),
+                onPressed: onBackPressed ?? () => Navigator.pop(context), //if we have showBackButton it will excute else we go to breafuce screen 
               )
             : null,
                   
@@ -50,6 +50,9 @@ class CustomScaffold extends StatelessWidget {
               elevation: 0,
             )
           : null,
+
+
+
       body: body,
       bottomNavigationBar: showNavBar
           ? CurvedNavigationBar(
@@ -65,6 +68,9 @@ class CustomScaffold extends StatelessWidget {
               ],
             )
           : null,
+
+
+
       floatingActionButton: floatingActionButton,
     );
   }

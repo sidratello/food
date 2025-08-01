@@ -34,7 +34,8 @@ height: 30,
                                       children:[
             Button(
               title: 'customer',
-              onPressed: (){controller.selectRole('user');}
+              onPressed: (){
+                controller.selectRole('user');}
               , color:Colors.pink,
             ),
             const SizedBox(width: 5),

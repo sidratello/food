@@ -21,7 +21,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final imageUrl =
-        "http://10.177.14.225:8000/${product.image.split('/').last}";
+        "http://192.168.1.6:8000/${product.image.split('/').last}";
 
 
     return GestureDetector(
@@ -30,7 +30,7 @@ class ProductCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
-        clipBehavior: Clip.hardEdge,
+        clipBehavior: Clip.hardEdge,   //amoid the image to be outside the card
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

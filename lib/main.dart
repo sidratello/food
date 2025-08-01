@@ -94,6 +94,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/Signup_screen.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/UserTypeChoiceScreen.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/login_screen.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/views/splashscreeen.dart';
 import 'package:flutter_application_7/Features/reservation/presentation/views/reservation_screen.dart';
 import 'package:flutter_application_7/Features/show_reservation/presentation/views/show_reservation_screen.dart';
 import 'package:flutter_application_7/Features/Category/presentation/views/category_screen.dart';
@@ -149,6 +150,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       getPages: [
+         GetPage(name: '/splash', page: () => const SplashScreen()),
         GetPage(
           name: "/onbording",
           page: () => onbording(),
@@ -163,6 +165,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/reservation", page: () => ReservationScreen()),
         GetPage(name: "/showreservation", page: () => ShowReservationScreen()),
                 GetPage(name: "/usertype", page: () => UserTypeChoiceScreen()),
+
 
       ],// This trailing comma makes auto-formatting nicer for build methods.
     );

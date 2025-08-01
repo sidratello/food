@@ -18,6 +18,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 class VerifyCodeScreen extends StatelessWidget {
   final bool fromSignup;
  final int userId;
+ 
   const VerifyCodeScreen({super.key, required this.fromSignup, required this.userId});
 
   @override
@@ -26,6 +27,7 @@ class VerifyCodeScreen extends StatelessWidget {
 
     
     return Scaffold(
+      
       backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(icon:Icon(Icons.arrow_back),
@@ -67,11 +69,11 @@ class VerifyCodeScreen extends StatelessWidget {
                     appContext: context,
                     length: 5,
                     onChanged: (value) {},
-                    keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.number, 
                     pinTheme: PinTheme(
-                      activeColor: Colors.pink,
-                      selectedColor: Colors.pinkAccent,
-                      inactiveColor: Colors.pink.shade100,
+                      activeColor: Colors.pink,  //activeColor: لون الخانة عندما تكون مفعّلة أو يتم الكتابة فيها.
+                      selectedColor: Colors.pinkAccent,  //celectedColor: لون الخانة التي حددها المستخدم (التي بها المؤشر الآن).
+                      inactiveColor: Colors.pink.shade100,  //inactiveColor: لون الخانات الأخرى التي لا يتم الكتابة فيها الآن.
                       shape: PinCodeFieldShape.box,
                       borderRadius: BorderRadius.circular(10),
                       fieldHeight: 60,
@@ -89,7 +91,7 @@ class VerifyCodeScreen extends StatelessWidget {
                       const Text("Didn't receive code? "),
                       GestureDetector(
                         onTap: () {
-                          // تنفيذ إعادة الإرسال
+                    
                         },
                         child: const Text(
                           "Resend code",
@@ -104,7 +106,7 @@ class VerifyCodeScreen extends StatelessWidget {
             
                   const SizedBox(height: 30),
             
-                  // زر التحقق
+            
                   SizedBox(
                     width: double.infinity,
                     height: 50,
@@ -112,8 +114,11 @@ class VerifyCodeScreen extends StatelessWidget {
               text: "Verify",
             onPressed: () {
               if (fromSignup) {
-                // جاء من التسجيل
-                Get.offAllNamed('/home'); // أو استخدم Navigator
+               String otpCode = "";
+
+  controller.veryfay();// جاء من التسجيل
+                Get.offAllNamed('/login'); 
+
               } else {
                controller.veryfay();
                // جاء من نسيت كلمة المرور

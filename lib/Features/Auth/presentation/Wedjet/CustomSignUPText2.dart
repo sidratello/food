@@ -21,7 +21,7 @@ class CustomText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-       textDirection: TextDirection.ltr,
+       textDirection: TextDirection.ltr, //from left to right 
       textAlign: textAlign,
       style: TextStyle(
         color: color,

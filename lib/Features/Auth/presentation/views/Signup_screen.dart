@@ -355,7 +355,7 @@ body:  SingleChildScrollView(
                 
                    if (formKey.currentState!.validate()) {
                          
-                          controller.signup();// إذا كل شيء صحيح ينتقل للصفحة التالية
+                          controller.signup();
                         } else {
                           Get.snackbar("Error", "Please fix the errors above");
                         }

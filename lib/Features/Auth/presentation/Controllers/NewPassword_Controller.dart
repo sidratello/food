@@ -18,7 +18,7 @@ class RePasswordControllerImp extends RePasswordController {
 
   RePasswordControllerImp( {required this.userId});
   TextEditingController password = TextEditingController();
- // سيتم تمريره من الشاشة السابقة (VerifyCode)
+
 
   final DataRePassword _dataRePassword = DataRePassword();
 
@@ -37,8 +37,7 @@ class RePasswordControllerImp extends RePasswordController {
 
     if (response is Map && response['message'] == 'Password reset successful.') {
       Get.snackbar("تم", "تم إعادة تعيين كلمة المرور بنجاح");
-      // يمكنك الذهاب إلى صفحة تسجيل الدخول
-      // Get.offAll(Login());
+
     } else {
       Get.snackbar("فشل", "حدث خطأ أثناء إعادة تعيين كلمة المرور");
       print("Response: $response");

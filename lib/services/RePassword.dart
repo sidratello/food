@@ -11,9 +11,9 @@ String password,
   }) async {
     try {
       var response = await Api().post(
-        url: Applink.RePaswordUrl(userId), // 👈 الآن userId معرف
+        url: Applink.RePaswordUrl(userId), 
         body: {
-          'new_password':password,   // 👈 الآن otpValue معرف
+          'new_password':password,  
         },
         token: '',
       );

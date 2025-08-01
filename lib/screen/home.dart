@@ -82,7 +82,7 @@ import 'package:flutter_application_7/Features/Product/presentation/wedjet/custo
 import 'package:flutter_application_7/screen/acount.dart';
 
 
-// تأكد من مسار ملف AccountScreen
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -102,12 +102,7 @@ class _HomePageState extends State<HomePage> {
 
   ];
 
-  // final List<String> _titles = [
-  //   'Home',
-  //   'Favourites',
-  //   'Cart',
-  //   'Account',
-  // ];
+
 
   @override
   Widget build(BuildContext context) {

@@ -43,7 +43,7 @@ final Icon icon;
         hintText: hintText,
           contentPadding: const EdgeInsets.all(15),
              enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30), // 👈 Circular border
+          borderRadius: BorderRadius.circular(30),
        
       ),
       ),

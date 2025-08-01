@@ -17,7 +17,7 @@ import 'package:get/get.dart';
 class login extends StatelessWidget {
   login({super.key});
 
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>(); //Form is a wedjet to collect textfields in same place and the formkey the form wedjet need it   
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class login extends StatelessWidget {
                   bottomLeft: Radius.circular(90),
                 ),
               ),
-              child: ClipRRect(
+              child: ClipRRect(    //to make the edge  of image circulare
                 borderRadius: const BorderRadius.only(
                   bottomRight: Radius.circular(90),
                   bottomLeft: Radius.circular(90),
@@ -56,7 +56,7 @@ class login extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
-            Align(
+            Align(  //determinate the place of text 
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -119,10 +119,10 @@ class login extends StatelessWidget {
     child: Button(
 
     onPressed: () {
-    // ✅ هنا يتم فحص النموذج
-    if (formKey.currentState!.validate()) {
+
+    if (formKey.currentState!.validate()) { //the textfild should write in it so this call all the textfield and shure it isnt null 
     controller.login();
-    Get.to(CategoryScreen()); // إذا كل شيء صحيح ينتقل للصفحة التالية
+
     } else {
     Get.snackbar("Error", "Please fix the errors above");
     }

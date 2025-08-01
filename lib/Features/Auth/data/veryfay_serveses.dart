@@ -8,9 +8,9 @@ class DataVarificationFirst {
   }) async {
     try {
       var response = await Api().post(
-        url: Applink.verifyCodeUrl(userId), // 👈 الآن userId معرف
+        url: Applink.verifyCodeUrl(userId), 
         body: {
-          'verification_code': otpValue,   // 👈 الآن otpValue معرف
+          'verification_code': otpValue,  
         },
         token: '',
       );

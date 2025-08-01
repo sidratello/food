@@ -55,12 +55,12 @@ class CategoryController extends GetxController {
 
           //response return data that we search about 
 
-      print("🔍 رد السيرفر: $response");
+      print(" رد السيرفر: $response");
 
       final data = response['Search Results'] ?? [];
       searchResults.value = data;
     } catch (e) {
-      print("❌ Search Error: $e");
+      print("Search Error: $e");
       searchResults.clear();
     }
   }
