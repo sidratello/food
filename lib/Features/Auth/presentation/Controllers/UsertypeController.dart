@@ -24,7 +24,7 @@ class ChooseRoleControllerImp extends ChooseRoleController {
       await prefs.setString('user_role', role); // حفظ الدور
 
 
-      print("🔐 Session Token Saved: $sessionToken");
+      print(" Session Token Saved: $sessionToken");
      
       if (role == 'user') {
         Get.toNamed('/login');
