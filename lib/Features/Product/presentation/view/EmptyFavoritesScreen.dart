@@ -67,9 +67,9 @@ class _EmptyFavoritesScreenState extends State<EmptyFavoritesScreen>
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // 🖼️ صورة "No favorites yet"
+         
                 Image.asset(
-                 AppImageAsset.Favouriteimage , // تأكد من وضعها في assets
+                 AppImageAsset.Favouriteimage ,
                   width: 200,
                   height: 200,
                 ),

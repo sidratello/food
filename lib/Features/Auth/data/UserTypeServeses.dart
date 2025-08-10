@@ -18,11 +18,11 @@ class DataUserType {
         },
         token:'',
       );
-    print("API Response: $response"); // طباعة الاستجابة الناجحة
+    print("API Response: $response");
     return response;
   } catch (e) {
-    print("Error in API call: $e"); // طباعة الخطأ
-    return e; // إرجاع الخطأ
+    print("Error in API call: $e");
+    return e; 
   }
   }
 }

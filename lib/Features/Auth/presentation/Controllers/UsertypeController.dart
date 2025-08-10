@@ -17,16 +17,19 @@ class ChooseRoleControllerImp extends ChooseRoleController {
     if (response is Map && response.containsKey('session_token')) {
       String sessionToken = response['session_token'];
 
-      // ✅ حفظ التوكن في SharedPreferences
+    
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString('session_token', sessionToken);
 
-      print("🔐 Session Token Saved: $sessionToken");
-      // عملية اختيار الدور ناجحة
+      await prefs.setString('user_role', role); // حفظ الدور
+
+
+      print(" Session Token Saved: $sessionToken");
+     
       if (role == 'user') {
-        Get.toNamed('/login'); // شاشة تسجيل دخول المستخدم
+        Get.toNamed('/login');
       } else if (role == 'driver') {
-        Get.toNamed('/loginDriver'); // شاشة تسجيل دخول السائق
+        Get.toNamed('/loginDriver'); 
       }
       Get.snackbar('نجاح', 'تم اختيار الدور بنجاح');
     } else {

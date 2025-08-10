@@ -27,7 +27,7 @@ class ProductCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
-        clipBehavior: Clip.hardEdge,
+        clipBehavior: Clip.hardEdge,   //amoid the image to be outside the card
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

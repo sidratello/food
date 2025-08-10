@@ -8,7 +8,7 @@ class CustomOtpDialog extends StatelessWidget {
   final String buttonText;
   final String imagePath;
   final String urlToLaunch;
-  final Widget nextScreen; // الشاشة اللي تنتقل لها بعد الضغط
+  final Widget nextScreen; 
 
   const CustomOtpDialog({
     Key? key,
@@ -32,6 +32,7 @@ class CustomOtpDialog extends StatelessWidget {
     if (await canLaunchUrl(whatsappUri)) {
       await launchUrl(whatsappUri);
     } else {
+   
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text("تأكد من أن تطبيق WhatsApp مثبت على الجهاز"),
@@ -56,8 +57,8 @@ class CustomOtpDialog extends StatelessWidget {
       actions: [
    TextButton(
           onPressed: () {
-            Navigator.of(context).pop(); // إغلاق الديالوج
-            Get.to(nextScreen); // الذهاب إلى الشاشة الجديدة
+            Navigator.of(context).pop(); //to close the dialog screen and go tp nextscreen
+            Get.to(nextScreen); 
           },
           child: Text(buttonText),
         ),

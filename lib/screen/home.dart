@@ -6,8 +6,10 @@ import 'package:flutter_application_7/Features/Product/presentation/view/Favouri
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/custom_scafould.dart';
 import 'package:flutter_application_7/screen/acount.dart';
 
+
 // تأكد من مسار ملف AccountScreen
 import '../Features/Category/presentation/views/category_screen.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

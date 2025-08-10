@@ -54,7 +54,7 @@ RxSet<int> favouriteProductIds = <int>{}.obs; //like the set that doesnt  لا �
       
       prefs.setStringList(  
         'favourites',
-        favouriteProductIds.map((e) => e.toString()).toList(), //store the favouriteProductIds
+        favouriteProductIds.map((e) => e.toString()).toList(), //store the favouriteProductIds because the sharedrefrence work in string not int so we convert to int 
       );
 
 

@@ -9,11 +9,15 @@ class Applink {
   static const String VaryFayScreen = '$Server/verify2/6';
 
   static String verifyCodeUrl(int userId) => '$Server/verify2/$userId';
+
   static String RePaswordUrl(int userId) => '$Server/reserpa/$userId';
+
   static String verifyCodeUrlFirst(int userId) => '$Server/verify/$userId';
-  static const  String AddToCart='$Server/addtocart';
+  static const String AddToCart = '$Server/addtocart';
   static String Category = '$Server/category';
-  static String productCategory(int categoryId) => '$Server/product/$categoryId';
+
+  static String productCategory(int categoryId) =>
+      '$Server/product/$categoryId';
 
   static const String searchforproductandcategory = '$Server/Search1';
 
@@ -24,11 +28,14 @@ class Applink {
   static const String ShowFavourit = '$Server/showFav';
 
   static String reservation() => '$Server/reserve';
+
   static String showreservation() => '$Server/showreserve';
+
   static String updateReservation(int id) => '$Server/update/$id';
+
   static String cancelReservation(int id) => '$Server/cancelReservation/$id';
 
+//  static String productByCategory(int categoryId) => '$Server/product/$categoryId';
   // driver apis:
   static const String getOrders = '$Server/driver/orders/confirmed';
-
 }

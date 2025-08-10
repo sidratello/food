@@ -24,19 +24,19 @@ class ProductsScreen extends StatelessWidget {
     productController.fetchProducts(categoryId, "");
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent, // لو تحب يكون شفاف فوق الصورة
-        elevation: 0, // إزالة الظل
+        backgroundColor: Colors.transparent,
+        elevation: 0,          // إزالة الظل
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
-            Get.back(); // ترجع للشاشة السابقة باستخدام GetX
+            Get.back();      // ترجع للشاشة السابقة باستخدام GetX
           },
         ),
       ),
-      extendBodyBehindAppBar: true,
+      extendBodyBehindAppBar: true, //AppBar  الصورة خلف الـ
       body: Column(
         children: [
-          // صورة التصنيف في الأعلى
+
           Container(
             height: 200,
             width: double.infinity,
@@ -85,7 +85,7 @@ class ProductsScreen extends StatelessWidget {
                   return ProductCard(
                     product: product,
                     onTap: () {
-                      // فتح صفحة التفاصيل
+
                       Get.to(() => ProductDetailsScreen(product: product));
                     },
                   );

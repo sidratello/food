@@ -9,7 +9,7 @@ String? validatePhoneNumber(String? phone) {
 
 
 
-  return null; // صحيح
+  return null; // if we dont have any error it didnt return the message error 
 }
 
 String? validatePassword(String? password) {
@@ -18,7 +18,7 @@ String? validatePassword(String? password) {
   }
 
   if (password.length < 8) {
-    // ✅ عرض Snackbar عند إدخال كلمة مرور أقل من 8
+  
 
     return 'password must be at least 8 characters';
   }
