@@ -13,7 +13,6 @@ class CustomScaffold extends StatelessWidget {
   final bool showBackButton; // زر الرجوع المخصص
   final VoidCallback? onBackPressed; // ما الذي يحدث عند الضغط عليه
   final Widget? drawer;
-  final VoidCallback? onBackPressed;
 
   const CustomScaffold({
     super.key,

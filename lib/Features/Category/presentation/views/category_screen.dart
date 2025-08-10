@@ -39,7 +39,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
       showNavBar: false,
       showBackButton: false, // ✅ عرض زر الرجوع
       drawer: CustomDrawer(),
-      showBackButton: false,
       body: Column(
         children: [
 
