@@ -1,6 +1,6 @@
 class Applink {
-  static const String Server = 'http://192.168.148.204:8000/api';
-  static const String imageBaseUrl = 'http://192.168.148.204:8000/';
+  static const String Server = 'http://192.168.21.204:8000/api';
+  static const String imageBaseUrl = 'http://192.168.21.204:8000/';
 
   static const String choose = '$Server/chooseRole';
   static const String login = '$Server/login';
@@ -27,4 +27,8 @@ class Applink {
   static String showreservation() => '$Server/showreserve';
   static String updateReservation(int id) => '$Server/update/$id';
   static String cancelReservation(int id) => '$Server/cancelReservation/$id';
+
+  // driver apis:
+  static const String getOrders = '$Server/driver/orders/confirmed';
+
 }

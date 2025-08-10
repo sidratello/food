@@ -136,7 +136,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/showorders",
+      initialRoute: "/choose-role",
       theme: ThemeData(
         fontFamily: "fonts",
         textTheme: const TextTheme(
