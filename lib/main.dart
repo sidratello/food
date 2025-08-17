@@ -92,7 +92,6 @@ import 'package:flutter_application_7/Features/Product/presentation/controller/S
 import 'package:flutter_application_7/Features/Product/presentation/controller/Show_Favourite_Controller.dart';
 import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:flutter_application_7/delivery_app/show_orders/presentation/views/show_orders_screen.dart';
-import 'package:flutter_application_7/firebase_options.dart';
 import 'package:flutter_application_7/screen/acount.dart';
 
 import 'package:flutter_application_7/screen/home.dart';
@@ -103,13 +102,14 @@ import 'Features/Auth/presentation/views/UserTypeChoiceScreen.dart';
 import 'Features/Category/presentation/views/category_screen.dart';
 import 'core/constant/color.dart';
 
+import 'firebase_options.dart';
 import 'screen/onbording.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   Get.put(Add_TO_Favourite_Controller(), permanent: true);
   Get.put(ShowFavouriteController(), permanent: true);
   Get.put(ShowCartController(), permanent: true);

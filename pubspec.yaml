@@ -34,7 +34,7 @@ dependencies:
   curved_navigation_bar: ^1.0.6
   get: ^4.6.6
   http: ^1.2.0
-  firebase_core: ^2.27.0
+  firebase_core: ^2.32.0
   flutter_map: ^6.1.0
   location: ^5.0.0
   latlong2: ^0.9.1
