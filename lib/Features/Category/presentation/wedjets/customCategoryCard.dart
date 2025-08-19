@@ -32,7 +32,7 @@ class CategoryCard extends StatelessWidget {
             // نفترض أن رابط الصورة يحتوي فقط على اسم الملف
             image: NetworkImage(
 
-              "http://192.168.1.6:8000/${category.image.split('/').last}",
+              "http://192.168.1.10:8000/${category.image.split('/').last}",
 
 
             ),

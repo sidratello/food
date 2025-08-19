@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_7/Features/reservation/data/resrevation_model.dart';
+import 'package:flutter_application_7/Features/show_reservation/presentation/controllers/cancel_reservation_controller.dart';
+import 'package:get/get.dart';
+import 'package:flutter_application_7/Features/Reservation/presentation/widgets/drawer.dart';
 import 'package:flutter_application_7/Features/reservation/presentation/views/reservation_screen.dart';
+import 'package:flutter_application_7/Features/show_reservation/presentation/controllers/add_order_controller.dart';
 import 'package:flutter_application_7/Features/show_reservation/presentation/controllers/show_reservation_controller.dart';
 import 'package:flutter_application_7/Features/show_reservation/presentation/widgets/appbar_showreservation.dart';
 import 'package:flutter_application_7/core/constant/color.dart';
-import 'package:get/get.dart';
-
-import '../../../../wedjet/drawer/drawer.dart';
 
 class ShowReservationScreen extends StatelessWidget {
+  ShowReservationScreen({super.key});
+
   final ShowReservationController controller =
       Get.put(ShowReservationController());
-
+  final Add_order_controller addOrderController =
+      Get.put(Add_order_controller());
+final cancelController = Get.put(CancelReservationController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,103 +24,115 @@ class ShowReservationScreen extends StatelessWidget {
       appBar: const CustomAppBarShowReservation(
         title: "My Reservation",
       ),
-      body: GetBuilder(
-        init: ShowReservationController(),
-        builder: (controller) {
-          if (controller.isLoading) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (controller.errorMessage != null) {
-            return Center(
-                child: Text(controller.errorMessage ?? 'unexpected error'));
-          }
-          return controller.reservations.isEmpty
-              ? const Center(child: Text('لا يوجد حجوزات حالياً.'))
-              : Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: ListView.builder(
-                    itemCount: controller.reservations.length,
-                    padding: const EdgeInsets.all(16),
-                    itemBuilder: (context, index) {
-                      final reservation = controller.reservations[index];
-                      return Container(
-                        margin: const EdgeInsets.only(bottom: 16),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFFFE4EC), // زهر فاتح
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: Colors.pink.shade100),
-                        ),
-                        child: ListTile(
-                          //contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                          title: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("التاريخ : ${reservation.date}",
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold)),
-                              const SizedBox(height: 4),
-                              Text("عدد الكراسي : ${reservation.guestsCount}"),
-                              Text("الساعة : ${reservation.starttime}"),
-                            ],
-                          ),
-                          trailing: Column(
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: InkWell(
-                                  onTap: () {
-                                    controller.cancelReservation(reservation.id);
-                                    controller.getReservations();
-                                  },
-                                  child: const Icon(
-                                    Icons.delete,
-                                    color: Colors.red,
-                                    size: 30,
-                                  ),
-                                ),
-                              ),
-                              const Expanded(
-                                flex: 3,
-                                child: SizedBox(height: 30),
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: InkWell(
-                                  onTap: () {
-                                    Get.to(
-                                      ReservationScreen(
-                                        reservationModel: ReservationModelForm(
-                                          date: reservation.date.toString(),
-                                          guestsCount: reservation.guestsCount
-                                              .toString(),
-                                          notes: reservation.notes,
-                                          startTime: reservation.starttime,
-                                          endTime: reservation.endtime,
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                  child: const Icon(
-                                    Icons.edit,
-                                    color: Colors.grey,
-                                    size: 30,
-                                  ),
-                                ),
-                              ),
-                            ],
+      body: Obx(() {
+        if (controller.isLoading.value) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        if (controller.errorMessage.value != null) {
+          return Center(
+            child: Text(controller.errorMessage.value ?? 'Unexpected error'),
+          );
+        }
+
+        if (controller.reservations.isEmpty) {
+          return const Center(
+            child: Text('لا يوجد حجوزات حالياً.'),
+          );
+        }
+
+        return Directionality(
+          textDirection: TextDirection.rtl,
+          child: ListView.builder(
+            itemCount: controller.reservations.length,
+            padding: const EdgeInsets.all(16),
+            itemBuilder: (context, index) {
+              final reservation = controller.reservations[index];
+
+              return Container(
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFFFE4EC), // خلفية زهر فاتح
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.pink.shade100),
+                ),
+                child: ListTile(
+             // يسمح بزيادة الارتفاع إذا احتاج
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "التاريخ : ${reservation.date}",
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 4),
+                      Text("عدد الكراسي : ${reservation.guestsCount}"),
+                      Text(
+                        "من: ${reservation.starttime} إلى ${reservation.endtime}",
+                      ),
+                      const SizedBox(height: 8),
+
+                      // زر تأكيد الطلب
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          addOrderController.Order('local', reservation.id);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppColor.pink,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 10,
                           ),
                         ),
-                      );
-                    },
+                        icon: const Icon(Icons.shopping_cart_checkout),
+                        label: const Text(
+                          "تأكيد الطلب لهذا الحجز",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ],
                   ),
-                );
-        },
-      ),
+
+                  // الأزرار الجانبية (حذف + تعديل)
+                  trailing: Wrap(
+                    direction: Axis.vertical,
+                    spacing: 8,
+                    children: [
+                      IconButton(
+                        constraints: const BoxConstraints(),
+                        padding: EdgeInsets.zero,
+                        iconSize: 26,
+                        icon: const Icon(Icons.delete, color: Colors.red),
+                        onPressed: () {
+                   
+
+
+cancelController.cancel(reservation.id);
+
+                        },
+                      ),
+                      // IconButton(
+                      //   constraints: const BoxConstraints(),
+                      //   padding: EdgeInsets.zero,
+                      //   iconSize: 26,
+                      //   icon: const Icon(Icons.edit, color: Colors.grey),
+                      //   onPressed: () {
+                      //     Get.to(() => ReservationScreen());
+                      //   },
+                      // ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        );
+      }),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: ElevatedButton(
           onPressed: () {
-            Get.to(ReservationScreen());
+            Get.to(() => ReservationScreen());
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: AppColor.pink,

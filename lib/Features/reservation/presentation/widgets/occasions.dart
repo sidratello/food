@@ -25,29 +25,3 @@ class Occasions extends StatelessWidget {
     );
   }
 }
-
-// DropdownButtonFormField<String>(
-// decoration: const InputDecoration(
-// labelText: "نوع المناسبة",
-// labelStyle: TextStyle(color: Color(0xfff83962)),
-// enabledBorder: UnderlineInputBorder(
-// borderSide: BorderSide(color: Colors.black),
-// ),
-// focusedBorder: UnderlineInputBorder(
-// borderSide: BorderSide(color: Colors.black),
-// ),
-// ),
-// value: selectedOccasion,
-// onChanged: (value) => setState(() => selectedOccasion = value),
-// items: occasions
-//     .map((o) => DropdownMenuItem(
-// value: o,
-// child: Text(
-// o,
-// style: const TextStyle(color: Colors.black),
-// ),
-// ))
-//     .toList(),
-// style: const TextStyle(color: Color(0xfff83962)),
-// iconEnabledColor: Color(0xfff83962),
-// );

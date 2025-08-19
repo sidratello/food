@@ -38,6 +38,7 @@ class Api {
     required dynamic body,
     String? token,
     bool sendToken = false,
+   
   }) async {
     Map<String, String> headers = {
       'Content-Type': 'application/json',
@@ -59,6 +60,7 @@ class Api {
     print("📡 جاري إرسال الطلب إلى: $url");
 
     try {
+   
       http.Response response = await http.post(
         Uri.parse(url),
         body: jsonEncode(body), //when we send the data it should be as json so we put it in json so the server can red it 
@@ -67,8 +69,12 @@ class Api {
  
 
       print("✅ تم استلام الرد، الكود: ${response.statusCode}");   
+   print("🧾 Body المرسل: $body");
+      // final responseBody = jsonDecode(response.body);
+      final responseBody = response.body.isNotEmpty
+    ? jsonDecode(response.body)
+    : {"message": "الرد كان فارغاً من السيرفر"};
 
-      final responseBody = jsonDecode(response.body);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         print("📊 بيانات الاستجابة: $responseBody");
@@ -92,4 +98,58 @@ class Api {
     print("❌ Login error: $errorMessage");
   }
   }
+
+
+
+
+
+Future<dynamic> delete(
+  // String Function(int product_id) deletFromFav,
+   {
+  required String url,
+  String? token,
+  bool sendToken = false,
+}) async {
+  Map<String, String> headers = {
+    'Accept': 'application/json',
+  };
+
+  if (sendToken) {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    String? storedToken = sharedPreferences.getString('token');
+    if (storedToken != null) {
+      headers['Authorization'] = 'Bearer $storedToken';
+    }
+  } else if (token != null && token.isNotEmpty) {
+    headers['Authorization'] = 'Bearer $token';
+  }
+
+  try {
+    print("🔴 إرسال طلب DELETE إلى: $url");
+
+    final response = await http.delete(Uri.parse(url), headers: headers);
+
+    print("🟢 تم استلام الرد، الكود: ${response.statusCode}");
+
+    final responseBody = response.body.isNotEmpty
+        ? jsonDecode(response.body)
+        : {"message": "الرد كان فارغاً من السيرفر"};
+
+    if (response.statusCode == 200 || response.statusCode == 204) {
+      return responseBody;
+    } else {
+      final errorMessage = responseBody["message"] ?? "حدث خطأ غير متوقع";
+      throw Exception(errorMessage);
+    }
+  } catch (e) {
+    String errorMessage = e.toString().replaceFirst("Exception: ", "").trim();
+    Get.snackbar("خطأ في الحذف", errorMessage);
+    print("❌ Delete error: $errorMessage");
+  }
+}
+
+
+
+
+
 }

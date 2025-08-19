@@ -9,5 +9,6 @@ class AppImageAsset {
  static const String onBoardingImagefoor2  = "$rootImages/save5.jpg" ;
 static const String Favouriteimage  = "$rootImages/Favouriteimage.png" ;
   static const String emtycartimage  = "$rootImages/emtycartImage.png" ;
+    static const String location_mage  = "$rootImages/locationphoto.jpg" ;
 
 }

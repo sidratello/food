@@ -13,19 +13,11 @@ var response = await Api().get(url:Applink.ShowCart,token: token); //response is
 
 if (response is Map ){
 
-    
-//         List<dynamic> CartJson = response['cart'];//response['cart']; is a list "cart": [] in map {"cart": [], "total": 1723000}
-//                                                   //i want to translate each item in cart that is list and have map to object of CartItemModel so i can use it 
-
-// List<CartItemModel> CartList = [];
-// for (int i = 0; i < CartJson.length; i++) {
-//   CartList.add(CartItemModel.fromJson(CartJson[i]));
-// }
-// return CartList;
+  
 
 
 
-return CartResponseModel.fromJson(Map<String, dynamic>.from(response));
+return CartResponseModel.fromJson(Map<String, dynamic>.from(response)); //convert the responce from map to object of CartResponseModel
 
 
 }

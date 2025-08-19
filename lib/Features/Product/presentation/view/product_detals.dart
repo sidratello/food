@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Product/data/model/product_model.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/Add_To_Cart_Controller.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/Add_To_Favourite_controller.dart';
+import 'package:flutter_application_7/Features/Product/presentation/controller/Delet_from_favourite_controller.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/CUstomSarch.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/CustomText_For_DetalsProduct.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/productCard_wedjet.dart';
@@ -75,8 +76,10 @@ int _quantity = 1;
           : Icons.favorite_border,
       color: Colors.red,
     ),
-    onPressed: () {
-      favController.toggleFavourite(product.id); //when the user click on the love icon it change the sate of it 
+    onPressed: () async {
+      favController.toggleFavourite(product.id);
+      
+//when the user click on the love icon it change the sate of it 
     },
   )),
 ),

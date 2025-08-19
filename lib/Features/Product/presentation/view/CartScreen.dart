@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_7/Features/Product/presentation/controller/Delet_From_Cart_Controller.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/ShowCart_Controller.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/Show_Favourite_Controller.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/cusom_order_buttom.dart';
@@ -22,7 +23,9 @@ class CartScreen extends StatelessWidget {
       appBarTitle: 'Cart',
    showNavBar: false,
       body:       
-       Obx(() {
+       Obx(
+        
+        () {
         if (controller.isLoading.value) {
           return const Center(child: CircularProgressIndicator());
         }
@@ -62,7 +65,7 @@ class CartScreen extends StatelessWidget {
           );
         }
 
-        // ✅ السلة تحتوي على منتجات
+   
         return Column(
           children: [
             Expanded(
@@ -86,11 +89,19 @@ class CartScreen extends StatelessWidget {
                       ),
                       leading: 
                            Image.network(
-                             "http://192.168.1.6:8000/${product.image.split('/').last}",
+                             "http://192.168.1.10:8000/${product.image.split('/').last}",
                               width: 50,
                               errorBuilder: (context, error, stackTrace) =>
                                   const Icon(Icons.broken_image),
-                            )
+                            ),
+                            trailing: IconButton(
+  icon: const Icon(Icons.delete, color: Colors.red),
+  onPressed: () {
+    final deleteController = Get.put(DeleteCartController());
+    deleteController.deleteFromCart(product.productId);
+  },
+),
+
                   
                     ),
                   );

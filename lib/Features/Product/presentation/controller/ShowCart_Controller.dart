@@ -21,7 +21,7 @@ var CartList = <CartItemModel>[].obs;
     super.onInit();
     fetchCart();
   }
-   void fetchCart() async { //fetch the data from the server   جلب بيانات السلة من السيرفر.
+   void fetchCart() async { //fetch the data from the server   
       try {
        isLoading.value = true;
        SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -33,11 +33,7 @@ var CartList = <CartItemModel>[].obs;
         total.value = result.total; //result  بالمحتوى الموجود داخل  CartList استبدال كل محتوى القائمة 
       
 
-  // total.value = result['total'].toString();
-  // List<CartItemModel> items = (result['cart'] as List)
-  //     .map((item) => CartItemModel.fromJson(item))
-  //     .toList();
-  // CartList.assignAll(items);
+
 }
 
 

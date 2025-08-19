@@ -43,7 +43,7 @@ class ProductsScreen extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
 
-                image: NetworkImage("http://192.168.1.6:8000/${categoryImage.split('/').last}"),
+                image: NetworkImage("http://192.168.1.10:8000/${categoryImage.split('/').last}"),
 
 
                 fit: BoxFit.cover,

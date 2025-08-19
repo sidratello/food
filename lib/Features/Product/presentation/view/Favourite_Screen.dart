@@ -6,6 +6,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_7/Features/Product/presentation/controller/Delet_from_favourite_controller.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/Show_Favourite_Controller.dart';
 
 import 'package:flutter_application_7/Features/Product/presentation/view/EmptyFavoritesScreen.dart';
@@ -30,11 +31,10 @@ class FavouriteScreen extends StatelessWidget {
       }
 
       if (favController.favouriteList.isEmpty) {
-        return const EmptyFavoritesScreen(); // شاشة فارغة إذا لا توجد مفضلات
+        return const EmptyFavoritesScreen(); 
       }
 
-      // return Scaffold(
-      //   appBar: AppBar(title: const Text("المفضلة")),
+  
       return CustomScaffold(
         showAppBar: true,
         appBarTitle: 'المفضلة',
@@ -50,11 +50,19 @@ class FavouriteScreen extends StatelessWidget {
                 Get.to(() => ProductDetailsScreen(product: product));
               },
               leading: Image.network(
-                  "http://192.168.1.6:8000/${product.image.split('/').last}",
+                  "http://192.168.1.10:8000/${product.image.split('/').last}",
                   width: 60,
                   fit: BoxFit.cover),
               title: Text(product.name),
               subtitle: Text(product.price),
+              trailing: IconButton(
+  icon: const Icon(Icons.delete, color: Colors.red),
+  onPressed: () {
+    final deleteController = Get.put(DeleteFavouriteController());
+    deleteController.deleteFromFavourite(product.id);
+  },
+),
+
             );
           },
         ),
