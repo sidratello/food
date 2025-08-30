@@ -1,5 +1,6 @@
 import 'dart:async'; // StreamSubscription
 import 'package:flutter/material.dart';
+import 'package:flutter_application_7/Features/external_order.dart/presentation/views/external_order_screen.dart';
 import 'package:get/get.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -88,7 +89,14 @@ class _MapScreenState extends State<MapScreen> {
       15,
     );
   }
-
+  void _confirmAndGoNext() {
+    if (selectedPoint == null) {
+      Get.snackbar("تنبيه", "الرجاء اختيار موقع أولاً",
+          snackPosition: SnackPosition.BOTTOM);
+      return;
+    }
+    Get.to(() => AddAddressScreen(initialPoint: selectedPoint!));
+  }
   /// إرسال الطلب عبر الكونترولر
   void _confirmAndSendOrder() {
     if (selectedPoint == null) {
@@ -166,16 +174,14 @@ class _MapScreenState extends State<MapScreen> {
               child: const Icon(Icons.my_location),
             ),
             const SizedBox(height: 12),
-            Obx(() => FloatingActionButton.extended(
-                  heroTag: 'sendOrder',
-                  onPressed: orderController.isSending.value
-                      ? null
-                      : _confirmAndSendOrder,
-                  label: orderController.isSending.value
-                      ? const Text("جاري الإرسال...")
-                      : const Text("تأكيد وإرسال الطلب"),
-                  icon: const Icon(Icons.send),
-                )),
+          FloatingActionButton.extended(
+        
+  heroTag: 'confirm',
+  onPressed:  _confirmAndGoNext,
+  label: const Text("تأكيد الموقع"),
+  icon: const Icon(Icons.check),
+),
+                
           ],
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_7/Features/Product/presentation/controller/ShowCart_Controller.dart';
 import 'package:flutter_application_7/Features/external_order.dart/data/serveses/external_order_map_serveses.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -34,9 +35,10 @@ latitude,
       Get.snackbar("نجاح ✅", msg,
           snackPosition: SnackPosition.BOTTOM, colorText: Colors.white);
 
-      // (اختياري) ارجع للشاشة السابقة أو انتقل لشاشة الطلبات
-      // Get.back();
-      // Get.off(() => OrdersScreen());
+         if (Get.isRegistered<ShowCartController>()) {
+        final cartController = Get.find<ShowCartController>();
+        cartController.clearCart();   // ⬅️ تفضية السلة
+      }
     } catch (e) {
       final err = e.toString().replaceFirst("Exception: ", "");
       Get.snackbar("خطأ", err,

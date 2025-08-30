@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_7/Features/Reservation/presentation/views/show_reservation_screen.dart';
 import 'package:flutter_application_7/Features/contact_us/presentation/view/contact_us_screen.dart';
+import 'package:flutter_application_7/Features/external_order.dart/presentation/views/show_adresess_screen.dart';
 import 'package:flutter_application_7/Features/reservation/presentation/views/reservation_screen.dart';
 import 'package:flutter_application_7/Features/seting/presentation/view/seting_screen.dart';
 
-import 'package:flutter_application_7/Features/show_reservation/presentation/views/show_reservation_screen.dart';
+
 import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:get/get.dart';
 
@@ -49,7 +51,7 @@ class CustomDrawer extends StatelessWidget {
             leading: Icon(Icons.location_on, color:AppColor.pink),
             title: Text('My Locations'),
             onTap: () {
-              //Get.to(() => MyProfileScreen());
+              Get.to(() => AddressListScreen(),);
             },
           ),
           ListTile(

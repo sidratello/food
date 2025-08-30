@@ -11,7 +11,8 @@ import 'dart:math';
 import 'package:flutter_application_7/Features/Product/data/model/product_model.dart';
 
 class CartScreen extends StatelessWidget {
-  final ShowCartController controller = Get.put(ShowCartController());
+final ShowCartController controller = Get.find<ShowCartController>();
+
 
   CartScreen({super.key});
 
@@ -89,7 +90,7 @@ class CartScreen extends StatelessWidget {
                       ),
                       leading: 
                            Image.network(
-                             "http://192.168.1.10:8000/${product.image.split('/').last}",
+                             "http://172.29.50.225:8000/${product.image.split('/').last}",
                               width: 50,
                               errorBuilder: (context, error, stackTrace) =>
                                   const Icon(Icons.broken_image),

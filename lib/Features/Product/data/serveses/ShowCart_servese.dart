@@ -24,6 +24,15 @@ return CartResponseModel.fromJson(Map<String, dynamic>.from(response)); //conver
   return null;
 }
 
+  // ✅ حذف عنصر واحد من السلة على السيرفر
+  Future<bool> delete_item(String token, int productId) async {
+    final res = await Api().delete(
+      url: Applink.DeletFromCart(productId),
+      token: token,
+    );
+    return res is Map && res.containsKey("message");
+  }
+
 
 
 }

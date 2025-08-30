@@ -1,6 +1,6 @@
 class Applink {
-  static const String Server = 'http://192.168.1.10:8000/api';
-  static const String imageBaseUrl = 'http://192.168.1.10:8000/';
+  static const String Server = 'http://172.29.50.225:8000/api';
+  static const String imageBaseUrl = 'http://172.29.50.225:8000/';
   static const String choose = '$Server/chooseRole';
   static const String login = '$Server/login';
   static const String Signup = '$Server/register';
@@ -38,6 +38,8 @@ class Applink {
 static String DeletFromFav(int product_id) => '$Server/deletfromFavourite/$product_id';
 static String DeletFromCart(int product_id) => '$Server/deletfromcart/$product_id';
 
+ static const  String ShowAdress='$Server/addresses';
+  static const  String ShowOrder='$Server/orders';
 
 
 

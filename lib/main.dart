@@ -95,8 +95,9 @@ import 'package:flutter_application_7/Features/Auth/presentation/views/Signup_sc
 import 'package:flutter_application_7/Features/Auth/presentation/views/UserTypeChoiceScreen.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/login_screen.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/splashscreeen.dart';
+import 'package:flutter_application_7/Features/Reservation/presentation/views/show_reservation_screen.dart';
 import 'package:flutter_application_7/Features/reservation/presentation/views/reservation_screen.dart';
-import 'package:flutter_application_7/Features/show_reservation/presentation/views/show_reservation_screen.dart';
+
 import 'package:flutter_application_7/Features/Category/presentation/views/category_screen.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/Add_To_Favourite_controller.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/ShowCart_Controller.dart';

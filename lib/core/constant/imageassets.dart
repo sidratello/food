@@ -10,5 +10,7 @@ class AppImageAsset {
 static const String Favouriteimage  = "$rootImages/Favouriteimage.png" ;
   static const String emtycartimage  = "$rootImages/emtycartImage.png" ;
     static const String location_mage  = "$rootImages/locationphoto.jpg" ;
-
+    static const String emty_adress  = "$rootImages/emtyadress.png";
+       static const String emty_order  = "$rootImages/emtyorder.png";
+  
 }

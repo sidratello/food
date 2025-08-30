@@ -12,7 +12,7 @@ class CustomScaffold extends StatelessWidget {
   final Widget? floatingActionButton;
   final bool showBackButton; // زر الرجوع المخصص
   final VoidCallback? onBackPressed; 
-
+  final Widget? drawer;
   const CustomScaffold({
     super.key,
     required this.body,
@@ -24,11 +24,13 @@ class CustomScaffold extends StatelessWidget {
     this.floatingActionButton,
     this.showBackButton = false,
     this.onBackPressed,
+    this.drawer, 
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: drawer,
      appBar: showAppBar
     ? AppBar(
         automaticallyImplyLeading: false, //هذا يمنع Flutter من إظهار زر الرجوع تلقائيًا.
@@ -38,7 +40,14 @@ class CustomScaffold extends StatelessWidget {
                 icon: const Icon(Icons.arrow_back),
                 onPressed: onBackPressed ?? () => Navigator.pop(context), //if we have showBackButton it will excute else we go to breafuce screen 
               )
-            : null,
+            : (drawer != null
+                      ? Builder(
+                          builder: (ctx) => IconButton(
+                            icon: const Icon(Icons.menu),
+                            onPressed: () => Scaffold.of(ctx).openDrawer(),
+                          ),
+                        )
+                      : null),
                   
               title: Text(
                 appBarTitle ?? '',
