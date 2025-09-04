@@ -79,6 +79,7 @@
 // }
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/Signup_screen.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/UserTypeChoiceScreen.dart';
@@ -105,19 +106,26 @@ import 'core/constant/color.dart';
 import 'firebase_options.dart';
 import 'screen/onbording.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+  NotificationSettings settings = await messaging.requestPermission(
+    alert: true,
+    badge: true,
+    sound: true,
+  );
+  String? token = await FirebaseMessaging.instance.getToken();
+  print('FCM Token: $token');
   Get.put(Add_TO_Favourite_Controller(), permanent: true);
   Get.put(ShowFavouriteController(), permanent: true);
   Get.put(ShowCartController(), permanent: true);
   runApp(const MyApp());
   // getFCMToken();
 }
-
-void getFCMToken() async {}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -150,8 +158,13 @@ class MyApp extends StatelessWidget {
           name: "/onbording",
           page: () => onbording(),
         ),
-        GetPage(name: "/login", page: () => login()),
-        GetPage(name: "/sinup", page: () => Sinup()),
+
+        GetPage(name: "/login/driver", page: () => login(type: "driver",)),
+        GetPage(name: "/login/customer", page: () => login(type: "customer",)),
+
+        GetPage(name: "/sinup/driver", page: () => Sinup(type: "driver")),
+        GetPage(name: "/sinup/customer", page: () => Sinup(type: "customer")),
+
         GetPage(name: "/home", page: () => HomePage()),
         // GetPage(name: "/home2", page: () => AccountScreen()),
         GetPage(

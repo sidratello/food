@@ -207,7 +207,7 @@ print("📲 cleaned phone: ${phone_Number.text.trim()}");
 
   @override
   void gotoSignin() {
-    Get.to(login());
+    Get.to(login(type: "",));
   }
 
   @override

@@ -33,7 +33,7 @@ class VerifyCodeScreen extends StatelessWidget {
         leading: IconButton(icon:Icon(Icons.arrow_back),
         onPressed: () {
             Get.to(
- login(),);
+ login(type: "",),);
         }, ),
       ),
       body: SafeArea(

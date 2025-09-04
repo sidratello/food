@@ -60,7 +60,7 @@ class LoginControllerImp extends LoginController {
 
   @override
   gotoSignUp() {
-    Get.to(Sinup());
+    Get.to(Sinup(type: '',));
   }
 
   void onInit() {

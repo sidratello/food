@@ -79,7 +79,7 @@ body:Container(
     // alignment: Alignment.centerLeft,
   //  child:  
      TextButton(onPressed: () { 
-            Get.to(login());
+            Get.to(login(type: "",));
           },
           child: CustomSignUpText(message: 'go back to sign in ', color: Colors.blueGrey,),
          // ),

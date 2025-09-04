@@ -63,7 +63,7 @@ class loginDriver extends StatelessWidget {
                 child: CustomText(
                   text: "Sign in Delevery",
                   textAlign: TextAlign.left,
-                  color: AppColor.pink,
+                  color: AppColor.yellow,
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Changa ExtraLight',
@@ -82,7 +82,7 @@ class loginDriver extends StatelessWidget {
                       hintTextColor: Colors.black,
                       icon: Icon(
                         Icons.phone_android,
-                        color: AppColor.pink,
+                        color: AppColor.yellow,
                       ),
                       validator: validatePhoneNumber,
                     ),
@@ -95,7 +95,7 @@ class loginDriver extends StatelessWidget {
                     child: CustomTextField(
                       controller: controller.password,
                       hintText: 'password',
-                      icon: Icon(Icons.password, color: AppColor.pink),
+                      icon: Icon(Icons.password, color: AppColor.yellow),
                       hintTextColor: const Color.fromARGB(221, 6, 4, 4),
                       validator: validatePassword,
                     ),
@@ -126,7 +126,7 @@ class loginDriver extends StatelessWidget {
                         }
                       },
                       title: "LOG IN",
-                      color: AppColor.pink,
+                      color: AppColor.yellow,
                     ),
                   ),
                 ],

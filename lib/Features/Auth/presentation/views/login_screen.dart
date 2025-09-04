@@ -14,13 +14,16 @@ import 'package:flutter_application_7/helper/validation.dart';
 import 'package:get/get.dart';
 
 class login extends StatelessWidget {
-  login({super.key});
+  final String type;
+
+  login({super.key, required this.type});
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>(); //Form is a wedjet to collect textfields in same place and the formkey the form wedjet need it
 
   @override
   Widget build(BuildContext context) {
     LoginControllerImp controller = Get.put(LoginControllerImp());
+    Color textColor = type == "driver" ? AppColor.yellow : AppColor.pink;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -62,7 +65,7 @@ class login extends StatelessWidget {
                 child: CustomText(
                   text: "Sign in",
                   textAlign: TextAlign.left,
-                  color: AppColor.pink,
+                  color: textColor,
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Changa ExtraLight',
@@ -81,7 +84,7 @@ class login extends StatelessWidget {
                       hintTextColor: Colors.black,
                       icon: Icon(
                         Icons.phone_android,
-                        color: AppColor.pink,
+                        color: textColor,
                       ),
                       validator: validatePhoneNumber,
                     ),
@@ -94,7 +97,7 @@ class login extends StatelessWidget {
                     child: CustomTextField(
                       controller: controller.password,
                       hintText: 'password',
-                      icon: Icon(Icons.password, color: AppColor.pink),
+                      icon: Icon(Icons.password, color: textColor),
                       hintTextColor: const Color.fromARGB(221, 6, 4, 4),
                       validator: validatePassword,
                     ),
@@ -135,7 +138,7 @@ class login extends StatelessWidget {
                         }
                       },
                       title: "LOG IN",
-                      color: AppColor.pink,
+                      color: textColor,
                     ),
                   ),
                 ],

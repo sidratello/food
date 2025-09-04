@@ -20,7 +20,7 @@ class UserTypeChoiceScreen extends StatelessWidget {
           children: [
             CustomText(
               text: "Choose the type of user",
-              color: AppColor.pink,
+              color: AppColor.black,
               fontSize: 40,
               fontWeight: FontWeight.bold,
               fontFamily: 'Changa ExtraLight',
@@ -39,11 +39,11 @@ class UserTypeChoiceScreen extends StatelessWidget {
                 ),
                 const SizedBox(width: 5),
                 Button(
-                  title: 'delevery',
+                  title: 'delivery',
                   onPressed: () {
                     controller.selectRole('driver');
                   },
-                  color: Colors.pink,
+                  color: Colors.yellow,
                 ),
               ],
             ),
