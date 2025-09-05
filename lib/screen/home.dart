@@ -79,6 +79,8 @@ import 'package:flutter_application_7/Features/Category/presentation/views/categ
 import 'package:flutter_application_7/Features/Product/presentation/view/CartScreen.dart';
 import 'package:flutter_application_7/Features/Product/presentation/view/Favourite_Screen.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/custom_scafould.dart';
+import 'package:flutter_application_7/Features/show_order/preserntation/views/Emty_show_order_screen.dart';
+import 'package:flutter_application_7/Features/show_order/preserntation/views/show_order_screen.dart';
 
 import 'package:flutter_application_7/screen/acount.dart';
 
@@ -99,7 +101,7 @@ class _HomePageState extends State<HomePage> {
     const CategoryScreen(),
     FavouriteScreen(),
     CartScreen(),
-AccountScreen()
+ShowOrdersScreen()
 
   ];
 

@@ -17,7 +17,9 @@ var response = await Api().get(url:Applink.ShowOrder,token: token); //response i
           .toList();
       return list; 
     }
-
+    if (response['message'] != null) {
+        throw response['message'].toString(); // ← خلّي الكنترولر يعرضها
+      }
     return <OrderModel>[];
 }
 

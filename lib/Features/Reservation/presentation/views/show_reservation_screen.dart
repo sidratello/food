@@ -1,27 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_7/Features/Category/presentation/views/drawer.dart';
 import 'package:flutter_application_7/Features/Reservation/presentation/controllers/add_loacal_order_controller.dart';
 import 'package:flutter_application_7/Features/Reservation/presentation/controllers/cancel_reservation_controller.dart';
 import 'package:flutter_application_7/Features/Reservation/presentation/controllers/show_reservation_controller.dart';
 import 'package:flutter_application_7/Features/Reservation/presentation/widgets/appbar_showreservation.dart';
-
 import 'package:get/get.dart';
-import 'package:flutter_application_7/Features/Reservation/presentation/widgets/drawer.dart';
 import 'package:flutter_application_7/Features/reservation/presentation/views/reservation_screen.dart';
-
 import 'package:flutter_application_7/core/constant/color.dart';
 
 class ShowReservationScreen extends StatelessWidget {
   ShowReservationScreen({super.key});
 
-  final ShowReservationController controller =
-      Get.put(ShowReservationController());
-  final Add_order_controller addOrderController =
-      Get.put(Add_order_controller());
-final cancelController = Get.put(CancelReservationController());
+  final ShowReservationController controller = Get.put(ShowReservationController());
+  final Add_order_controller addOrderController = Get.put(Add_order_controller());
+  final cancelController = Get.put(CancelReservationController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const CustomDrawer(),
+      drawer: CustomDrawer(),
       backgroundColor: Colors.white,
       appBar: const CustomAppBarShowReservation(
         title: "My Reservation",
@@ -51,27 +48,33 @@ final cancelController = Get.put(CancelReservationController());
             itemBuilder: (context, index) {
               final reservation = controller.reservations[index];
 
+              // ✅ تنسيق التاريخ يدوياً
+              final d = reservation.date;
+              final dateText =
+                  '${d.day.toString().padLeft(2, '0')}-${d.month.toString().padLeft(2, '0')}-${d.year}';
+
+              // ✅ قص الوقت لإخفاء الثواني
+              final startText = reservation.starttime.substring(0, 5);
+              final endText = reservation.endtime.substring(0, 5);
+
               return Container(
                 margin: const EdgeInsets.only(bottom: 16),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFFFE4EC), // خلفية زهر فاتح
+                  color: const Color(0xFFFFE4EC),
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.pink.shade100),
                 ),
                 child: ListTile(
-             // يسمح بزيادة الارتفاع إذا احتاج
                   title: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "التاريخ : ${reservation.date}",
+                        "التاريخ : $dateText",
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 4),
                       Text("عدد الكراسي : ${reservation.guestsCount}"),
-                      Text(
-                        "من: ${reservation.starttime} إلى ${reservation.endtime}",
-                      ),
+                      Text("من: $startText إلى $endText"),
                       const SizedBox(height: 8),
 
                       // زر تأكيد الطلب
@@ -95,7 +98,7 @@ final cancelController = Get.put(CancelReservationController());
                     ],
                   ),
 
-                  // الأزرار الجانبية (حذف + تعديل)
+                  // الأزرار الجانبية (حذف)
                   trailing: Wrap(
                     direction: Axis.vertical,
                     spacing: 8,
@@ -106,22 +109,9 @@ final cancelController = Get.put(CancelReservationController());
                         iconSize: 26,
                         icon: const Icon(Icons.delete, color: Colors.red),
                         onPressed: () {
-                   
-
-
-cancelController.cancel(reservation.id);
-
+                          cancelController.cancel(reservation.id);
                         },
                       ),
-                      // IconButton(
-                      //   constraints: const BoxConstraints(),
-                      //   padding: EdgeInsets.zero,
-                      //   iconSize: 26,
-                      //   icon: const Icon(Icons.edit, color: Colors.grey),
-                      //   onPressed: () {
-                      //     Get.to(() => ReservationScreen());
-                      //   },
-                      // ),
                     ],
                   ),
                 ),

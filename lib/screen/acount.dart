@@ -58,6 +58,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/custom_scafould.dart';
 import 'package:flutter_application_7/Features/external_order.dart/presentation/views/show_adresess_screen.dart';
+import 'package:flutter_application_7/Features/show_order/preserntation/views/show_order_screen.dart';
 import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:flutter_application_7/wedjet/acount/customacountiteam.dart';
 import 'package:flutter_application_7/wedjet/acount/customsectionheader.dart';
@@ -91,7 +92,7 @@ class AccountScreen extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => AddressListScreen(), // 👈 الشاشة اللي بدك تعرضها
+        builder: (_) => ShowOrdersScreen(), // 👈 الشاشة اللي بدك تعرضها
       ),
     );
   },

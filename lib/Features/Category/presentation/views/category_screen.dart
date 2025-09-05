@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Category/presentation/Controller/category_controller.dart';
+import 'package:flutter_application_7/Features/Category/presentation/views/drawer.dart';
 
 import 'package:flutter_application_7/Features/Category/presentation/wedjets/CustomSearchTextField.dart';
 import 'package:flutter_application_7/Features/Category/presentation/wedjets/customCategoryCard.dart';
 import 'package:flutter_application_7/Features/Product/presentation/view/product_Screen.dart';
-import 'package:flutter_application_7/Features/Reservation/presentation/widgets/drawer.dart';
+
 import 'package:flutter_application_7/helper/AppLink.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/custom_scafould.dart';
 
@@ -35,7 +36,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
     // return Scaffold(
     //   appBar: const CustomAppBar(title: 'Menu'),
     return CustomScaffold(
-            drawer: const CustomDrawer(),
+            drawer:  CustomDrawer(),
       showAppBar: true,
       appBarTitle: 'Menu',
       showNavBar: false,

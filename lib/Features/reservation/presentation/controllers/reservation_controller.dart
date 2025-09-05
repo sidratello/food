@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Reservation/presentation/controllers/show_reservation_controller.dart';
 import 'package:flutter_application_7/Features/Reservation/presentation/views/show_reservation_screen.dart';
+import 'package:flutter_application_7/Features/show_order/preserntation/controller/show_order_controller.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_application_7/Features/Reservation/data/serveses/reservation_serveses.dart';
@@ -51,13 +52,16 @@ class Reservation_Controller extends GetxController {
       isLoading.value = false;
 
       final msg = (res["message"] ?? "تم الحجز بنجاح").toString();
-      Get.snackbar("تم", msg, backgroundColor: Colors.green, colorText: Colors.white);
+      Get.snackbar("تم", msg, backgroundColor: Color.fromARGB(255, 218, 202, 206), colorText: Colors.white);
 
       // 🔹 تحديث شاشة عرض الحجوزات إذا كانت مسجلة
       if (Get.isRegistered<ShowReservationController>()) {
         await Get.find<ShowReservationController>().getReservations();
       }
 
+   if (Get.isRegistered<ShowOrdersController>()) {
+        await Get.find<ShowOrdersController>().fetchOrders;
+      }
       // 🔹 الانتقال لشاشة عرض الحجوزات مباشرة
       Get.off(() => ShowReservationScreen());
 

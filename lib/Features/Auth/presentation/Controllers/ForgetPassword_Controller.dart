@@ -51,20 +51,29 @@ void send() async {
   String phone = phone_Number.text.trim();
 
 
-  showDialog(
-    context: Get.context!,
-    builder: (context) => CustomOtpDialog(
-      title: "OTP Sent",
-      message: "An OTP has been sent to your WhatsApp....",
-      buttonText: "Enter the OTP",
-      imagePath: "assets/images/icons8-whatsapp-48.png",
-      urlToLaunch: phone,
-      nextScreen: VerifyCodeScreen(
-        fromSignup: false,
-        userId: userId,
-      ),
-    ),
-  );
+  // showDialog(
+  //   context: Get.context!,
+  //   builder: (context) => CustomOtpDialog(
+  //     title: "OTP Sent",
+  //     message: "An OTP has been sent to your WhatsApp....",
+  //     buttonText: "Enter the OTP",
+  //     imagePath: "assets/images/icons8-whatsapp-48.png",
+  //     urlToLaunch: phone,
+  //     nextScreen: VerifyCodeScreen(
+  //       fromSignup: false,
+  //       userId: userId,
+  //     ),
+  //   ),
+  // );
+  Get.dialog(CustomOtpDialog(
+  title: 'OTP Sent',
+  message: 'تم إرسال رمز التحقق إلى واتساب.',
+  buttonText: 'أدخل الرمز',
+  imagePath: 'assets/images/icons8-whatsapp-48.png',
+  phoneIntl: phone, // تأكد أنه بصيغة دولية
+  nextScreen: VerifyCodeScreen(fromSignup: true, userId: userId),
+));
+
 }
 
 

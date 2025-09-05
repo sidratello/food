@@ -54,8 +54,8 @@ class _EmptyFavoritesScreenState extends State<EmptyFavoritesScreen>
     //   backgroundColor: Colors.white,
     //   body:
     CustomScaffold(
-      showAppBar: false,
-  
+      showAppBar: true,
+    appBarTitle: 'المفضلة',
       showNavBar:false,
       
       body:  

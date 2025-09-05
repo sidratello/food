@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_7/Features/Category/presentation/wedjets/customdialog.dart';
 import 'package:flutter_application_7/Features/external_order.dart/presentation/controller/external_order_for_exsisted_adress_controller.dart';
 import 'package:flutter_application_7/Features/external_order.dart/presentation/views/external_order_screen.dart';
+import 'package:flutter_application_7/Features/external_order.dart/presentation/wedjet/customtextforshowadress.dart';
+import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_7/Features/external_order.dart/presentation/controller/show_adresess_controller.dart';
 
@@ -92,41 +95,60 @@ class _AddressListScreenState extends State<AddressListScreen> {
                 ),
                 elevation: 1.5,
                 child: ListTile(
-                  leading: const Icon(Icons.place, color: Colors.teal),
-                  title: Text(a.city, style: const TextStyle(fontWeight: FontWeight.bold)),
+                  leading: const Icon(Icons.place, color: AppColor.pink),
+                  title:  CustomTextadress( style: const TextStyle(fontWeight: FontWeight.bold), text: a.city,),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('${a.street} • بناء ${a.building} • طابق ${a.floor}'),
+                      CustomTextadress(text:'${a.street} • بناء ${a.building} • طابق ${a.floor}', style: const TextStyle(fontWeight: FontWeight.bold),),
                       if ((a.notes ?? '').isNotEmpty) Text(a.notes!, style: const TextStyle(fontSize: 12)),
                     ],
                   ),
-                    onTap: () async {
-                    final confirm = await showDialog<bool>(
-                      context: context,
-                      builder: (_) => AlertDialog(
-                        title: const Text('تأكيد الطلب'),
-                        content: Text('سيتم إنشاء طلب توصيل لهذا العنوان:\n${a.city}, ${a.street}'),
-                        actions: [
-                          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('إلغاء')),
-                          ElevatedButton(onPressed: () => Navigator.pop(context, true), child: const Text('تأكيد')),
-                        ],
-                      ),
-                    );
-                    if (confirm != true) return;
+      //               onTap: () async {
+      //               final confirm = await showCustomDialog(
+      //                 context: context,    
+      //                 message: ' : سيتم إنشاء طلب توصيل لهذا العنوان/n  ${a.city}, ${a.street}',cancelText:'إلغاء' ,confirmText: 'تأكيد',
+      //                 onConfirm: () async {
+      // final ok = await orderforexsistedadress.addExternalOrderforExsistedAdress(
+      //   orderType: 'external',
+      //   addressOption: 'manual',
+      //   manualOption: 'existing',
+      //   addressId: a.id,
+      // );
 
-                    final ok = await orderforexsistedadress.addExternalOrderforExsistedAdress(
-                      orderType: 'external',
-                      addressOption: 'manual',
-                      manualOption: 'existing',
-                      addressId: a.id, // مهم
-                    );
+      onTap: () async { 
+        final confirm = await 
+       showDialog<bool>( 
+         context: context, 
+          builder: (_) => AlertDialog( 
+             title: const Text('تأكيد الطلب'),
+               content: Text('سيتم إنشاء طلب توصيل لهذا العنوان:\n${a.city}, ${a.street}'), 
+                actions: [ 
+                   TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('إلغاء')), 
+                    ElevatedButton(onPressed: () => Navigator.pop(context, true), child: const Text('تأكيد')), 
+                     ],
+                       )  );
+                        if (confirm != true) return; final ok = await orderforexsistedadress.addExternalOrderforExsistedAdress( orderType: 'external', addressOption: 'manual', manualOption: 'existing', addressId: a.id, );
 
-                    if (ok) {
-                      // اختياري: الانتقال لصفحة الطلبات أو رسالة نجاح فقط
-                      // Get.to(() => const ShowOrdersScreen());
-                    }
-                  },
+      if (ok) {
+        // اختياري: الانتقال أو إظهار رسالة نجاح
+        // Get.to(() => const ShowOrdersScreen());
+      }
+      }
+                    
+                    // showDialog<bool>(
+                    //   context: context,
+                    //   builder: (_) => AlertDialog(
+                    //     title: const Text('تأكيد الطلب'),
+                    //     content: Text('سيتم إنشاء طلب توصيل لهذا العنوان:\n${a.city}, ${a.street}'),
+                    //     actions: [
+                    //       TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('إلغاء')),
+                    //       ElevatedButton(onPressed: () => Navigator.pop(context, true), child: const Text('تأكيد')),
+                    //     ],
+                    //   ),
+                    // );
+        
+                  
                 ),
               );
             },

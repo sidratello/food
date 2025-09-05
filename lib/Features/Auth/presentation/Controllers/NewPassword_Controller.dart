@@ -2,6 +2,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/views/scsufful_page.dart';
 
 import 'package:flutter_application_7/services/RePassword.dart';
 
@@ -37,7 +38,7 @@ class RePasswordControllerImp extends RePasswordController {
 
     if (response is Map && response['message'] == 'Password reset successful.') {
       Get.snackbar("تم", "تم إعادة تعيين كلمة المرور بنجاح");
-
+ Get.to(PasswordChangedSuccessScreen);
     } else {
       Get.snackbar("فشل", "حدث خطأ أثناء إعادة تعيين كلمة المرور");
       print("Response: $response");

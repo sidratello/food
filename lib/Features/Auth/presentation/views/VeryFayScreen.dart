@@ -6,6 +6,7 @@ import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomBu
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomTextTitleVeryFay.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/NewPassword_Screen.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/login_screen.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/views/scsufful_page.dart';
 
 
 
@@ -32,8 +33,7 @@ class VerifyCodeScreen extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(icon:Icon(Icons.arrow_back),
         onPressed: () {
-            Get.to(
- login(),);
+            Get.to(PasswordChangedSuccessScreen(),);
         }, ),
       ),
       body: SafeArea(

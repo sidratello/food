@@ -1,6 +1,10 @@
 class Applink {
-  static const String Server = 'http://172.29.50.225:8000/api';
-  static const String imageBaseUrl = 'http://172.29.50.225:8000/';
+  static const String Server =
+   'https://res.mustafafares.com/api';
+    // "http://192.168.1.2:8000/api";
+  static const String imageBaseUrl =
+   'https://res.mustafafares.com/';
+  // 'http://192.168.1.2:8000/';
   static const String choose = '$Server/chooseRole';
   static const String login = '$Server/login';
   static const String Signup = '$Server/register';
@@ -40,7 +44,18 @@ static String DeletFromCart(int product_id) => '$Server/deletfromcart/$product_i
 
  static const  String ShowAdress='$Server/addresses';
   static const  String ShowOrder='$Server/orders';
+    static const  String profile='$Server/showProfile';
+    static const  String updateProfile='$Server/updateProfile';
+   static const  String logout='$Server/logout';
+      static const  String rating='$Server/rate';
+      static const  String showrating='$Server/topRatedProducts';
 
+ static String deletrating(int categoryId) {
+    return '$Server/rate/$categoryId';
+
+  }
+ static const  String fillmuhfaza='$Server/addWallet';
+ static const  String showmuhfaza='$Server/Wallet';
 
 
 }

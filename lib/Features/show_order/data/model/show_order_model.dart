@@ -1,4 +1,5 @@
-// show_order_model.dart  (مختصر)
+// show_order_model.dart  (نسخة آمنة)
+
 class OrderModel {
   final int id;
   final int userId;
@@ -6,11 +7,15 @@ class OrderModel {
   final int? reservationId;
   final String orderType;
   final String status;
+
+  /// API يُرسلها كسلسلة مثل "580000.00"
   final String totalPriceRaw;
-  double get totalPrice => double.tryParse(totalPriceRaw) ?? 0.0;
+  double get totalPrice => _toDouble(totalPriceRaw);
+
   final String? reservationTime;
   final DateTime? createdAt;
   final DateTime? updatedAt;
+
   final List<OrderProduct> products;
   final OrderAddress address;
 
@@ -30,10 +35,10 @@ class OrderModel {
   });
 
   factory OrderModel.fromJson(Map<String, dynamic> j) => OrderModel(
-        id: j['id'] as int,
-        userId: j['user_id'] as int,
-        addressId: j['address_id'] as int,
-        reservationId: j['reservation_id'] as int?,
+        id: _toInt(j['id']),
+        userId: _toInt(j['user_id']),
+        addressId: _toInt(j['address_id']),
+        reservationId: _toIntNullable(j['reservation_id']),
         orderType: j['order_type']?.toString() ?? '',
         status: j['status']?.toString() ?? '',
         totalPriceRaw: j['total_price']?.toString() ?? '0',
@@ -44,7 +49,8 @@ class OrderModel {
             .map((e) => OrderProduct.fromJson(Map<String, dynamic>.from(e)))
             .toList(),
         address: OrderAddress.fromJson(
-            Map<String, dynamic>.from(j['address'] ?? {})),
+          Map<String, dynamic>.from(j['address'] ?? {}),
+        ),
       );
 }
 
@@ -53,8 +59,11 @@ class OrderProduct {
   final int categoryId;
   final String image;
   final String name;
+
+  /// API يُرسلها كسلسلة
   final String priceRaw;
-  double get price => double.tryParse(priceRaw) ?? 0.0;
+  double get price => _toDouble(priceRaw);
+
   final String? details;
   final Pivot pivot;
 
@@ -69,8 +78,8 @@ class OrderProduct {
   });
 
   factory OrderProduct.fromJson(Map<String, dynamic> j) => OrderProduct(
-        id: j['id'] as int,
-        categoryId: j['category_id'] as int,
+        id: _toInt(j['id']),
+        categoryId: _toInt(j['category_id']),
         image: j['image']?.toString() ?? '',
         name: j['name']?.toString() ?? '',
         priceRaw: j['price']?.toString() ?? '0',
@@ -83,8 +92,11 @@ class Pivot {
   final int orderId;
   final int productId;
   final int quantity;
+
+  /// API يُرسلها كسلسلة
   final String totalPriceRaw;
-  double get totalPrice => double.tryParse(totalPriceRaw) ?? 0.0;
+  double get totalPrice => _toDouble(totalPriceRaw);
+
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
@@ -98,9 +110,9 @@ class Pivot {
   });
 
   factory Pivot.fromJson(Map<String, dynamic> j) => Pivot(
-        orderId: j['order_id'] as int? ?? 0,
-        productId: j['product_id'] as int? ?? 0,
-        quantity: j['quantity'] as int? ?? 0,
+        orderId: _toInt(j['order_id']),
+        productId: _toInt(j['product_id']),
+        quantity: _toInt(j['quantity']),
         totalPriceRaw: j['total_price']?.toString() ?? '0',
         createdAt: _parseDate(j['created_at']),
         updatedAt: _parseDate(j['updated_at']),
@@ -113,7 +125,7 @@ class OrderAddress {
   final String? city;
   final String? street;
   final int? building;
-  final int? floor; // من "Floor"
+  final int? floor; // الحقل في الـ API اسمه "Floor" بحرف كبير
   final String? notes;
   final String? latitude;
   final String? longitude;
@@ -135,12 +147,12 @@ class OrderAddress {
   });
 
   factory OrderAddress.fromJson(Map<String, dynamic> j) => OrderAddress(
-        id: j['id'] as int? ?? 0,
-        userId: j['user_id'] as int? ?? 0,
+        id: _toInt(j['id']),
+        userId: _toInt(j['user_id']),
         city: j['city'] as String?,
         street: j['street'] as String?,
         building: _toIntNullable(j['building']),
-        floor: _toIntNullable(j['Floor']),
+        floor: _toIntNullable(j['Floor']), // انتبه للحرف الكبير
         notes: j['notes'] as String?,
         latitude: j['latitude']?.toString(),
         longitude: j['longitude']?.toString(),
@@ -149,7 +161,32 @@ class OrderAddress {
       );
 }
 
-/// Helpers
+/// -------------------------
+/// Helpers آمنة للتحويلات
+/// -------------------------
+int _toInt(dynamic v, {int fallback = 0}) {
+  if (v == null) return fallback;
+  if (v is int) return v;
+  if (v is double) return v.toInt();
+  if (v is String) return int.tryParse(v) ?? fallback;
+  return fallback;
+}
+
+int? _toIntNullable(dynamic v) {
+  if (v == null) return null;
+  if (v is int) return v;
+  if (v is double) return v.toInt();
+  if (v is String) return int.tryParse(v);
+  return null;
+}
+
+double _toDouble(dynamic v, {double fallback = 0.0}) {
+  if (v == null) return fallback;
+  if (v is num) return v.toDouble();
+  if (v is String) return double.tryParse(v) ?? fallback;
+  return fallback;
+}
+
 DateTime? _parseDate(dynamic v) {
   if (v == null) return null;
   try {
@@ -157,10 +194,4 @@ DateTime? _parseDate(dynamic v) {
   } catch (_) {
     return null;
   }
-}
-
-int? _toIntNullable(dynamic v) {
-  if (v == null) return null;
-  if (v is int) return v;
-  return int.tryParse(v.toString());
 }

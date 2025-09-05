@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/Delet_From_Cart_Controller.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/ShowCart_Controller.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/Show_Favourite_Controller.dart';
+import 'package:flutter_application_7/Features/Product/presentation/view/product_detals.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/cusom_order_buttom.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/custom_scafould.dart';
+import 'package:flutter_application_7/Features/Product/presentation/wedjet/customlisttileforfavourite.dart';
 
 import 'package:get/get.dart';
 import 'dart:math';
@@ -74,37 +76,22 @@ final ShowCartController controller = Get.find<ShowCartController>();
                 itemCount: controller.CartList.length,
                 itemBuilder: (context, index) {
                   final product = controller.CartList[index];
-                  return Card(
-                    margin:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    child: ListTile(
-                      title: Text(product.name),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                      
-                            Text("Note: ${product.note}"),
-                          Text("Quantity: ${product.quantity}"),
-                          Text("Total Price: ${product.totalPrice} ل.س"),
-                        ],
-                      ),
-                      leading: 
-                           Image.network(
-                             "http://172.29.50.225:8000/${product.image.split('/').last}",
-                              width: 50,
-                              errorBuilder: (context, error, stackTrace) =>
-                                  const Icon(Icons.broken_image),
-                            ),
-                            trailing: IconButton(
-  icon: const Icon(Icons.delete, color: Colors.red),
-  onPressed: () {
+                  return 
+                
+                     CustomListTile(
+  title: product.name,
+  subtitle: "Quantity: ${product.quantity}\nTotal: ${product.totalPrice} ل.س\nNote: ${product.note ?? ''}",
+  imageUrl: "https://res.mustafafares.com/${product.image.split('/').last}",
+  // imageUrl:   "http://192.168.1.2:8000/${product.image.split('/').last}",
+  onTap: () {
+
+  },
+  onDelete: () {
     final deleteController = Get.put(DeleteCartController());
     deleteController.deleteFromCart(product.productId);
   },
-),
 
-                  
-                    ),
+
                   );
                 },
               ),
