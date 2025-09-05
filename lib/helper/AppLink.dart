@@ -1,5 +1,5 @@
 class Applink {
-  static const String Server = 'http://192.168.21.204:8000/api';
+  static const String Server = 'http://192.168.1.3:8000/api';
   static const String imageBaseUrl = 'http://192.168.21.204:8000/';
 
   static const String choose = '$Server/chooseRole';

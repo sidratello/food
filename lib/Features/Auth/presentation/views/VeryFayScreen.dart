@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/Controllers/UsertypeController.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/Controllers/VeryFayController2.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomButtomVeryFay.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomTextTitleVeryFay.dart';
@@ -32,8 +33,11 @@ class VerifyCodeScreen extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(icon:Icon(Icons.arrow_back),
         onPressed: () {
-            Get.to(
- login(type: "",),);
+          if (ChooseRoleControllerImp.role != null) {
+            Get.to(() => login(type: ChooseRoleControllerImp.role!));
+          } else {
+            Get.snackbar('خطأ', 'الرجاء اختيار الدور أولاً');
+          }
         }, ),
       ),
       body: SafeArea(

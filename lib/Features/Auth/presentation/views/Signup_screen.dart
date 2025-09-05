@@ -171,6 +171,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/Controllers/SignUpController.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/Controllers/UsertypeController.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomBUttom.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomSignUPText2.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomSignUpText.dart';
@@ -197,7 +198,8 @@ class Sinup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SignupControllerImp controller = Get.put(SignupControllerImp());
-    Color textColor = type == "driver" ? AppColor.yellow : AppColor.pink;
+    Color textColor = type == "driver" ? Colors.yellow : AppColor.pink;
+    String logoImage= type == "driver"? AppImageAsset.deliveryImage : AppImageAsset.onBoardingImagefoor2;
 
 
     return Scaffold(
@@ -226,7 +228,7 @@ class Sinup extends StatelessWidget {
                   bottomLeft: Radius.circular(90),
                 ),
                 child: Image.asset(
-                  AppImageAsset.onBoardingImagefoor2,
+                  logoImage,
                   width: double.infinity,
                   height: 200,
                   fit: BoxFit.cover,
@@ -330,7 +332,14 @@ class Sinup extends StatelessWidget {
                 ),
                 TextButton(
                     onPressed: () {
-                      Get.to(login(type: "",));
+
+                        if (ChooseRoleControllerImp.role != null) {
+                          Get.to(() => login(type: ChooseRoleControllerImp.role!));
+                        } else {
+                          Get.snackbar('خطأ', 'الرجاء اختيار الدور أولاً');
+                        }
+
+
                     },
                     child: CustomSignUpText(
                         message: ' sign in ',

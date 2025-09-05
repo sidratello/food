@@ -23,7 +23,8 @@ class login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LoginControllerImp controller = Get.put(LoginControllerImp());
-    Color textColor = type == "driver" ? AppColor.yellow : AppColor.pink;
+    Color textColor = type == "driver" ? Colors.yellow : AppColor.pink;
+    String logoImage= type == "driver"? AppImageAsset.deliveryImage : AppImageAsset.onBoardingImagefoor2;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -50,7 +51,7 @@ class login extends StatelessWidget {
                   bottomLeft: Radius.circular(90),
                 ),
                 child: Image.asset(
-                  AppImageAsset.onBoardingImagefoor2,
+                  logoImage,
                   width: double.infinity,
                   height: 300,
                   fit: BoxFit.cover,

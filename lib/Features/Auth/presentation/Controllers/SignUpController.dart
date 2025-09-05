@@ -111,6 +111,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Auth/data/SignUp_Serveses.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/Controllers/UsertypeController.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomOtpDialog.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/VeryFayScreen.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/login_screen.dart';
@@ -207,8 +208,13 @@ print("📲 cleaned phone: ${phone_Number.text.trim()}");
 
   @override
   void gotoSignin() {
-    Get.to(login(type: "",));
+    if (ChooseRoleControllerImp.role != null) {
+      Get.to(() => login(type: ChooseRoleControllerImp.role!));
+    } else {
+      Get.snackbar('خطأ', 'الرجاء اختيار الدور أولاً');
+    }
   }
+
 
   @override
   void onInit() {

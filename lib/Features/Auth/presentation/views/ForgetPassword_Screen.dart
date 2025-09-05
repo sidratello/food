@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/Controllers/ForgetPassword_Controller.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/Controllers/UsertypeController.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomBUttom.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomSignUPText2.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomSignUpText.dart';
@@ -78,8 +79,12 @@ body:Container(
     // margin: EdgeInsets.only(left: 20, top: 0),
     // alignment: Alignment.centerLeft,
   //  child:  
-     TextButton(onPressed: () { 
-            Get.to(login(type: "",));
+     TextButton(onPressed: () {
+       if (ChooseRoleControllerImp.role != null) {
+       Get.to(() => login(type: ChooseRoleControllerImp.role!));
+     } else {
+       Get.snackbar('خطأ', 'الرجاء اختيار الدور أولاً');
+     }
           },
           child: CustomSignUpText(message: 'go back to sign in ', color: Colors.blueGrey,),
          // ),
