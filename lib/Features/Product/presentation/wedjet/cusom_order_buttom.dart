@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_7/Features/Reservation/presentation/views/reservation_screen.dart';
 import 'package:flutter_application_7/Features/external_order.dart/presentation/views/snackbar_to_choose_the_type_of_location.dart';
 import 'package:get/get.dart';
+
+import '../../../reservation/presentation/views/reservation_screen.dart';
 
 class OrderTypeButton extends StatelessWidget {
   const OrderTypeButton({super.key});

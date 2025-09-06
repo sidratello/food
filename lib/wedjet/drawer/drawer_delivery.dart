@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/contact_us/presentation/view/contact_us_screen.dart';
-import 'package:flutter_application_7/Features/settings/presentation/view/settings_screen.dart';
 import 'package:get/get.dart';
+
+import '../../Features/Category/presentation/views/setingscreen.dart';
 
 
 class CustomDrawerDelivery extends StatelessWidget {
@@ -35,21 +36,21 @@ class CustomDrawerDelivery extends StatelessWidget {
 
           ListTile(
             leading: Icon(Icons.settings, color:Colors.yellow[600]),
-            title: Text('Settings'),
+            title: const Text('Settings'),
             onTap: () {
-              Get.to(() => SettingScreen());
+              Get.to(() => const SettingScreen());
             },
           ),
           ListTile(
             leading: Icon(Icons.contact_support_rounded, color:Colors.yellow[600]),
-            title: Text('Contac US'),
+            title: const Text('Contac US'),
             onTap: () {
-              Get.to(() => ContactUsScreen());
+              Get.to(() => const ContactUsScreen());
             },
           ),
           ListTile(
             leading: Icon(Icons.logout, color:Colors.yellow[600]),
-            title: Text('Log out'),
+            title: const Text('Log out'),
             onTap: () {
               Navigator.pop(context);
               showDialog(

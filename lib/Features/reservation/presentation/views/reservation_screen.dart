@@ -1,12 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Category/presentation/views/drawer.dart';
-import 'package:flutter_application_7/Features/Reservation/presentation/controllers/reservation_controller.dart';
-
-
-import 'package:flutter_application_7/Features/Reservation/presentation/widgets/elevatedbutton_reservation.dart';
-
-
 import 'package:flutter_application_7/Features/reservation/presentation/widgets/date_reservation.dart';
 import 'package:flutter_application_7/Features/reservation/presentation/widgets/occasions.dart';
 
@@ -15,7 +9,9 @@ import 'package:flutter_application_7/Features/reservation/presentation/widgets/
 
 import 'package:get/get.dart';
 
+import '../controllers/reservation_controller.dart';
 import '../widgets/appbar_reservation.dart';
+import '../widgets/elevatedbutton_reservation.dart';
 
 class ReservationScreen extends StatefulWidget {
   ReservationScreen({super.key,});
