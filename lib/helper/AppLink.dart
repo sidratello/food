@@ -1,11 +1,11 @@
 class Applink {
   static const String Server =
-   'https://res.mustafafares.com/api';
-      //  "http://192.168.1.2:8000/api";
+   //'https://res.mustafafares.com/api';
+       "http://192.168.1.2:8000/api";
           // "http://192.168.43.222:8000/api";
   static const String imageBaseUrl =
-    'https://res.mustafafares.com/';
-    //  'http://192.168.1.2:8000/';
+    // 'https://res.mustafafares.com/';
+     'http://192.168.1.2:8000/';
   // 'http://192.168.43.222:8000/';
   static const String choose = '$Server/chooseRole';
   static const String login = '$Server/login';

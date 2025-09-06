@@ -6,13 +6,13 @@ import 'package:flutter_application_7/Features/Category/presentation/wedjets/Cus
 import 'package:flutter_application_7/Features/Category/presentation/wedjets/customCategoryCard.dart';
 import 'package:flutter_application_7/Features/Product/presentation/view/product_Screen.dart';
 
+import 'package:flutter_application_7/Features/Product/data/model/product_model.dart';
+import 'package:flutter_application_7/Features/Product/presentation/view/product_detals.dart';
+
 import 'package:flutter_application_7/helper/AppLink.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/custom_scafould.dart';
 
-
 import 'package:get/get.dart';
-
-
 
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key});
@@ -33,31 +33,26 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // return Scaffold(
-    //   appBar: const CustomAppBar(title: 'Menu'),
     return CustomScaffold(
-            drawer:  CustomDrawer(),
+      drawer:  CustomDrawer(),
       showAppBar: true,
       appBarTitle: 'Menu',
       showNavBar: false,
-      showBackButton: false, 
-    
+      showBackButton: false,
       body: Column(
         children: [
-    
           CustomSearchField(
             controller: _searchController,
             onChanged: controller.onSearch,
           ),
-
-   
           Expanded(
             child: Obx(() {
               if (controller.isSearching.value) {
                 if (controller.searchResults.isEmpty) {
                   return const Center(child: Text('لا توجد نتائج'));
-                        }
-//search result have the data we search about
+                }
+
+                // search result have the data we search about
                 return ListView.builder(
                   padding: const EdgeInsets.all(16),
                   itemCount: controller.searchResults.length,
@@ -72,28 +67,35 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     return GestureDetector(
                       onTap: () {
                         if (!isProduct) {
-                          Get.to(() => ProductsScreen(
-                                categoryId: item['id'],
-                                categoryName: item['name'],
-                                categoryImage: item['image'],
-                              ));
+                          // open products of this category
+                          Get.to(
+                            () => ProductsScreen(
+                              categoryId: item['id'],
+                              categoryName: item['name'],
+                              categoryImage: item['image'],
+                            ),
+                          );
                         } else {
-                          print("منتج: ${item['name']}");
+                          // open product details
+                          final product = ProductModel.fromJson(
+                            Map<String, dynamic>.from(item),
+                          );
+                          Get.to(
+                            () => ProductDetailsScreen(product: product),
+                          );
                         }
                       },
                       child: Card(
                         child: ListTile(
-                          title: Text(item['name']),
-                          subtitle:
-                              isProduct //the defernt btween the product and category is the price
-
-                                  ? Text(
-                                      'السعر: ${item['price']}') // this ? mean do and : mean else
-                                  : const Text('تصنيف'),
+                          title: Text(item['name'].toString()),
+                          subtitle: isProduct
+                              // the different between the product and category is the price
+                              ? Text('السعر: ${item['price']}')
+                              : const Text('تصنيف'),
                           leading: Image.network(
                             imageUrl,
                             width: 50,
-                            errorBuilder: (context, error, stackTrace) =>  //th errorbuilder is a function that is in image network
+                            errorBuilder: (context, error, stackTrace) =>
                                 const Icon(Icons.broken_image),
                           ),
                         ),
@@ -101,10 +103,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     );
                   },
                 );
-              } 
-              
-              else {                                              //if the user doesnt search we display the catrgory
-                //else if he doesnt search the category apear
+              } else {
+                // if the user doesn't search we display the category
                 if (controller.isLoading.value) {
                   return const Center(child: CircularProgressIndicator());
                 }
