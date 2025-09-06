@@ -71,7 +71,7 @@ void send() async {
   buttonText: 'أدخل الرمز',
   imagePath: 'assets/images/icons8-whatsapp-48.png',
   phoneIntl: phone, // تأكد أنه بصيغة دولية
-  nextScreen: VerifyCodeScreen(fromSignup: true, userId: userId),
+  nextScreen: VerifyCodeScreen(fromSignup: false, userId: userId),
 ));
 
 }

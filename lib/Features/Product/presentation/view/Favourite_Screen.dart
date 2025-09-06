@@ -45,8 +45,9 @@ final ShowFavouriteController favController = Get.find<ShowFavouriteController>(
           itemBuilder: (context, index) {
      final product = favController.favouriteList[index];
             final imageUrl =
-                "https://res.mustafafares.com/${product.image.split('/').last}";
-  // "http://192.168.1.2:8000/${product.image.split('/').last}";
+                  // "https://res.mustafafares.com/${product.image.split('/').last}";
+    // "http://192.168.1.2:8000/${product.image.split('/').last}";
+    "http://192.168.43.222:8000/${product.image.split('/').last}";
             return CustomListTile(
               title: product.name,
               subtitle: product.price,

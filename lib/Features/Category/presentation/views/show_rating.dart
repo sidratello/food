@@ -53,8 +53,9 @@ class RatingScreen extends StatelessWidget {
           itemBuilder: (context, index) {
      final product = ratController.ratingList[index];
             final imageUrl =
-                "https://res.mustafafares.com/${product.image.split('/').last}";
-  // "http://192.168.1.2:8000/${product.image.split('/').last}";
+                  //  "https://res.mustafafares.com/${product.image.split('/').last}";
+    //  "http://192.168.1.2:8000/${product.image.split('/').last}";
+        "http://192.168.43.222:8000/${product.image.split('/').last}";
             return CustomListTile(
               title: product.name,
               subtitle: "rating: ${product.averageRating} stars",
