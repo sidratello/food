@@ -17,10 +17,13 @@ class ShowOrdersController extends GetxController {
   }
 
   Future<void> fetchOrders() async {
+
     try {
       errorMessage.value = '';
       isLoading.value = true;
       Map<String, dynamic> response = await api.get(url: Applink.getOrders, sendToken: true);
+      print(response['orders']);
+
       orders.value = [];
       for (var order in response['orders']) {
         orders.add(order);
@@ -30,5 +33,7 @@ class ShowOrdersController extends GetxController {
     } finally {
       isLoading.value = false;
     }
+
+
   }
 }

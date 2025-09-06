@@ -38,4 +38,9 @@ class Applink {
 //  static String productByCategory(int categoryId) => '$Server/product/$categoryId';
   // driver apis:
   static const String getOrders = '$Server/driver/orders/confirmed';
+  static String getOrdersDetails(int id) => '$Server/orders/showDetails/$id';
+  static String InDelivery(int id) => '$Server/in_delivery/orders/$id';
+  static String Done(int id) => '$Server/driver/orders/$id/complete';
+
+
 }

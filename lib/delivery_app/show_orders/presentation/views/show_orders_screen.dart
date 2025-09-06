@@ -46,44 +46,36 @@ class ShowOrdersScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             itemCount: controller.orders.length,
             itemBuilder: (context, index) {
+              final Map<String, dynamic> order = controller.orders[index];
+
               return GestureDetector(
                 onTap: () {
-                  Get.to(() => OrderDetailsScreen());
+                  final int orderId = order['order_id'];
+                  Get.to(() => OrderDetailsScreen(orderId: orderId));
                 },
                 child: Container(
                   margin: const EdgeInsets.only(bottom: 16),
                   decoration: BoxDecoration(
-                    color: Color(0xFFF5F5F5), // لون رمادي فاتح للخلفية
+                    color: Color(0xFFF5F5F5),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(color: Colors.yellow, width: 2),
                   ),
                   child: ListTile(
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 12,
-                    ),
                     title: Text(
-                      "Location: ${controller.orders[index]}",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
+                      "City: ${order['location']?['city'] ?? 'No city'}, "
+                          "Street: ${order['location']?['street'] ?? 'No street'}",
                     ),
+
+
                     trailing: CircleAvatar(
                       backgroundColor: Colors.black,
-                      radius: 18,
-                      child: Text(
-                        "${index + 1}",
-                        style: TextStyle(
-                          color: Colors.yellow,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      child: Text("${index + 1}", style: TextStyle(color: Colors.yellow)),
                     ),
                   ),
                 ),
               );
             },
+
           );
         },
       ),
