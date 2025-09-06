@@ -1,20 +1,27 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutter_application_7/Features/reservation/presentation/controllers/reservation_controller.dart';
+import 'package:flutter_application_7/Features/Category/presentation/views/drawer.dart';
+import 'package:flutter_application_7/Features/Reservation/presentation/controllers/reservation_controller.dart';
+
+
+import 'package:flutter_application_7/Features/Reservation/presentation/widgets/elevatedbutton_reservation.dart';
+
+
 import 'package:flutter_application_7/Features/reservation/presentation/widgets/date_reservation.dart';
 import 'package:flutter_application_7/Features/reservation/presentation/widgets/occasions.dart';
-import 'package:flutter_application_7/Features/reservation/presentation/widgets/elevatedbutton_reservation.dart';
+
 import 'package:flutter_application_7/Features/reservation/presentation/widgets/textfieled_reservation.dart';
 import 'package:flutter_application_7/Features/reservation/presentation/widgets/time_reservation.dart';
-import 'package:flutter_application_7/wedjet/drawer/drawer.dart';
+
 import 'package:get/get.dart';
-import '../../data/resrevation_model.dart';
+
 import '../widgets/appbar_reservation.dart';
 
 class ReservationScreen extends StatefulWidget {
-  ReservationScreen({super.key, this.reservationModel});
+  ReservationScreen({super.key,});
 
-  final ReservationController controller = Get.put(ReservationController());
-  ReservationModelForm? reservationModel;
+  final Reservation_Controller controller = Get.put(Reservation_Controller());
+
 
   @override
   State<ReservationScreen> createState() => _ReservationScreenState();
@@ -23,7 +30,7 @@ class ReservationScreen extends StatefulWidget {
 class _ReservationScreenState extends State<ReservationScreen> {
   @override
   Widget build(BuildContext context) {
-    bool isEdit = (widget.reservationModel != null);
+
 
     final TextEditingController dateController = TextEditingController();
     final TextEditingController guestsController = TextEditingController();
@@ -31,17 +38,11 @@ class _ReservationScreenState extends State<ReservationScreen> {
     final TextEditingController startTimeController = TextEditingController();
     final TextEditingController endTimeController = TextEditingController();
 
-    if (widget.reservationModel != null) {
-      dateController.text = widget.reservationModel!.date ?? '';
-      guestsController.text = widget.reservationModel!.guestsCount ?? '';
-      occasionsController.text = widget.reservationModel!.notes ?? '';
-      startTimeController.text = widget.reservationModel!.startTime ?? '';
-      endTimeController.text = widget.reservationModel!.endTime ?? '';
-    }
+
 
     return Scaffold(
       drawer: CustomDrawer(),
-      appBar: const CustomAppBarReservation(title: "Reservation"),
+       appBar: const CustomAppBarReservation(title: "Reservation"),
       body: Padding(
         padding: const EdgeInsets.all(12),
         child: SingleChildScrollView(
@@ -81,7 +82,6 @@ class _ReservationScreenState extends State<ReservationScreen> {
                 occasionsController: occasionsController,
                 startTimeController: startTimeController,
                 endTimeController: endTimeController,
-                isEdit: isEdit,
               ),
             ],
           ),

@@ -32,17 +32,16 @@ class CategoryCard extends StatelessWidget {
             // نفترض أن رابط الصورة يحتوي فقط على اسم الملف
             image: NetworkImage(
               "${Applink.imageBaseUrl}${category.image.split('/').last}",
-
             ),
-            fit: BoxFit.cover,  // تغطي كامل الـ Container
+            fit: BoxFit.cover, // تغطي كامل الـ Container
           ),
         ),
         child: Container(
           // هذا الغطاء الأسود الشفاف لضمان وضوح النص فوق الصورة
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: Colors.black.withOpacity(0.3),
-                      ),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            color: Colors.black.withOpacity(0.3),
+          ),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
           alignment: Alignment.topLeft,
           child: Text(
@@ -54,7 +53,7 @@ class CategoryCard extends StatelessWidget {
             ),
           ),
         ),
-                ),
+      ),
     );
   }
 }

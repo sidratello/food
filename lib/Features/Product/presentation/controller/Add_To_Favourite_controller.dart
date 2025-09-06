@@ -3,6 +3,7 @@
 
 
 import 'package:flutter_application_7/Features/Product/data/serveses/Add_To_Favousite_serveses.dart';
+import 'package:flutter_application_7/Features/Product/presentation/controller/Delet_from_favourite_controller.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/Show_Favourite_Controller.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
@@ -31,44 +32,43 @@ RxSet<int> favouriteProductIds = <int>{}.obs; //like the set that doesnt  لا �
     
     }
   }
-
-  Future<void> toggleFavourite(int productId)async 
-{
-
+Future<void> toggleFavourite(int productId) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String token = prefs.getString('token') ?? '';
 
   if (token.isEmpty) {
-    print("❌ المستخدم غير مسجل دخول");
+    print("المستخدم غير مسجل دخول");
     return;
   }
- var response=await addToFavouriteService.addtofavourite(productId,token);
-    
+
+  // حذف أو إضافة حسب الحالة
+  if (isFavourite(productId)) {
+    // حذف
+    favouriteProductIds.remove(productId);
+    await Get.put(DeleteFavouriteController()).deleteFromFavourite(productId);
+  } else {
+    // إضافة
+    final response = await addToFavouriteService.addtofavourite(productId, token);
     if (response is Map && response.containsKey('message')) {
-      if (favouriteProductIds.contains(productId)) { //change the producte state 
-        favouriteProductIds.remove(productId);
-      } else {
-        favouriteProductIds.add(productId);
-      }
-      
-      
-      prefs.setStringList(  
-        'favourites',
-        favouriteProductIds.map((e) => e.toString()).toList(), //store the favouriteProductIds because the sharedrefrence work in string not int so we convert to int 
-      );
-
-
-
-      if (Get.isRegistered<ShowFavouriteController>()) {
-        Get.find<ShowFavouriteController>().fetchFavourite();
-      }
-
-
-            print("✅ حالة المفضلة محفوظة: $favouriteProductIds");
+      favouriteProductIds.add(productId);
     } else {
-      print("❌ فشل في تحديث المفضلة");
+      print("❌ فشل في إضافة المنتج إلى المفضلة");
     }
   }
+
+  // تحديث التخزين المحلي
+  prefs.setStringList(
+    'favourites',
+    favouriteProductIds.map((e) => e.toString()).toList(),
+  );
+
+  if (Get.isRegistered<ShowFavouriteController>()) {
+    Get.find<ShowFavouriteController>().fetchFavourite();
+  }
+
+  print("✅ حالة المفضلة: $favouriteProductIds");
+}
+
 
 
 

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Product/data/model/product_model.dart';
 import 'package:flutter_application_7/helper/AppLink.dart';
+
 class ProductCard extends StatelessWidget {
   final ProductModel product;
   final VoidCallback? onTap;
@@ -27,7 +28,7 @@ class ProductCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
-        clipBehavior: Clip.hardEdge,   //amoid the image to be outside the card
+        clipBehavior: Clip.hardEdge, //amoid the image to be outside the card
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -60,4 +61,3 @@ class ProductCard extends StatelessWidget {
     );
   }
 }
-

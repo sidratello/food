@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Category/presentation/Controller/category_controller.dart';
+import 'package:flutter_application_7/Features/Category/presentation/views/drawer.dart';
 
 import 'package:flutter_application_7/Features/Category/presentation/wedjets/CustomSearchTextField.dart';
 import 'package:flutter_application_7/Features/Category/presentation/wedjets/customCategoryCard.dart';
 import 'package:flutter_application_7/Features/Product/presentation/view/product_Screen.dart';
+
 import 'package:flutter_application_7/helper/AppLink.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/custom_scafould.dart';
 
 
 import 'package:get/get.dart';
 
-import '../../../../wedjet/drawer/drawer.dart';
+
 
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key});
@@ -34,6 +36,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
     // return Scaffold(
     //   appBar: const CustomAppBar(title: 'Menu'),
     return CustomScaffold(
+            drawer:  CustomDrawer(),
       showAppBar: true,
       appBarTitle: 'Menu',
       showNavBar: false,

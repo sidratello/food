@@ -1,7 +1,12 @@
 class Applink {
-  static const String Server = 'http://192.168.1.3:8000/api';
-  static const String imageBaseUrl = 'http://192.168.21.204:8000/';
+  static const String Server = 'https://res.mustafafares.com/api';
 
+  //  "http://192.168.1.2:8000/api";
+  // "http://192.168.43.222:8000/api";
+  static const String imageBaseUrl = 'https://res.mustafafares.com/';
+
+  //  'http://192.168.1.2:8000/';
+  // 'http://192.168.43.222:8000/';
   static const String choose = '$Server/chooseRole';
   static const String login = '$Server/login';
   static const String Signup = '$Server/register';
@@ -35,12 +40,36 @@ class Applink {
 
   static String cancelReservation(int id) => '$Server/cancelReservation/$id';
 
+  static const String addorder = '$Server/addorder';
+
+  static String DeletFromFav(int product_id) =>
+      '$Server/deletfromFavourite/$product_id';
+
+  static String DeletFromCart(int product_id) =>
+      '$Server/deletfromcart/$product_id';
+
+  static const String ShowAdress = '$Server/addresses';
+  static const String ShowOrder = '$Server/orders';
+  static const String profile = '$Server/showProfile';
+  static const String updateProfile = '$Server/updateProfile';
+  static const String logout = '$Server/logout';
+  static const String rating = '$Server/rate';
+  static const String showrating = '$Server/topRatedProducts';
+
+  static String deletrating(int categoryId) {
+    return '$Server/rate/$categoryId';
+  }
+
+  static const String fillmuhfaza = '$Server/addWallet';
+  static const String showmuhfaza = '$Server/Wallet';
+
 //  static String productByCategory(int categoryId) => '$Server/product/$categoryId';
   // driver apis:
   static const String getOrders = '$Server/driver/orders/confirmed';
+
   static String getOrdersDetails(int id) => '$Server/orders/showDetails/$id';
+
   static String InDelivery(int id) => '$Server/in_delivery/orders/$id';
+
   static String Done(int id) => '$Server/driver/orders/$id/complete';
-
-
 }

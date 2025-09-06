@@ -1,9 +1,5 @@
 
-
-
-
 import 'dart:ui';
-
 import 'package:flutter_application_7/Features/Product/data/serveses/Add_To_Cart_serveses.dart';
 import 'package:flutter_application_7/Features/Product/data/serveses/Add_To_Favousite_serveses.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/ShowCart_Controller.dart';
@@ -44,7 +40,7 @@ RxSet<int> CartProductIds = <int>{}.obs; //like the set that doesnt  لا تسم
   String token = prefs.getString('token') ?? '';
 
   if (token.isEmpty) {
-    print("❌ المستخدم غير مسجل دخول");
+    print(" المستخدم غير مسجل دخول");
     return;
   }
  var response=await addToCartService.addtocart(productId, token, quantity, note);
@@ -58,7 +54,7 @@ RxSet<int> CartProductIds = <int>{}.obs; //like the set that doesnt  لا تسم
         CartProductIds.map((e) => e.toString()).toList(), //store the favouriteProductIds
       );
 
-  // ✅ تحديث شاشة السلة بعد الإضافة
+  //  تحديث شاشة السلة بعد الإضافة
 if (Get.isRegistered<ShowCartController>()) {
   final showCartController = Get.find<ShowCartController>();
   showCartController.fetchCart();
@@ -76,7 +72,7 @@ if (Get.isRegistered<ShowCartController>()) {
 
            
     } else {
-      print("❌ فشل في تحديث cart");
+      print(" فشل في تحديث cart");
     }
   }
 

@@ -3,6 +3,7 @@ import 'package:flutter_application_7/Features/Auth/presentation/Controllers/New
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomBUttom.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomSignUPText2.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomTextFormFieldSignUp.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/views/scsufful_page.dart';
 
 import 'package:flutter_application_7/core/constant/color.dart';
 
@@ -80,9 +81,11 @@ body:Container(
 
       
       controller.submit();
+      Get.to(PasswordChangedSuccessScreen());
        },
                       // ✅ هنا يتم فحص النموذج
                      title: "Sibmit", color: AppColor.pink,
+                    
           ),
   ),
 

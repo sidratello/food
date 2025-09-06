@@ -4,12 +4,13 @@ import 'package:flutter_application_7/Features/Category/presentation/views/categ
 import 'package:flutter_application_7/Features/Product/presentation/view/CartScreen.dart';
 import 'package:flutter_application_7/Features/Product/presentation/view/Favourite_Screen.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/custom_scafould.dart';
-import 'package:flutter_application_7/screen/acount.dart';
+import 'package:flutter_application_7/Features/show_order/preserntation/views/Emty_show_order_screen.dart';
+import 'package:flutter_application_7/Features/show_order/preserntation/views/show_order_screen.dart';
 
+import 'package:flutter_application_7/screen/acount.dart';
 
 // تأكد من مسار ملف AccountScreen
 import '../Features/Category/presentation/views/category_screen.dart';
-
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -26,8 +27,7 @@ class _HomePageState extends State<HomePage> {
     Center(child: Text("Home")), // المؤقتة
     FavouriteScreen(),
     CartScreen(),
-   AccountScreen(),
-
+    ShowOrdersScreen()
   ];
 
   @override

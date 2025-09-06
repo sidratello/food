@@ -25,23 +25,34 @@ class CustomScaffold extends StatelessWidget {
     this.floatingActionButton,
     this.showBackButton = false,
     this.onBackPressed,
-    this.drawer
+    this.drawer,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: drawer,
-     appBar: showAppBar
-    ? AppBar(
-        automaticallyImplyLeading: false, //هذا يمنع Flutter من إظهار زر الرجوع تلقائيًا.
-           toolbarHeight: 40, //مفيد لتقليل المساحة المستخدمة في أعلى الشاشة.
-        leading: showBackButton
-            ? IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: onBackPressed ?? () => Navigator.pop(context), //if we have showBackButton it will excute else we go to breafuce screen
-              )
-            : null,
+      appBar: showAppBar
+          ? AppBar(
+              automaticallyImplyLeading: false,
+              //هذا يمنع Flutter من إظهار زر الرجوع تلقائيًا.
+              toolbarHeight: 40,
+              //مفيد لتقليل المساحة المستخدمة في أعلى الشاشة.
+              leading: showBackButton
+                  ? IconButton(
+                      icon: const Icon(Icons.arrow_back),
+                      onPressed: onBackPressed ??
+                          () => Navigator.pop(
+                              context), //if we have showBackButton it will excute else we go to breafuce screen
+                    )
+                  : (drawer != null
+                      ? Builder(
+                          builder: (ctx) => IconButton(
+                            icon: const Icon(Icons.menu),
+                            onPressed: () => Scaffold.of(ctx).openDrawer(),
+                          ),
+                        )
+                      : null),
               title: Text(
                 appBarTitle ?? '',
                 style: const TextStyle(fontWeight: FontWeight.bold),
@@ -52,9 +63,6 @@ class CustomScaffold extends StatelessWidget {
               elevation: 0,
             )
           : null,
-
-
-
       body: body,
       bottomNavigationBar: showNavBar
           ? CurvedNavigationBar(
@@ -70,9 +78,6 @@ class CustomScaffold extends StatelessWidget {
               ],
             )
           : null,
-
-
-
       floatingActionButton: floatingActionButton,
     );
   }

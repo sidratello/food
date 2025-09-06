@@ -18,7 +18,7 @@ class CartItemModel {
 
   });
 
-  factory CartItemModel.fromJson(Map<String, dynamic> json) { //i change each one iteam  from in map from   json to object of model in  thos    "note": "لا اريد فواكه" in there map {} 
+  factory CartItemModel.fromJson(Map<String, dynamic> json) { //i change each one iteam  from  map   json to object of model in  thos    "note": "لا اريد فواكه" in there map {} 
 
 
 

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_7/Features/Reservation/presentation/views/reservation_screen.dart';
+import 'package:flutter_application_7/Features/external_order.dart/presentation/views/snackbar_to_choose_the_type_of_location.dart';
+import 'package:get/get.dart';
 
 class OrderTypeButton extends StatelessWidget {
   const OrderTypeButton({super.key});
@@ -23,9 +26,7 @@ class OrderTypeButton extends StatelessWidget {
                     title: const Text("طلب داخلي (داخل المطعم)"),
                     onTap: () {
                       Navigator.pop(context);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("تم اختيار الطلب الداخلي")),
-                      );
+                Get.to(ReservationScreen());
                     },
                   ),
                   ListTile(
@@ -33,9 +34,8 @@ class OrderTypeButton extends StatelessWidget {
                     title: const Text("طلب خارجي (خارج المطعم)"),
                     onTap: () {
                       Navigator.pop(context);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("تم اختيار الطلب الخارجي")),
-                      );
+           showLocationChoiceDialog(context);
+
                     },
                   ),
                 ],

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:flutter_application_7/Features/Auth/presentation/Controllers/UsertypeController.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomBUttom.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomSignUPText2.dart';
@@ -9,6 +12,14 @@ class UserTypeChoiceScreen extends StatelessWidget {
   UserTypeChoiceScreen({Key? key}) : super(key: key);
 
   final ChooseRoleControllerImp controller = Get.put(ChooseRoleControllerImp());
+
+  Future<void> _selectAndGo(String role) async {
+    controller.selectRole(role);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('role', role);
+    // إذا تبغى تروح لصفحة تسجيل مباشرة:
+    Get.toNamed('/sinup'); // أو '/login' حسب تدفقك
+  }
 
   @override
   Widget build(BuildContext context) {

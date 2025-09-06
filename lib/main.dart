@@ -84,14 +84,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/Signup_screen.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/UserTypeChoiceScreen.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/login_screen.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/views/scsufful_page.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/splashscreeen.dart';
+import 'package:flutter_application_7/Features/Reservation/presentation/views/show_reservation_screen.dart';
+import 'package:flutter_application_7/Features/mufaza/presentation/controller/fill_muhfaza_controller.dart';
+import 'package:flutter_application_7/Features/mufaza/presentation/controller/show_mufaza.dart';
 import 'package:flutter_application_7/Features/reservation/presentation/views/reservation_screen.dart';
-import 'package:flutter_application_7/Features/show_reservation/presentation/views/show_reservation_screen.dart';
+
 import 'package:flutter_application_7/Features/Category/presentation/views/category_screen.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/Add_To_Favourite_controller.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/ShowCart_Controller.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/Show_Favourite_Controller.dart';
 import 'package:flutter_application_7/core/constant/color.dart';
+import 'package:flutter_application_7/core/constant/theme_controller.dart';
 import 'package:flutter_application_7/delivery_app/show_orders/presentation/views/show_orders_screen.dart';
 import 'package:flutter_application_7/screen/acount.dart';
 
@@ -105,7 +110,6 @@ import 'core/constant/color.dart';
 
 import 'firebase_options.dart';
 import 'screen/onbording.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -123,6 +127,9 @@ void main() async {
   Get.put(Add_TO_Favourite_Controller(), permanent: true);
   Get.put(ShowFavouriteController(), permanent: true);
   Get.put(ShowCartController(), permanent: true);
+  Get.put(ThemeController(), permanent: true);
+  Get.put(AddToMuhfazaController(), permanent: true);
+  Get.put(ShowMufazaController(), permanent: true);
   runApp(const MyApp());
   // getFCMToken();
 }
@@ -133,9 +140,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final theme = Get.find<ThemeController>();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/splash",
+      initialRoute: "/usertype",
+      themeMode: theme.themeMode.value,
       theme: ThemeData(
         fontFamily: "fonts",
         textTheme: const TextTheme(
@@ -159,8 +168,16 @@ class MyApp extends StatelessWidget {
           page: () => onbording(),
         ),
 
-        GetPage(name: "/login/driver", page: () => login(type: "driver",)),
-        GetPage(name: "/login/customer", page: () => login(type: "customer",)),
+        GetPage(
+            name: "/login/driver",
+            page: () => login(
+                  type: "driver",
+                )),
+        GetPage(
+            name: "/login/customer",
+            page: () => login(
+                  type: "customer",
+                )),
 
         GetPage(name: "/sinup/driver", page: () => Sinup(type: "driver")),
         GetPage(name: "/sinup/customer", page: () => Sinup(type: "customer")),
@@ -181,10 +198,13 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(name: "/reservation", page: () => ReservationScreen()),
         GetPage(name: "/showreservation", page: () => ShowReservationScreen()),
-// for delivery
+        // for delivery
         GetPage(name: "/showorders", page: () => ShowOrdersScreen()),
         GetPage(name: "/usertype", page: () => UserTypeChoiceScreen()),
-      ], // Thistrailing comma makes auto-formatting nicer for build methods.
+        // Thistrailing comma makes auto-formatting nicer for build methods.
+        GetPage(name: "/usertype", page: () => UserTypeChoiceScreen()),
+        GetPage(name: "/sucess", page: () => PasswordChangedSuccessScreen()),
+      ],
     );
   }
 }

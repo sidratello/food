@@ -13,7 +13,7 @@ class ShowCartController extends GetxController {
   final show_Cart_serveses _showCart = show_Cart_serveses();
 var CartList = <CartItemModel>[].obs;
  var total = 0.obs; 
-
+  var isClearing = false.obs; 
 
      var isLoading = false.obs;
   @override
@@ -21,7 +21,7 @@ var CartList = <CartItemModel>[].obs;
     super.onInit();
     fetchCart();
   }
-   void fetchCart() async { //fetch the data from the server   جلب بيانات السلة من السيرفر.
+   void fetchCart() async { //fetch the data from the server   
       try {
        isLoading.value = true;
        SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -33,11 +33,7 @@ var CartList = <CartItemModel>[].obs;
         total.value = result.total; //result  بالمحتوى الموجود داخل  CartList استبدال كل محتوى القائمة 
       
 
-  // total.value = result['total'].toString();
-  // List<CartItemModel> items = (result['cart'] as List)
-  //     .map((item) => CartItemModel.fromJson(item))
-  //     .toList();
-  // CartList.assignAll(items);
+
 }
 
 
@@ -49,4 +45,38 @@ var CartList = <CartItemModel>[].obs;
       isLoading.value = false;
      }
    }
+
+
+     void clearCart() {
+    CartList.clear();
+    total.value = 0;
   }
+
+  Future<void> clearCartEverywhere() async {
+    if (isClearing.value) return;
+    isClearing.value = true;
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString('token') ?? '';
+
+      // احذف عنصر-عنصر من السيرفر
+      final snapshot = List<CartItemModel>.from(CartList);
+      for (final item in snapshot) {
+        try {
+          await _showCart.delete_item(token, item.productId);
+        } catch (e) {
+          print('delete item ${item.productId} failed: $e');
+        }
+      }
+
+      // ثم فرّغ محليًا
+      clearCart();
+    } finally {
+      isClearing.value = false;
+    }
+
+
+
+
+  }
+}
