@@ -102,6 +102,7 @@ import 'package:flutter_application_7/screen/acount.dart';
 
 import 'package:flutter_application_7/screen/home.dart';
 import 'package:flutter_application_7/wedjet/googlemap/customgooglemap.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 
 import 'Features/Auth/presentation/views/UserTypeChoiceScreen.dart';
@@ -110,6 +111,47 @@ import 'core/constant/color.dart';
 
 import 'firebase_options.dart';
 import 'screen/onbording.dart';
+
+class FlutterLocalNotifications {
+
+  static final FlutterLocalNotificationsPlugin
+  flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+}
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  // Runs when app is in background/terminated
+  print("Handling a background message: ${message.messageId}");
+
+  print("Message received: ${message.notification?.title}");
+  print("Message received: ${message.notification?.body}");
+}
+
+Future<void> _showLocalNotification(RemoteMessage message) async {
+  RemoteNotification? notification = message.notification;
+  AndroidNotification? android = message.notification?.android;
+
+  if (notification != null && android != null) {
+    const AndroidNotificationDetails androidDetails =
+    AndroidNotificationDetails(
+      'high_importance_channel', // must match channel id
+      'High Importance Notifications',
+      channelDescription: 'This channel is used for important notifications.',
+      importance: Importance.max,
+      priority: Priority.high,
+      showWhen: true,
+    );
+
+    const NotificationDetails platformDetails =
+    NotificationDetails(android: androidDetails);
+
+    await FlutterLocalNotifications.flutterLocalNotificationsPlugin.show(
+      notification.hashCode,
+      notification.title,
+      notification.body,
+      platformDetails,
+    );
+  }
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -124,6 +166,22 @@ void main() async {
   );
   String? token = await FirebaseMessaging.instance.getToken();
   print('FCM Token: $token');
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  // Foreground
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    print("Message received: ${message.notification?.title}");
+    print("Message received: ${message.notification?.body}");
+    // You can use flutter_local_notifications to show popup
+  });
+
+  // When tapped notification opens app
+  FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+    print("Notification clicked!");
+
+    print("Message received: ${message.notification?.title}");
+    print("Message received: ${message.notification?.body}");
+  });
+
   Get.put(Add_TO_Favourite_Controller(), permanent: true);
   Get.put(ShowFavouriteController(), permanent: true);
   Get.put(ShowCartController(), permanent: true);
