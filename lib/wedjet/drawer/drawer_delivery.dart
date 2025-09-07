@@ -43,7 +43,7 @@ class CustomDrawerDelivery extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.contact_support_rounded, color:Colors.yellow[600]),
-            title: const Text('Contac US'),
+            title: const Text('Contact US'),
             onTap: () {
               Get.to(() => const ContactUsScreen());
             },
