@@ -6,6 +6,9 @@ import 'package:flutter_application_7/Features/Category/presentation/wedjets/Cus
 import 'package:flutter_application_7/Features/Category/presentation/wedjets/customCategoryCard.dart';
 import 'package:flutter_application_7/Features/Product/presentation/view/product_Screen.dart';
 
+import 'package:flutter_application_7/Features/Product/data/model/product_model.dart';
+import 'package:flutter_application_7/Features/Product/presentation/view/product_detals.dart';
+
 import 'package:flutter_application_7/helper/AppLink.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/custom_scafould.dart';
 
@@ -30,8 +33,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // return Scaffold(
-    //   appBar: const CustomAppBar(title: 'Menu'),
     return CustomScaffold(
       drawer: CustomDrawer(),
       showAppBar: true,
@@ -66,24 +67,31 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     return GestureDetector(
                       onTap: () {
                         if (!isProduct) {
-                          Get.to(() => ProductsScreen(
-                                categoryId: item['id'],
-                                categoryName: item['name'],
-                                categoryImage: item['image'],
-                              ));
+                          // open products of this category
+                          Get.to(
+                            () => ProductsScreen(
+                              categoryId: item['id'],
+                              categoryName: item['name'],
+                              categoryImage: item['image'],
+                            ),
+                          );
                         } else {
-                          print("منتج: ${item['name']}");
+                          // open product details
+                          final product = ProductModel.fromJson(
+                            Map<String, dynamic>.from(item),
+                          );
+                          Get.to(
+                            () => ProductDetailsScreen(product: product),
+                          );
                         }
                       },
                       child: Card(
                         child: ListTile(
-                          title: Text(item['name']),
-                          subtitle:
-                              isProduct //the defernt btween the product and category is the price
-
-                                  ? Text(
-                                      'السعر: ${item['price']}') // this ? mean do and : mean else
-                                  : const Text('تصنيف'),
+                          title: Text(item['name'].toString()),
+                          subtitle: isProduct
+                              // the different between the product and category is the price
+                              ? Text('السعر: ${item['price']}')
+                              : const Text('تصنيف'),
                           leading: Image.network(
                             imageUrl,
                             width: 50,

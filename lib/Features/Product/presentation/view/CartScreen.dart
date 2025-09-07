@@ -81,8 +81,8 @@ final ShowCartController controller = Get.find<ShowCartController>();
                      CustomListTile(
   title: product.name,
   subtitle: "Quantity: ${product.quantity}\nTotal: ${product.totalPrice} ل.س\nNote: ${product.note ?? ''}",
-    imageUrl: "https://res.mustafafares.com/${product.image.split('/').last}",
-    //  imageUrl:   "http://192.168.1.2:8000/${product.image.split('/').last}",
+    // imageUrl: "https://res.mustafafares.com/${product.image.split('/').last}",
+     imageUrl:   "http://192.168.1.2:8000/${product.image.split('/').last}",
     // imageUrl:   "http://192.168.43.222:8000/${product.image.split('/').last}",
   onTap: () {
 
