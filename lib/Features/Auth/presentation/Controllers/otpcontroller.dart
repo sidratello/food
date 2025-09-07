@@ -1,6 +1,7 @@
 // file: Features/Auth/presentation/Controllers/OtpController.dart
 import 'package:flutter_application_7/Features/Auth/data/veryfay_serveses.dart'; // أو سيرفس واحد موحّد لإرسال الـ OTP
 import 'package:flutter_application_7/Features/Auth/presentation/views/NewPassword_Screen.dart';
+import 'package:flutter_application_7/Features/Auth/presentation/views/login_screen.dart';
 import 'package:flutter_application_7/screen/home.dart';
 import 'package:get/get.dart';
 
@@ -27,7 +28,7 @@ class OtpController extends GetxController {
 
         if (fromSignup) {
           // مسار التسجيل: ادخل التطبيق
-          Get.offAll(() => HomePage());
+          Get.offAll(() => login());
         } else {
           // مسار نسيت كلمة المرور: انتقل لشاشة كلمة مرور جديدة
           Get.offAll(() => New_Password_Screen(userId: userId));

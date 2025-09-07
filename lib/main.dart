@@ -144,7 +144,7 @@ class MyApp extends StatelessWidget {
        final theme = Get.find<ThemeController>();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/usertype",
+      initialRoute: "/splash",
           themeMode: theme.themeMode.value,
       theme: ThemeData(
         fontFamily: "fonts",

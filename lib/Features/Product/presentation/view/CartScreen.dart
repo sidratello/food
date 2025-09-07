@@ -2,15 +2,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/Delet_From_Cart_Controller.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/ShowCart_Controller.dart';
-import 'package:flutter_application_7/Features/Product/presentation/controller/Show_Favourite_Controller.dart';
-import 'package:flutter_application_7/Features/Product/presentation/view/product_detals.dart';
+
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/cusom_order_buttom.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/custom_scafould.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/customlisttileforfavourite.dart';
 
 import 'package:get/get.dart';
 import 'dart:math';
-import 'package:flutter_application_7/Features/Product/data/model/product_model.dart';
+
 
 class CartScreen extends StatelessWidget {
 final ShowCartController controller = Get.find<ShowCartController>();
@@ -23,7 +22,7 @@ final ShowCartController controller = Get.find<ShowCartController>();
 
     return CustomScaffold(
       showAppBar: true,
-      appBarTitle: 'Cart',
+      appBarTitle: 'Cart  🛒',
    showNavBar: false,
       body:       
        Obx(
@@ -82,8 +81,8 @@ final ShowCartController controller = Get.find<ShowCartController>();
   title: product.name,
   subtitle: "Quantity: ${product.quantity}\nTotal: ${product.totalPrice} ل.س\nNote: ${product.note ?? ''}",
     // imageUrl: "https://res.mustafafares.com/${product.image.split('/').last}",
-     imageUrl:   "http://192.168.1.2:8000/${product.image.split('/').last}",
-    // imageUrl:   "http://192.168.43.222:8000/${product.image.split('/').last}",
+    //  imageUrl:   "http://192.168.1.2:8000/${product.image.split('/').last}",
+    imageUrl:   "http://192.168.43.222:8000/${product.image.split('/').last}",
   onTap: () {
 
   },

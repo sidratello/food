@@ -69,21 +69,33 @@ int _quantity = 1;
        Positioned(
   top: 40,
   right: 16,
-  child: Obx(() => IconButton(
-    icon: Icon(
-     favController.isFavourite(product.id)
-          ? Icons.favorite
-          : Icons.favorite_border,
-      color: Colors.red,
-    ),
-    onPressed: () async {
-      favController.toggleFavourite(product.id);
+  child:
+//    Obx(() => IconButton(
+//     icon: Icon(
+//      favController.isFavourite(product.id)
+//           ? Icons.favorite
+//           : Icons.favorite_border,
+//       color: Colors.red,
+//     ),
+//     onPressed: () async {
+//       favController.toggleFavourite(product.id);
       
-//when the user click on the love icon it change the sate of it 
-    },
-  )),
-),
-
+// //when the user click on the love icon it change the sate of it 
+//     },
+//   )),
+//),
+Obx(() => IconButton(
+  icon: Icon(
+    favController.isFavourite(product.id)
+        ? Icons.favorite
+        : Icons.favorite_border,
+  ),
+  color: favController.isFavourite(product.id) ? Colors.red : Colors.grey,
+  onPressed: () async {
+    await favController.toggleFavourite(product.id);
+  },
+)),
+       ),
               ],
             ),
             Padding(

@@ -11,10 +11,10 @@ import 'package:flutter_application_7/Features/Product/presentation/controller/S
 
 import 'package:flutter_application_7/Features/Product/presentation/view/EmptyFavoritesScreen.dart';
 import 'package:flutter_application_7/Features/Product/presentation/view/product_detals.dart';
-import 'package:flutter_application_7/Features/Product/presentation/wedjet/CustomText_for_Emptyfavourite%20Screen.dart';
+
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/custom_scafould.dart';
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/customlisttileforfavourite.dart';
-import 'package:flutter_application_7/core/constant/imageassets.dart';
+
 
 import 'package:get/get.dart';
 
@@ -37,7 +37,7 @@ final ShowFavouriteController favController = Get.find<ShowFavouriteController>(
   
       return CustomScaffold(
         showAppBar: true,
-        appBarTitle: 'favourite',
+        appBarTitle: 'favourite ❤️',
         showNavBar: false,
          
         body: ListView.builder(
@@ -46,8 +46,8 @@ final ShowFavouriteController favController = Get.find<ShowFavouriteController>(
      final product = favController.favouriteList[index];
             final imageUrl =
                   // "https://res.mustafafares.com/${product.image.split('/').last}";
-    "http://192.168.1.2:8000/${product.image.split('/').last}";
-    // "http://192.168.43.222:8000/${product.image.split('/').last}";
+    // "http://192.168.1.2:8000/${product.image.split('/').last}";
+    "http://192.168.43.222:8000/${product.image.split('/').last}";
             return CustomListTile(
               title: product.name,
               subtitle: product.price,

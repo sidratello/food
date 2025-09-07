@@ -55,7 +55,7 @@ class _EmptyFavoritesScreenState extends State<EmptyFavoritesScreen>
     //   body:
     CustomScaffold(
       showAppBar: true,
-    appBarTitle: 'المفضلة',
+    appBarTitle: 'favourite ❤️',
       showNavBar:false,
       
       body:  

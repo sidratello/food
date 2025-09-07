@@ -36,7 +36,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
     return CustomScaffold(
       drawer:  CustomDrawer(),
       showAppBar: true,
-      appBarTitle: 'Menu',
+      appBarTitle: 'Menu 😋',
       showNavBar: false,
       showBackButton: false,
       body: Column(

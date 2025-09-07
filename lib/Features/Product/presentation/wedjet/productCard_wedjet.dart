@@ -22,8 +22,8 @@ class ProductCard extends StatelessWidget {
 
     final imageUrl =
         //  "https://res.mustafafares.com/${product.image.split('/').last}";
-     "http://192.168.1.2:8000/${product.image.split('/').last}";
-//  "http://192.168.43.222:8000/${product.image.split('/').last}";
+    //  "http://192.168.1.2:8000/${product.image.split('/').last}";
+ "http://192.168.43.222:8000/${product.image.split('/').last}";
     return GestureDetector(
       onTap: onTap,
       child: Card(

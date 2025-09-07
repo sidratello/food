@@ -15,41 +15,52 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _checkUserRole();
+    _route();
   }
 
-  void _checkUserRole() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? role = prefs.getString('user_role');
-    String? token = prefs.getString('token'); 
+  Future<void> _route() async {
+    final prefs = await SharedPreferences.getInstance();
+    final role  = prefs.getString('user_role');   // 'user' | 'driver' | null
+    final token = prefs.getString('token');       // Bearer token
 
-    if (token != null) {
-      bool isValid = await _validateToken(token);
-      if (isValid) {
-        if (role == 'user') {
-          Get.offNamed('/home');
-        } else if (role == 'driver') {
-          Get.offNamed('/google');
+    // لو فيه توكن غير فارغ جرّب التحقق
+    if (token?.isNotEmpty == true) {
+      final ok = await _validateToken(token!);
+      if (ok) {
+        // ✅ توكن صالح → وجّه مباشرة
+        if (role == 'driver') {
+          Get.offAllNamed('/google'); // شاشتك الخاصة بالسائق
+        } else {
+          Get.offAllNamed('/home');   // الافتراضي user أو لو role مفقودة
         }
         return;
       }
     }
 
-    await prefs.clear();
-    Get.offNamed('/usertype');
+    // ⛔ لا يوجد توكن أو غير صالح → نظّف مفاتيح الدخول فقط واذهب لاختيار النوع
+    await prefs.remove('token');
+    await prefs.remove('user_id');
+    await prefs.remove('user_role');
+    Get.offAllNamed('/usertype');
   }
 
+  /// تحقّق مبسّط من صلاحيّة التوكن
   Future<bool> _validateToken(String token) async {
     try {
+      // endpoint اختباري يتطلب مصادقة (بدّله إن أحببت مثلاً /api/me)
       final response = await Api().get(
         url: Applink.ShowFavourit,
         token: token,
       );
+      // لو وصلت هنا بدون استثناء، اعتبره صالح
       return true;
     } catch (e) {
-      if (e.toString().contains('401')) {
+      // يفضّل إن Api().get يرمي استثناء بوقت 401/403
+      final msg = e.toString();
+      if (msg.contains('401') || msg.contains('403')) {
         return false;
       }
+      // لأي خطأ شبكة/سيرفر: اعتبره غير صالح أيضاً لتجنّب حبس المستخدم
       return false;
     }
   }
@@ -57,9 +68,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(),
-      ),
+      body: Center(child: CircularProgressIndicator()),
     );
   }
 }

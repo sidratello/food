@@ -33,8 +33,8 @@ class CategoryCard extends StatelessWidget {
             image: NetworkImage(
 
               //  "https://res.mustafafares.com/${category.image.split('/').last}",
-     "http://192.168.1.2:8000/${category.image.split('/').last}",
-  // "http://192.168.43.222:8000/${category.image.split('/').last}",
+    //  "http://192.168.1.2:8000/${category.image.split('/').last}",
+  "http://192.168.43.222:8000/${category.image.split('/').last}",
             ),
             fit: BoxFit.cover,  // تغطي كامل الـ Container
           ),

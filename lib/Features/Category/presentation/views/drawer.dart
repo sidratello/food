@@ -92,8 +92,8 @@ Get.to(RatingScreen());
             },
           ),
                                   CustomDrawerTile(
-            icon: Icons.star_purple500,
-            title: "mufaza",
+            icon: Icons.money,
+            title: "budjet",
             iconColor: AppColor.pink,
             onTap: () {
 Get.to(WalletTopUpPage());

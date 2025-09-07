@@ -74,9 +74,9 @@ class _PasswordChangedSuccessScreenState
                   child: Button(
 
     onPressed: () {
-Get.offAllNamed('/home');
+Get.offAllNamed('/login');
     },
-    title: "go to home page", color: AppColor.pink,
+    title: "go to logh in", color: AppColor.pink,
     ),
                 ),
               ],

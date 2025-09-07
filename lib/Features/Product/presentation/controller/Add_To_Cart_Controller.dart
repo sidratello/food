@@ -1,10 +1,9 @@
 
 import 'dart:ui';
 import 'package:flutter_application_7/Features/Product/data/serveses/Add_To_Cart_serveses.dart';
-import 'package:flutter_application_7/Features/Product/data/serveses/Add_To_Favousite_serveses.dart';
+
 import 'package:flutter_application_7/Features/Product/presentation/controller/ShowCart_Controller.dart';
-import 'package:flutter_application_7/Features/Product/presentation/controller/Show_Favourite_Controller.dart';
-import 'package:flutter_application_7/core/constant/color.dart';
+
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -18,7 +18,7 @@ class ShowOrdersScreen extends StatelessWidget {
       textDirection: TextDirection.rtl,
       child: CustomScaffold(
             showAppBar: true,
-        appBarTitle: 'orders',
+        appBarTitle: '🍔 orders ',
       showNavBar: false,
 
         body: Obx(() {

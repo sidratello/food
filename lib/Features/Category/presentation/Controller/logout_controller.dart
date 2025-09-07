@@ -31,9 +31,11 @@ class logoutController extends GetxController {
 
       final resp = await _service.logout( token);
  await prefs.remove('token');
+  await prefs.remove('user_id');
 
-
-
+if (Get.isRegistered<ShowFavouriteController>()) {
+  await Get.find<ShowFavouriteController>().onUserChanged(); // يفضّي ويمنع بقايا قديمة
+}
 // يمسح token + role
   // تخلّص من الكونترولرات المرتبطة بالمستخدم
   if (Get.isRegistered<ShowFavouriteController>()) {
