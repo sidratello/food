@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_7/controller/onbording_controller.dart';
+import 'package:flutter_application_7/Features/homepage/preserntation/controller/onbordingcontroller.dart';
+import 'package:flutter_application_7/Features/homepage/preserntation/wedjet/custombuttom.dart';
+import 'package:flutter_application_7/Features/homepage/preserntation/wedjet/customdotcontrollerbording.dart';
+import 'package:flutter_application_7/Features/homepage/preserntation/wedjet/custompageview.dart';
+
 import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:flutter_application_7/data/datasource/static/static.dart';
-import 'package:flutter_application_7/data/model/onbordingmodel.dart';
-import 'package:flutter_application_7/googlemap/onborging/buttom.dart';
-import 'package:flutter_application_7/googlemap/onborging/dotcontrooler.dart';
-import 'package:flutter_application_7/googlemap/onborging/pageview.dart';
+
+
 import 'package:get/get.dart';
 
 class onbording extends StatelessWidget {

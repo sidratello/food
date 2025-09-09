@@ -1,5 +1,6 @@
+import 'package:flutter_application_7/Features/homepage/data/model/onbordingmodel.dart';
 import 'package:flutter_application_7/core/constant/imageassets.dart';
-import 'package:flutter_application_7/data/model/onbordingmodel.dart';
+
 
 List<OnBoardingModel>onBoardingList=[
 

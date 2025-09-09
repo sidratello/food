@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_7/controller/onbording_controller.dart';
+import 'package:flutter_application_7/Features/homepage/preserntation/controller/onbordingcontroller.dart';
+
 import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:flutter_application_7/data/datasource/static/static.dart';
 import 'package:get/get.dart';

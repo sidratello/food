@@ -25,7 +25,7 @@ import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:flutter_application_7/core/constant/theme_controller.dart';
 
 
-import 'package:flutter_application_7/googlemap/googlemap/customgooglemap.dart';
+import 'package:flutter_application_7/googlemap/wedjet/customgooglemap.dart';
 import 'package:get/get.dart';
 
 
