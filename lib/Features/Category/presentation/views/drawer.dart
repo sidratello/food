@@ -8,7 +8,7 @@ import 'package:flutter_application_7/Features/Category/presentation/wedjets/cus
 import 'package:flutter_application_7/Features/Reservation/presentation/views/show_reservation_screen.dart';
 import 'package:flutter_application_7/Features/contact_us/presentation/view/contact_us_screen.dart';
 import 'package:flutter_application_7/Features/external_order.dart/presentation/views/show_adresess_screen.dart';
-import 'package:flutter_application_7/Features/mufaza/presentation/views/addtomuhfaza.dart';
+import 'package:flutter_application_7/Features/wallet/presentation/views/addtomuhfaza.dart';
 import 'package:flutter_application_7/Features/reservation/presentation/views/reservation_screen.dart';
 
 import 'package:flutter_application_7/Features/show_order/preserntation/views/show_order_screen.dart';

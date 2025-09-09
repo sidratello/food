@@ -7,7 +7,8 @@ import 'package:flutter_application_7/Features/Auth/presentation/views/Signup_sc
 import 'package:flutter_application_7/Features/Category/presentation/views/category_screen.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/Add_To_Favourite_controller.dart';
 import 'package:flutter_application_7/Features/Product/presentation/controller/Show_Favourite_Controller.dart';
-import 'package:flutter_application_7/screen/home.dart';
+import 'package:flutter_application_7/Features/homepage/preserntation/views/homepage.dart';
+
 
 
 import 'package:get/get.dart';

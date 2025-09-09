@@ -1,4 +1,4 @@
-import 'package:flutter_application_7/Features/mufaza/data/serveses/show_mufaza.dart';
+import 'package:flutter_application_7/Features/wallet/data/serveses/show_mufaza.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

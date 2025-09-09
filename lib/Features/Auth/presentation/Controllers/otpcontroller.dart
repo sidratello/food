@@ -2,7 +2,7 @@
 import 'package:flutter_application_7/Features/Auth/data/veryfay_serveses.dart'; // أو سيرفس واحد موحّد لإرسال الـ OTP
 import 'package:flutter_application_7/Features/Auth/presentation/views/NewPassword_Screen.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/login_screen.dart';
-import 'package:flutter_application_7/screen/home.dart';
+
 import 'package:get/get.dart';
 
 class OtpController extends GetxController {

@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_application_7/Features/mufaza/data/serveses/fill_the_mufaza.dart';
+import 'package:flutter_application_7/Features/wallet/data/serveses/fill_the_mufaza.dart';
 
 class AddToMuhfazaController extends GetxController {
   final FillTheMuhfazaService service = FillTheMuhfazaService();

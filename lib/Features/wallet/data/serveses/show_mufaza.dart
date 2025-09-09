@@ -1,4 +1,4 @@
-import 'package:flutter_application_7/Features/mufaza/data/modeles/Walletmodel.dart';
+import 'package:flutter_application_7/Features/wallet/data/modeles/Walletmodel.dart';
 import 'package:flutter_application_7/helper/AppLink.dart';
 import 'package:flutter_application_7/helper/api.dart';
 

@@ -5,12 +5,13 @@ import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomSi
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomSignUpText.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/Wedjet/CustomTextFormFieldSignUp.dart';
 import 'package:flutter_application_7/Features/Auth/presentation/views/ForgetPassword_Screen.dart';
+import 'package:flutter_application_7/Features/homepage/preserntation/views/homepage.dart';
 
 import 'package:flutter_application_7/core/constant/color.dart';
 import 'package:flutter_application_7/core/constant/imageassets.dart';
 import 'package:flutter_application_7/helper/validation.dart';
 
-import 'package:flutter_application_7/screen/home.dart';
+
 
 
 

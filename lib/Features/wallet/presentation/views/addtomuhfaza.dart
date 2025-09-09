@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_application_7/Features/mufaza/presentation/controller/show_mufaza.dart';
-import 'package:flutter_application_7/Features/mufaza/presentation/wedjet/walletcard.dart';
+import 'package:flutter_application_7/Features/wallet/presentation/controller/show_mufaza.dart';
+import 'package:flutter_application_7/Features/wallet/presentation/wedjet/walletcard.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter_application_7/Features/Product/presentation/wedjet/custom_scafould.dart';
-import 'package:flutter_application_7/Features/mufaza/presentation/controller/fill_muhfaza_controller.dart';
+import 'package:flutter_application_7/Features/wallet/presentation/controller/fill_muhfaza_controller.dart';
 
 
 class WalletTopUpPage extends StatefulWidget {
